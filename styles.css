@@ -1980,8 +1980,22 @@ body.mode-day .form-row textarea {
 }
 
 @media (max-width: 768px) {
+  main {
+    overflow-x: clip;
+  }
+
   .nav-toggle {
     display: flex;
+  }
+
+  .public-header__inner {
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .public-header__brand {
+    min-width: 0;
+    flex: 0 1 auto;
   }
 
   .public-header__nav {
@@ -2014,6 +2028,17 @@ body.mode-day .form-row textarea {
 
   .public-header__actions {
     margin-inline-start: auto;
+    gap: 0.35rem;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .public-header__actions .btn--gold {
+    display: none;
+  }
+
+  .public-hero__visual {
+    overflow: hidden;
   }
 
   .public-modules__grid {

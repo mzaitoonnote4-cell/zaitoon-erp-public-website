@@ -590,6 +590,15 @@ body.mode-night .pilot-urgency-banner {
 
 /* —— Responsive —— */
 @media (max-width: 768px) {
+  .command-center-stage {
+    overflow: hidden;
+  }
+
+  .product-teaser {
+    min-width: 0;
+    overflow: hidden;
+  }
+
   .before-after-grid {
     grid-template-columns: 1fr;
   }
@@ -617,7 +626,9 @@ body.mode-night .pilot-urgency-banner {
 
   .owner-view-grid {
     grid-template-columns: 1fr;
-    padding: 1.35rem;
+    padding: 1.25rem 1rem;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .owner-view__visual {
@@ -637,8 +648,11 @@ body.mode-night .pilot-urgency-banner {
     justify-content: flex-start;
     overflow-x: auto;
     flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
     padding-bottom: 0.25rem;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
 
   .teaser-tab {
