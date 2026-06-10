@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZA ERP | نظام عربي متكامل لإدارة الأعمال</title>
+  <meta name="description" content="ZA ERP منصة عربية سحابية لإدارة المبيعات، المخزون، المشتريات، المالية، العملاء، الموظفين، الصيانة، العمليات والتقارير من مكان واحد.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="content/homepage-content.js"></script>
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("za-erp-mode");
+        document.documentElement.setAttribute("data-mode", mode === "day" ? "day" : "night");
+      } catch (e) {
+        document.documentElement.setAttribute("data-mode", "night");
+      }
+      var c = window.HOMEPAGE_CONTENT;
+      if (c && c.seo) {
+        if (c.seo.title) document.title = c.seo.title;
+        var meta = document.querySelector('meta[name="description"]');
+        if (meta && c.seo.description) meta.setAttribute("content", c.seo.description);
+      }
+    })();
+  </script>
+</head>
+<body class="mode-night" data-page="home">
+  <script>
+    (function () {
+      var mode = document.documentElement.getAttribute("data-mode");
+      document.body.classList.remove("mode-day", "mode-night");
+      document.body.classList.add(mode === "day" ? "mode-day" : "mode-night");
+    })();
+  </script>
+
+  <div class="bg-effects" aria-hidden="true">
+    <span class="bg-effects__line bg-effects__line--1"></span>
+    <span class="bg-effects__line bg-effects__line--2"></span>
+    <span class="bg-effects__glow bg-effects__glow--gold"></span>
+    <span class="bg-effects__glow bg-effects__glow--emerald"></span>
+  </div>
+
+  <div id="public-header-mount"></div>
+
+  <main id="public-main-mount"></main>
+
+  <div id="public-footer-mount"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/render-homepage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
