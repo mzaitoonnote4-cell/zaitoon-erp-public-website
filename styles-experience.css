@@ -591,12 +591,16 @@ body.mode-night .pilot-urgency-banner {
 /* —— Responsive —— */
 @media (max-width: 768px) {
   .command-center-stage {
-    overflow: hidden;
+    overflow: visible;
+    max-width: min(100%, 22rem);
+    margin-inline: auto;
+    transform: scale(0.92);
+    transform-origin: center top;
   }
 
   .product-teaser {
     min-width: 0;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .before-after-grid {
@@ -629,10 +633,54 @@ body.mode-night .pilot-urgency-banner {
     padding: 1.25rem 1rem;
     min-width: 0;
     max-width: 100%;
+    overflow: visible;
+  }
+
+  .owner-view__content {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .owner-view__content h2 {
+    font-size: clamp(1.15rem, 4.8vw, 1.45rem);
+    line-height: 1.45;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  .owner-view__point {
+    font-size: 0.9rem;
+    gap: 0.55rem;
+  }
+
+  .owner-view__content > .btn--lg {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.45;
+    padding: 0.8rem 1rem;
+    font-size: 0.92rem;
   }
 
   .owner-view__visual {
     order: -1;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .owner-dashboard {
+    width: 100%;
+    max-width: 18.5rem;
+    padding: 1rem;
+    margin-inline: auto;
+    box-sizing: border-box;
   }
 
   .pilot-urgency-banner {
@@ -657,5 +705,92 @@ body.mode-night .pilot-urgency-banner {
 
   .teaser-tab {
     flex-shrink: 0;
+  }
+
+  .teaser-panel__mock {
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .command-center-stage {
+    max-width: min(100%, 19.5rem);
+    transform: scale(0.88);
+  }
+
+  .cmd-node {
+    width: 4rem;
+  }
+
+  .cmd-node__label {
+    font-size: 0.64rem;
+  }
+
+  .owner-view-grid {
+    padding: 1.1rem 0.85rem;
+  }
+
+  .owner-view__content h2 {
+    font-size: 1.12rem;
+  }
+
+  .owner-view__content > .btn--lg {
+    font-size: 0.88rem;
+    padding: 0.72rem 0.85rem;
+  }
+
+  .owner-dashboard__row {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .command-center-stage {
+    max-width: min(100%, 18rem);
+    transform: scale(0.84);
+  }
+
+  .owner-view__content h2 {
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  .owner-view__point {
+    font-size: 0.85rem;
+  }
+
+  .owner-view__check {
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 0.68rem;
+  }
+
+  .owner-view__content > .btn--lg {
+    font-size: 0.84rem;
+    padding: 0.68rem 0.75rem;
+  }
+
+  .owner-dashboard__bars {
+    height: 3.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .command-center-stage {
+    max-width: min(100%, 16.5rem);
+    transform: scale(0.8);
+  }
+
+  .owner-view-grid {
+    padding: 1rem 0.7rem;
+  }
+
+  .owner-view__content h2 {
+    font-size: 1rem;
+  }
+
+  .owner-view__content > .btn--lg {
+    font-size: 0.8rem;
+    padding: 0.65rem 0.7rem;
   }
 }

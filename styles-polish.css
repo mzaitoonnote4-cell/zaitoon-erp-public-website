@@ -575,6 +575,22 @@ body.mode-day .hero-data-chip {
   }
 }
 
+@media (max-width: 768px) {
+  [data-tilt-target],
+  [data-tilt-stage],
+  .hero-mockup-stage {
+    transform: none !important;
+  }
+
+  .hero-mockup-stage {
+    perspective: none;
+  }
+
+  .device-mockup--float {
+    animation: none;
+  }
+}
+
 @media (max-width: 480px) {
   .depth-grid {
     grid-template-columns: 1fr;
