@@ -4,3 +4,6 @@ desktop.ini
 *.log
 .env
 .env.*
+
+# Generated production package (rebuild with deploy/build-production.ps1)
+deploy/za-erp-public-live/
