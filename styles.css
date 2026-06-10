@@ -913,42 +913,111 @@ body.mode-day .mode-toggle__icon--moon { display: block; }
   align-items: center;
 }
 
-.za-emblem {
+/* ZA ERP brand emblem — official logo in premium glass frame (Why / brand section) */
+.za-brand-emblem {
   position: relative;
-  width: min(280px, 100%);
-  aspect-ratio: 1;
+  width: min(380px, 100%);
   margin-inline: auto;
-  display: grid;
-  place-items: center;
+  padding: 0.5rem 0 2.25rem;
+  animation: brand-emblem-float 7s ease-in-out infinite;
 }
 
-.za-emblem__ring {
-  position: absolute;
-  inset: 8%;
-  border-radius: 50%;
-  border: 1px solid var(--accent-border);
-  box-shadow: 0 0 40px var(--accent-glow), inset 0 0 30px var(--accent-inset);
-  animation: ring-pulse 4s ease-in-out infinite;
-}
-
-.za-emblem__ring--inner {
-  inset: 22%;
-  border-color: var(--emerald-glow);
-  animation-delay: -2s;
-}
-
-@keyframes ring-pulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.03); }
+@keyframes brand-emblem-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .za-emblem__ring { animation: none; }
+  .za-brand-emblem { animation: none; }
 }
 
-.za-emblem__text {
+.za-brand-emblem__orbit {
+  position: absolute;
+  inset: -4% 2% 12%;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  box-shadow: 0 0 48px rgba(212, 175, 55, 0.08), inset 0 0 32px rgba(212, 175, 55, 0.04);
+  pointer-events: none;
+}
+
+.za-brand-emblem__halo {
+  position: absolute;
+  inset: 8% 0 18%;
+  background: radial-gradient(ellipse at 50% 55%, rgba(212, 175, 55, 0.22), rgba(16, 185, 129, 0.06) 45%, transparent 72%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.za-brand-emblem__frame {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  border-radius: calc(var(--radius-xl) + 2px);
+  padding: 1.5px;
+  background: linear-gradient(
+    145deg,
+    rgba(232, 201, 106, 0.55) 0%,
+    rgba(212, 175, 55, 0.12) 42%,
+    rgba(16, 185, 129, 0.18) 100%
+  );
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 72px rgba(212, 175, 55, 0.12);
+}
+
+.za-brand-emblem__glass {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  padding: clamp(1.25rem, 3.5vw, 1.85rem) clamp(1rem, 3vw, 1.5rem);
+  background:
+    linear-gradient(165deg, rgba(24, 24, 30, 0.92) 0%, rgba(10, 10, 14, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+}
+
+.za-brand-emblem__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 28px rgba(212, 175, 55, 0.28)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+}
+
+.za-brand-emblem__shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    118deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    transparent 38%,
+    transparent 62%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+.za-brand-emblem__base {
+  position: absolute;
+  z-index: 0;
+  bottom: 0.35rem;
+  left: 12%;
+  right: 12%;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.38), transparent 72%);
+  filter: blur(8px);
+}
+
+.za-brand-emblem--fallback {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  animation: none;
+}
+
+.za-brand-emblem__fallback-text {
   font-size: clamp(3rem, 8vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -957,15 +1026,6 @@ body.mode-day .mode-toggle__icon--moon { display: block; }
   background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 30px var(--accent-glow));
-}
-
-.za-emblem__pedestal {
-  position: absolute;
-  bottom: 5%;
-  width: 60%;
-  height: 12px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, var(--accent-glow), transparent 70%);
 }
 
 .public-why__benefits {

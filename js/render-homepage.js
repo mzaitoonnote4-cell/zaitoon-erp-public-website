@@ -190,6 +190,34 @@
     );
   }
 
+  function renderBrandEmblem(fallbackText) {
+    var src = content.media.whyEmblemImage;
+    var alt = content.brand.name + " " + content.brand.accent;
+    if (!src) {
+      return (
+        '<div class="za-brand-emblem za-brand-emblem--fallback">' +
+        '<span class="za-brand-emblem__fallback-text">' + esc(fallbackText || "ZA") + "</span></div>"
+      );
+    }
+    return (
+      '<div class="za-brand-emblem">' +
+      '<div class="za-brand-emblem__orbit" aria-hidden="true"></div>' +
+      '<div class="za-brand-emblem__halo" aria-hidden="true"></div>' +
+      '<div class="za-brand-emblem__frame">' +
+      '<div class="za-brand-emblem__glass">' +
+      '<img src="' +
+      esc(src) +
+      '" alt="' +
+      esc(alt) +
+      '" class="za-brand-emblem__logo" width="520" height="320" loading="lazy" decoding="async">' +
+      "</div>" +
+      '<div class="za-brand-emblem__shine" aria-hidden="true"></div>' +
+      "</div>" +
+      '<div class="za-brand-emblem__base" aria-hidden="true"></div>' +
+      "</div>"
+    );
+  }
+
   function renderWhy() {
     var w = content.why;
     var benefits = w.items
@@ -202,17 +230,12 @@
       })
       .join("");
 
-    var emblem =
-      content.media.whyEmblemImage
-        ? '<img src="' + esc(content.media.whyEmblemImage) + '" alt="' + esc(w.emblemText) + '" class="za-emblem__image">'
-        : '<span class="za-emblem__text">' + esc(w.emblemText) + "</span>";
+    var emblem = renderBrandEmblem(w.emblemText);
 
     return (
       '<section class="public-why section" id="about" data-section-id="about">' +
       '<div class="container public-why__grid">' +
-      '<div class="public-why__visual reveal" aria-hidden="true"><div class="za-emblem">' +
-      '<div class="za-emblem__ring"></div><div class="za-emblem__ring za-emblem__ring--inner"></div>' +
-      emblem + '<div class="za-emblem__pedestal"></div></div></div>' +
+      '<div class="public-why__visual reveal" aria-hidden="true">' + emblem + "</div>" +
       '<div class="public-why__content"><header class="section-header section-header--start reveal">' +
       "<h2>" + esc(w.title) + ' <span class="text-gold">' + esc(w.titleHighlight) + "</span>؟</h2>" +
       '<p class="section-header__lead">' + esc(w.subtitle) + "</p></header>" +
