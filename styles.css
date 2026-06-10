@@ -911,7 +911,7 @@ body.mode-day .mode-toggle__icon--moon { display: block; }
   align-items: center;
 }
 
-/* ZA monogram emblem — Why / brand section (SVG, no flat logo card) */
+/* ZA monogram emblem — Why / brand section (official PNG asset, decorative frame only) */
 .za-monogram-emblem {
   position: relative;
   width: min(260px, 72%);

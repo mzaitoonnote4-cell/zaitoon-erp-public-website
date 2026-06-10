@@ -3,13 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem("za-erp-language");
+        var isAr = lang !== "en";
+        document.documentElement.lang = isAr ? "ar" : "en";
+        document.documentElement.dir = isAr ? "rtl" : "ltr";
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
   <title>ZA ERP | نظام عربي متكامل لإدارة الأعمال</title>
   <meta name="description" content="ZA ERP منصة عربية سحابية لإدارة المبيعات، المخزون، المشتريات، المالية، العملاء، الموظفين، الصيانة، العمليات والتقارير من مكان واحد.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-polish.css">
+  <link rel="stylesheet" href="styles-experience.css">
+  <link rel="stylesheet" href="styles-i18n.css">
+  <script src="content/homepage-locale-en.js"></script>
   <script src="content/homepage-content.js"></script>
+  <script src="js/homepage-i18n.js"></script>
   <script>
     (function () {
       try {
@@ -41,6 +56,13 @@
     <span class="bg-effects__line bg-effects__line--2"></span>
     <span class="bg-effects__glow bg-effects__glow--gold"></span>
     <span class="bg-effects__glow bg-effects__glow--emerald"></span>
+    <span class="bg-effects__orb bg-effects__orb--gold"></span>
+    <span class="bg-effects__orb bg-effects__orb--emerald"></span>
+    <svg class="bg-effects__circuit" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 420 Q300 380 520 420 T1040 400" fill="none" stroke="rgba(212,168,83,0.15)" stroke-width="1"/>
+      <path d="M80 620 Q400 560 700 600 T1180 580" fill="none" stroke="rgba(16,185,129,0.12)" stroke-width="1"/>
+      <path d="M200 180 L340 180 L380 220 L520 220" fill="none" stroke="rgba(212,168,83,0.1)" stroke-width="1"/>
+    </svg>
   </div>
 
   <div id="public-header-mount"></div>

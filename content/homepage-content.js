@@ -6,20 +6,9 @@
 (function (global) {
   "use strict";
 
-  /** @type {import('../src/content/public-homepage').PublicHomepageContent} */
-  var HOMEPAGE_CONTENT = {
-    version: "1.0.0",
-
+  var LOCALE_AR = {
     settings: {
-      erpLoginUrl: "https://erpv1.zaitoonerp.com/",
-      whatsappNumber: "9647808500591",
-      copyrightYear: 2026,
-      copyrightText: "© 2026 ZA ERP. جميع الحقوق محفوظة.",
-      market: {
-        primaryCountry: "IQ",
-        primaryCountryNameAr: "العراق",
-        cityAr: "بغداد"
-      }
+      copyrightText: "© 2026 ZA ERP. جميع الحقوق محفوظة."
     },
 
     seo: {
@@ -40,7 +29,7 @@
       { id: "home", label: "الرئيسية", href: "#hero", section: "hero" },
       { id: "product", label: "المنتج", href: "#product", section: "features" },
       { id: "features", label: "المميزات", href: "#features", section: "features" },
-      { id: "sectors", label: "القطاعات", href: "#sectors", section: "sectors" },
+      { id: "sectors", label: "القطاعات", href: "#industries", section: "industries" },
       { id: "pricing", label: "الأسعار", href: "#pricing", section: "pricing" },
       { id: "resources", label: "الموارد", href: "#resources", section: "resources" },
       { id: "about", label: "من نحن", href: "#about", section: "about" }
@@ -60,47 +49,12 @@
       }
     ],
 
-    sectionOrder: [
-      "hero",
-      "modules",
-      "why",
-      "industries",
-      "howItWorks",
-      "security",
-      "pricing",
-      "pilot",
-      "faq",
-      "cta",
-      "whatsappCta",
-      "news",
-      "video",
-      "contact"
-    ],
-
-    sections: {
-      showHero: true,
-      showModules: true,
-      showWhy: true,
-      showSectors: false,
-      showIndustries: true,
-      showHowItWorks: true,
-      showSecurity: true,
-      showPricing: true,
-      showPilot: true,
-      showFaq: true,
-      showCta: true,
-      showWhatsappCta: true,
-      showNews: false,
-      showVideo: false,
-      showContact: true
-    },
-
     hero: {
-      eyebrow: "نظام متكامل لإدارة أعمالك",
-      headlineBefore: "تحكّم في كل تفاصيل أعمالك مع",
-      headlineHighlight: "ZA ERP",
+      eyebrow: "ادخل إلى عالم إدارة شركتك باحترافية",
+      headlineBefore: "حوّل شركتك من الفوضى إلى",
+      headlineHighlight: "نظام واضح وقرارات دقيقة",
       subtitle:
-        "منصة سحابية ذكية تجمع جميع أقسام أعمالك في نظام واحد متكامل، لتمكينك من اتخاذ قرارات أسرع، زيادة الكفاءة، وتحقيق نمو مستدام.",
+        "ZA ERP لا يعرض لك أرقاماً فقط، بل يمنحك رؤية كاملة لكل ما يحدث داخل شركتك: المبيعات، المخزون، العملاء، الموظفين، الصلاحيات، والتحصيل — في شاشة واحدة واضحة.",
       ctas: [
         { label: "احجز عرضاً تجريبياً", href: "#contact", variant: "gold" },
         { label: "استكشف المميزات", href: "#features", variant: "outline" }
@@ -128,23 +82,150 @@
           statValue: "$4,280",
           bars: [60, 80, 45, 70]
         }
+      },
+      dataChips: [
+        { id: "sales", label: "مبيعات مباشرة", position: "top-start" },
+        { id: "stock", label: "مخزون محدث", position: "top-end" },
+        { id: "perms", label: "صلاحيات آمنة", position: "bottom-start" },
+        { id: "reports", label: "تقارير فورية", position: "bottom-end" }
+      ]
+    },
+
+    intelligenceStrip: {
+      label: "حالة المنصة",
+      items: [
+        "تحديثات فورية",
+        "صلاحيات حسب الدور",
+        "تقارير لحظية",
+        "متابعة الفروع",
+        "سجل تدقيق",
+        "جاهز للتوسع"
+      ]
+    },
+
+    beforeAfter: {
+      title: "قبل ZA ERP وبعد ZA ERP",
+      before: {
+        label: "قبل",
+        items: [
+          "فواتير متفرقة",
+          "مخزون غير واضح",
+          "صلاحيات غير منظمة",
+          "تقارير متأخرة",
+          "قرارات تعتمد على التخمين"
+        ]
+      },
+      after: {
+        label: "بعد",
+        items: [
+          "مبيعات واضحة",
+          "مخزون محدث",
+          "صلاحيات دقيقة",
+          "تقارير لحظية",
+          "قرارات مبنية على بيانات"
+        ]
       }
+    },
+
+    commandCenter: {
+      title: "مركز قيادة شركتك في شاشة واحدة",
+      text:
+        "تخيل أن كل قسم في شركتك أمامك الآن: المبيعات، المخزون، العملاء، الموظفون، المصاريف، التقارير، والصلاحيات. كل شيء مترابط، واضح، وجاهز لاتخاذ القرار.",
+      hubLabel: "ZA ERP",
+      nodes: [
+        { id: "customers", label: "العملاء", position: "n" },
+        { id: "sales", label: "المبيعات", position: "ne" },
+        { id: "inventory", label: "المخزون", position: "e" },
+        { id: "finance", label: "المالية", position: "se" },
+        { id: "employees", label: "الموظفون", position: "s" },
+        { id: "reports", label: "التقارير", position: "sw" },
+        { id: "permissions", label: "الصلاحيات", position: "w" }
+      ]
+    },
+
+    productTeaser: {
+      title: "لمحة من داخل المنصة",
+      subtitle: "استكشف ما ستراه داخل ZA ERP — معاينة تفاعلية بدون اتصال بالنظام",
+      tabs: [
+        {
+          id: "sales",
+          label: "المبيعات",
+          headline: "متابعة المبيعات والتحصيل",
+          description: "تابع الفواتير، المدفوعات، المتبقي، وحالة كل عملية بيع.",
+          highlights: ["فواتير اليوم", "المتبقي على العملاء", "حالة التحصيل"]
+        },
+        {
+          id: "inventory",
+          label: "المخزون",
+          headline: "رؤية المخزون لحظياً",
+          description: "راقب الكميات، التنبيهات، حركة المخزون، والفروع.",
+          highlights: ["كميات حسب الفرع", "تنبيهات النقص", "حركات الدخول والخروج"]
+        },
+        {
+          id: "customers",
+          label: "العملاء",
+          headline: "ملف العميل الكامل",
+          description: "اعرف سجل التعاملات، الفواتير، والمدفوعات لكل عميل في مكان واحد.",
+          highlights: ["سجل الفواتير", "الرصيد المتبقي", "آخر تعامل"]
+        },
+        {
+          id: "permissions",
+          label: "الصلاحيات",
+          headline: "تحكم حسب الدور",
+          description: "حدد من يرى ماذا حسب دور الموظف ومسؤوليته.",
+          highlights: ["أدوار مخصصة", "منع الوصول", "سجل التعديلات"]
+        },
+        {
+          id: "reports",
+          label: "التقارير",
+          headline: "تقارير لصاحب العمل",
+          description: "لوحات ومؤشرات تساعدك على فهم الأداء دون الغرق في التفاصيل.",
+          highlights: ["مبيعات الفترة", "أداء الفروع", "ملخص مالي"]
+        }
+      ]
+    },
+
+    ownerView: {
+      title: "مصمم لصاحب العمل قبل أي شخص آخر",
+      points: [
+        "تعرف أين تذهب أموالك",
+        "تعرف من باع ومن استلم ومن عدّل",
+        "تراقب المخزون قبل حصول المشكلة",
+        "تتابع أداء الموظفين بدون تعقيد",
+        "ترى الصورة الكاملة بدل التفاصيل المتفرقة"
+      ],
+      cta: {
+        label: "شاهد كيف يمكن أن تبدو شركتك داخل ZA ERP",
+        href: "#contact",
+        variant: "gold"
+      }
+    },
+
+    pilotUrgencyCta: {
+      title: "لا تنتظر حتى تكبر الفوضى داخل شركتك",
+      text:
+        "ابدأ بمرحلة Pilot وشاهد كيف يمكن لـ ZA ERP أن ينظم عملك اليومي، يقلل الأخطاء، ويمنحك رؤية أوضح لاتخاذ القرار.",
+      note: "عدد محدود من الشركات في مرحلة الإطلاق التجريبي لضمان المتابعة والتدريب.",
+      buttons: [
+        { label: "احجز عرضاً تجريبياً الآن", href: "#contact", variant: "gold" },
+        { label: "تواصل عبر واتساب", href: "#whatsapp-cta", variant: "outline" }
+      ]
     },
 
     modules: {
       title: "كل ما تحتاجه في نظام واحد",
       subtitle: "إدارة متكاملة لكل أقسام أعمالك",
       items: [
-        { id: "customers", icon: "customers", title: "العملاء", description: "إدارة بيانات العملاء، المتابعة، وسجل التعاملات في مكان واحد." },
-        { id: "sales", icon: "sales", title: "المبيعات", description: "فواتير المبيعات، العروض، والمتابعة اليومية بسهولة." },
-        { id: "purchases", icon: "purchases", title: "المشتريات", description: "طلبات الشراء، الموردين، والتكاليف تحت السيطرة." },
-        { id: "inventory", icon: "inventory", title: "المخزون", description: "تتبع الكميات، التنبيهات، والحركات بين المواقع." },
-        { id: "finance", icon: "finance", title: "المالية", description: "محاسبة، ذمم، وتقارير مالية واضحة لصاحب العمل." },
-        { id: "expenses", icon: "expenses", title: "المصاريف", description: "تسجيل المصروفات وتصنيفها لرؤية أوضح للتكاليف." },
-        { id: "employees", icon: "employees", title: "الموظفون", description: "إدارة الفريق، الصلاحيات، والحضور بمرونة." },
-        { id: "maintenance", icon: "maintenance", title: "الصيانة والخدمات", description: "طلبات الصيانة، الجدولة، ومتابعة الخدمات." },
-        { id: "operations", icon: "operations", title: "العمليات", description: "تنسيق العمليات اليومية والمهام بين الأقسام." },
-        { id: "indicators", icon: "indicators", title: "المؤشرات", description: "لوحات معلومات ومؤشرات أداء لحظية لقرارات أذكى." }
+        { id: "customers", icon: "customers", title: "العملاء", description: "إدارة بيانات العملاء، المتابعة، وسجل التعاملات في مكان واحد.", hoverHint: "متصل بالفواتير وسجل التعاملات" },
+        { id: "sales", icon: "sales", title: "المبيعات", description: "فواتير المبيعات، العروض، والمتابعة اليومية بسهولة.", hoverHint: "متصل بالفواتير والتقارير" },
+        { id: "purchases", icon: "purchases", title: "المشتريات", description: "طلبات الشراء، الموردين، والتكاليف تحت السيطرة.", hoverHint: "مرتبط بالمخزون والتكاليف" },
+        { id: "inventory", icon: "inventory", title: "المخزون", description: "تتبع الكميات، التنبيهات، والحركات بين المواقع.", hoverHint: "مرتبط بالمخزون والصلاحيات" },
+        { id: "finance", icon: "finance", title: "المالية", description: "محاسبة، ذمم، وتقارير مالية واضحة لصاحب العمل.", hoverHint: "متصل بالتحصيل والتقارير" },
+        { id: "expenses", icon: "expenses", title: "المصاريف", description: "تسجيل المصروفات وتصنيفها لرؤية أوضح للتكاليف.", hoverHint: "مرتبط بالمالية والتقارير" },
+        { id: "employees", icon: "employees", title: "الموظفون", description: "إدارة الفريق، الصلاحيات، والحضور بمرونة.", hoverHint: "مرتبط بالصلاحيات والفروع" },
+        { id: "maintenance", icon: "maintenance", title: "الصيانة والخدمات", description: "طلبات الصيانة، الجدولة، ومتابعة الخدمات.", hoverHint: "متصل بالعمليات والعملاء" },
+        { id: "operations", icon: "operations", title: "العمليات", description: "تنسيق العمليات اليومية والمهام بين الأقسام.", hoverHint: "يربط الأقسام في مسار واحد" },
+        { id: "indicators", icon: "indicators", title: "المؤشرات", description: "لوحات معلومات ومؤشرات أداء لحظية لقرارات أذكى.", hoverHint: "متصل بكل وحدات النظام" }
       ],
       footerCta: { label: "استكشف جميع المميزات", href: "#features", variant: "outline" }
     },
@@ -152,6 +233,7 @@
     why: {
       title: "لماذا تختار",
       titleHighlight: "ZA ERP",
+      titleSuffix: "؟",
       subtitle: "نحو إدارة أكثر ذكاءً ونجاحاً",
       emblemText: "ZA",
       items: [
@@ -192,15 +274,51 @@
       ]
     },
 
+    systemFlow: {
+      title: "من البيع إلى المخزون إلى التحصيل إلى التقارير",
+      subtitle: "مسار عمليات مترابط داخل منصة واحدة",
+      nodes: [
+        { id: "customer", label: "عميل" },
+        { id: "invoice", label: "فاتورة" },
+        { id: "inventory", label: "مخزون" },
+        { id: "collection", label: "تحصيل" },
+        { id: "report", label: "تقرير" },
+        { id: "decision", label: "قرار إداري" }
+      ]
+    },
+
+    productDepth: {
+      title: "ليست صفحة فقط — منصة أعمال قابلة للتوسع",
+      items: [
+        { id: "saas", icon: "operations", title: "بنية SaaS قابلة للتوسع" },
+        { id: "perms", icon: "shield", title: "صلاحيات متعددة المستويات" },
+        { id: "rtl", icon: "flexibility", title: "واجهة عربية RTL" },
+        { id: "live", icon: "indicators", title: "تقارير لحظية" },
+        { id: "cms-ready", icon: "decisions", title: "جاهزية مستقبلية للوحة تحكم الموقع" },
+        { id: "future", icon: "efficiency", title: "ربط مستقبلي مع أدوات الإدارة والتحليلات" }
+      ]
+    },
+
     security: {
       title: "تحكم كامل بمن يرى ماذا داخل شركتك",
+      matrixTitle: "أمان وصلاحيات مصممة للشركات",
       points: [
         { id: "roles", icon: "employees", text: "صلاحيات حسب دور الموظف" },
         { id: "isolation", icon: "security", text: "فصل بيانات كل شركة" },
         { id: "access", icon: "shield", text: "منع الوصول غير المصرح" },
         { id: "audit", icon: "indicators", text: "سجل تدقيق للعمليات" },
         { id: "manager", icon: "decisions", text: "تحكم المدير بما يراه كل مستخدم" }
-      ]
+      ],
+      matrix: {
+        columns: ["المبيعات", "المخزون", "التقارير", "الإعدادات"],
+        rows: [
+          { role: "المدير", access: ["full", "full", "full", "full"] },
+          { role: "المبيعات", access: ["full", "view", "view", "lock"] },
+          { role: "المخزون", access: ["view", "full", "view", "lock"] },
+          { role: "المحاسبة", access: ["view", "view", "full", "lock"] },
+          { role: "التوصيل", access: ["view", "view", "lock", "lock"] }
+        ]
+      }
     },
 
     pilot: {
@@ -261,6 +379,9 @@
       title: "اختر الخطة المناسبة لك",
       subtitle: "خطط مرنة تناسب أعمالك",
       note: "الأسعار خاصة بمرحلة الإطلاق التجريبي وقابلة للتعديل حسب حجم الشركة وعدد المستخدمين.",
+      pilotPlansNote: "باقات الإطلاق التجريبي — قابلة للتخصيص حسب حجم الشركة",
+      subscriptionTrustNote:
+        "الاشتراك لا يعني شراء نظام فقط، بل بداية تنظيم حقيقي لطريقة إدارة شركتك.",
       currencyNote: "الأسعار معروضة بالدولار الأمريكي (USD) خلال مرحلة Pilot.",
       plans: [
         {
@@ -286,7 +407,7 @@
           currency: "USD",
           periodLabel: "شهرياً",
           featured: true,
-          badge: "الأكثر مناسبة",
+          badge: "موصى به",
           features: [
             "حتى 7 مستخدمين",
             "حتى فرعين",
@@ -412,7 +533,7 @@
           links: [
             { label: "المميزات", href: "#features" },
             { label: "الوحدات", href: "#features" },
-            { label: "التكاملات", href: "#sectors" },
+            { label: "التكاملات", href: "#industries" },
             { label: "الأسعار", href: "#pricing" }
           ]
         },
@@ -450,6 +571,110 @@
       platformLoginLabel: "تسجيل الدخول للمنصة"
     },
 
+    ui: {
+      openMenu: "فتح القائمة",
+      mainNav: "التنقل الرئيسي",
+      modeToggle: "تبديل الوضع النهاري/الليلي",
+      langToggle: "اختر اللغة",
+      langAr: "العربية",
+      langEn: "English",
+      trustAria: "نقاط الثقة",
+      platformStatusAria: "مؤشرات المنصة",
+      teaserLive: "مباشر",
+      teaserTablist: "معاينة وحدات المنصة",
+      selectActivity: "اختر نوع النشاط",
+      selectUsers: "اختر العدد",
+      footerContact: "تواصل معنا",
+      counterZero: "٠",
+      cmdSales: "مبيعات",
+      cmdInventory: "مخزون",
+      cmdCollection: "تحصيل",
+      cmdUpdated: "محدث",
+      ownerCashFlow: "التدفق النقدي",
+      ownerClear: "واضح",
+      ownerStockAlerts: "المخزون الحرج",
+      ownerAlertsCount: "3 تنبيهات",
+      ownerSalesToday: "مبيعات اليوم",
+      permFullAria: "مسموح",
+      permViewAria: "عرض",
+      permLockAria: "مقفل",
+      afterZaErpSuffix: " ZA ERP",
+      whatsappForm: {
+        title: "طلب عرض تجريبي — ZA ERP",
+        name: "الاسم",
+        company: "اسم الشركة",
+        phone: "رقم الهاتف",
+        activity: "نوع النشاط",
+        users: "عدد المستخدمين المتوقع",
+        message: "الرسالة"
+      }
+    }
+  };
+
+  var HOMEPAGE_CONTENT_BASE = {
+    version: "1.0.0",
+
+    settings: {
+      erpLoginUrl: "https://erpv1.zaitoonerp.com/",
+      whatsappNumber: "9647808500591",
+      copyrightYear: 2026,
+      market: {
+        primaryCountry: "IQ",
+        primaryCountryNameAr: "العراق",
+        cityAr: "بغداد"
+      }
+    },
+
+    sectionOrder: [
+      "hero",
+      "intelligenceStrip",
+      "beforeAfter",
+      "commandCenter",
+      "modules",
+      "productTeaser",
+      "systemFlow",
+      "ownerView",
+      "why",
+      "industries",
+      "productDepth",
+      "security",
+      "pricing",
+      "pilotUrgencyCta",
+      "pilot",
+      "faq",
+      "cta",
+      "whatsappCta",
+      "news",
+      "video",
+      "contact"
+    ],
+
+    sections: {
+      showHero: true,
+      showIntelligenceStrip: true,
+      showBeforeAfter: true,
+      showCommandCenter: true,
+      showModules: true,
+      showProductTeaser: true,
+      showSystemFlow: true,
+      showOwnerView: true,
+      showWhy: true,
+      showSectors: false,
+      showIndustries: true,
+      showHowItWorks: false,
+      showProductDepth: true,
+      showSecurity: true,
+      showPricing: true,
+      showPilotUrgencyCTA: true,
+      showPilot: true,
+      showFaq: true,
+      showCta: true,
+      showWhatsappCta: true,
+      showNews: false,
+      showVideo: false,
+      showContact: true
+    },
+
     media: {
       logoDark: "assets/za-erp-logo-dark.png",
       logoLight: "assets/za-erp-logo-light.png",
@@ -457,8 +682,13 @@
       heroMockupImage: null,
       whyEmblemImage: null,
       ogImage: "assets/za-erp-logo-dark.png"
+    },
+
+    locales: {
+      ar: LOCALE_AR,
+      en: typeof HOMEPAGE_LOCALE_EN !== "undefined" ? HOMEPAGE_LOCALE_EN : LOCALE_AR
     }
   };
 
-  global.HOMEPAGE_CONTENT = HOMEPAGE_CONTENT;
+  global.HOMEPAGE_CONTENT_BASE = HOMEPAGE_CONTENT_BASE;
 })(typeof window !== "undefined" ? window : globalThis);

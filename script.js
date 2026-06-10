@@ -4,7 +4,17 @@
   var MODE_KEY = "za-erp-mode";
 
   function getContent() {
+    if (window.ZA_HOMEPAGE_I18N && typeof window.ZA_HOMEPAGE_I18N.rebuildActiveContent === "function") {
+      window.ZA_HOMEPAGE_I18N.rebuildActiveContent();
+    }
     return window.HOMEPAGE_CONTENT || null;
+  }
+
+  function getLang() {
+    if (window.ZA_HOMEPAGE_I18N && window.ZA_HOMEPAGE_I18N.getLang) {
+      return window.ZA_HOMEPAGE_I18N.getLang();
+    }
+    return document.documentElement.lang === "en" ? "en" : "ar";
   }
 
   function getSettings() {
@@ -136,9 +146,10 @@
 
   function initCounters() {
     var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var locale = getLang() === "en" ? "en-US" : "ar-EG";
 
-    function formatArabicNumber(num) {
-      return num.toLocaleString("ar-EG");
+    function formatCounterNumber(num) {
+      return num.toLocaleString(locale);
     }
 
     function animateCounter(el) {
@@ -146,7 +157,7 @@
       if (isNaN(target)) return;
 
       if (prefersReducedMotion) {
-        el.textContent = formatArabicNumber(target);
+        el.textContent = formatCounterNumber(target);
         return;
       }
 
@@ -157,7 +168,7 @@
         if (!startTime) startTime = timestamp;
         var progress = Math.min((timestamp - startTime) / duration, 1);
         var eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = formatArabicNumber(Math.floor(target * eased));
+        el.textContent = formatCounterNumber(Math.floor(target * eased));
         if (progress < 1) requestAnimationFrame(step);
       }
 
@@ -200,14 +211,16 @@
         return;
       }
 
+      var c = getContent();
+      var wf = c && c.ui && c.ui.whatsappForm ? c.ui.whatsappForm : {};
       var text =
-        "طلب عرض تجريبي — ZA ERP\n\n" +
-        "الاسم: " + document.getElementById("name").value.trim() + "\n" +
-        "اسم الشركة: " + document.getElementById("company").value.trim() + "\n" +
-        "رقم الهاتف: " + document.getElementById("phone").value.trim() + "\n" +
-        "نوع النشاط: " + document.getElementById("activity").value + "\n" +
-        "عدد المستخدمين المتوقع: " + document.getElementById("users").value + "\n\n" +
-        "الرسالة:\n" + document.getElementById("message").value.trim();
+        (wf.title || "Demo request — ZA ERP") + "\n\n" +
+        (wf.name || "Name") + ": " + document.getElementById("name").value.trim() + "\n" +
+        (wf.company || "Company") + ": " + document.getElementById("company").value.trim() + "\n" +
+        (wf.phone || "Phone") + ": " + document.getElementById("phone").value.trim() + "\n" +
+        (wf.activity || "Business type") + ": " + document.getElementById("activity").value + "\n" +
+        (wf.users || "Users") + ": " + document.getElementById("users").value + "\n\n" +
+        (wf.message || "Message") + ":\n" + document.getElementById("message").value.trim();
 
       window.open(
         "https://wa.me/" + settings.whatsappNumber + "?text=" + encodeURIComponent(text),
@@ -217,15 +230,102 @@
     });
   }
 
+  function initTiltMockup() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
+
+    var stage = document.querySelector("[data-tilt-stage]");
+    var target = document.querySelector("[data-tilt-target]");
+    if (!stage || !target) return;
+
+    stage.addEventListener("mousemove", function (e) {
+      var rect = stage.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      target.style.transform =
+        "rotateX(" + (-y * 6).toFixed(2) + "deg) rotateY(" + (x * 8).toFixed(2) + "deg) translateY(-6px)";
+    });
+
+    stage.addEventListener("mouseleave", function () {
+      target.style.transform = "";
+    });
+  }
+
+  function initProductTeaser() {
+    var root = document.querySelector("[data-product-teaser]");
+    if (!root) return;
+
+    var tabs = root.querySelectorAll("[data-teaser-tab]");
+    var panels = root.querySelectorAll("[data-teaser-panel]");
+    if (!tabs.length || !panels.length) return;
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var id = tab.getAttribute("data-teaser-tab");
+        tabs.forEach(function (t) {
+          var active = t === tab;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach(function (panel) {
+          var active = panel.getAttribute("data-teaser-panel") === id;
+          panel.classList.toggle("is-active", active);
+          if (active) {
+            panel.removeAttribute("hidden");
+          } else {
+            panel.setAttribute("hidden", "");
+          }
+        });
+      });
+    });
+  }
+
+  function initMagneticCards() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
+
+    document.querySelectorAll("[data-magnetic-card]").forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+        var y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+        card.style.transform = "translate(" + x + "px," + y + "px)";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "";
+      });
+    });
+  }
+
+  function bindLanguageSwitch() {
+    if (!window.ZA_HOMEPAGE_I18N || document.documentElement.dataset.langSwitchBound === "1") {
+      return;
+    }
+    document.documentElement.dataset.langSwitchBound = "1";
+
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-lang-switch] [data-lang]");
+      if (!btn) return;
+      var lang = btn.getAttribute("data-lang");
+      if (lang && lang !== window.ZA_HOMEPAGE_I18N.getLang()) {
+        window.ZA_HOMEPAGE_I18N.setLang(lang);
+      }
+    });
+  }
+
   function initPublicSite() {
     initMode();
     bindModeToggle();
+    bindLanguageSwitch();
     bindMobileNav();
     initScrollReveal();
     initActiveNav();
     initStickyHeader();
     initCounters();
     initContactForm();
+    initTiltMockup();
+    initMagneticCards();
+    initProductTeaser();
   }
 
   initMode();
@@ -239,6 +339,7 @@
   window.ZA_ERP_PUBLIC = {
     getContent: getContent,
     getSettings: getSettings,
+    getLang: getLang,
     modeKey: MODE_KEY,
     reload: function () {
       if (typeof window.renderPublicHomepage === "function") {

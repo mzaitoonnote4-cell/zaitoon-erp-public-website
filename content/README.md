@@ -22,7 +22,9 @@ No build step. Refresh the browser after saving.
 | `pricing.addons` | Additional pricing options |
 | `pricing.note` | Pilot pricing disclaimer |
 | `news.items` | News placeholders (`showNews: true` to display) |
-| `media` | Image paths for hero mockup, emblem, OG |
+| `media.logoDark` / `logoLight` | Official ZA ERP logo PNG (header/footer) — do not replace with CSS/SVG |
+| `media.logoMonogram` | Cropped monogram PNG for brand section |
+| `media` | Hero mockup, OG image, other assets |
 | `footer` | Links, contact, social |
 | `settings` | ERP login URL, WhatsApp number, `market` (primary country — Iraq first) |
 

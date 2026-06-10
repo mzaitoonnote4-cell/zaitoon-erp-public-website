@@ -1,0 +1,71 @@
+/* Bilingual layer — language switch + safe LTR adjustments */
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  gap: 2px;
+}
+
+body.mode-day .lang-switch {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.lang-switch__btn {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.42rem 0.62rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: color 0.25s var(--ease), background 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  white-space: nowrap;
+}
+
+.lang-switch__btn:hover {
+  color: var(--text);
+}
+
+.lang-switch__btn.is-active {
+  color: var(--accent-light);
+  background: rgba(212, 168, 83, 0.14);
+  box-shadow: 0 0 18px var(--accent-inset);
+}
+
+html[dir="ltr"] .before-after-divider span::after {
+  content: "→";
+}
+
+html[dir="ltr"] .public-hero h1 {
+  letter-spacing: -0.02em;
+}
+
+html[dir="ltr"] .section-header h2,
+html[dir="ltr"] .public-hero .eyebrow {
+  letter-spacing: -0.01em;
+}
+
+html[dir="ltr"] .fake-dashboard__sidebar {
+  border-inline-end: 1px solid var(--border-subtle);
+  border-inline-start: none;
+}
+
+@media (max-width: 960px) {
+  .lang-switch__btn {
+    font-size: 0.68rem;
+    padding: 0.38rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .public-header__actions .lang-switch {
+    order: -1;
+  }
+}

@@ -6,13 +6,21 @@
 
 export type SectionId =
   | "hero"
+  | "intelligenceStrip"
+  | "beforeAfter"
+  | "commandCenter"
   | "modules"
+  | "productTeaser"
+  | "systemFlow"
+  | "ownerView"
   | "why"
   | "sectors"
   | "industries"
+  | "productDepth"
   | "howItWorks"
   | "security"
   | "pricing"
+  | "pilotUrgencyCta"
   | "pilot"
   | "faq"
   | "cta"
@@ -23,13 +31,21 @@ export type SectionId =
 
 export interface HomepageSectionVisibility {
   showHero: boolean;
+  showIntelligenceStrip: boolean;
+  showBeforeAfter: boolean;
+  showCommandCenter: boolean;
   showModules: boolean;
+  showProductTeaser: boolean;
+  showSystemFlow: boolean;
+  showOwnerView: boolean;
   showWhy: boolean;
   showSectors: boolean;
   showIndustries: boolean;
+  showProductDepth: boolean;
   showHowItWorks: boolean;
   showSecurity: boolean;
   showPricing: boolean;
+  showPilotUrgencyCTA: boolean;
   showPilot: boolean;
   showFaq: boolean;
   showCta: boolean;
@@ -89,6 +105,11 @@ export interface HomepageHeroMockup {
   };
 }
 
+export interface HomepageHeroDataChip {
+  label: string;
+  position: "top-start" | "top-end" | "bottom-start" | "bottom-end";
+}
+
 export interface HomepageHero {
   eyebrow: string;
   headlineBefore: string;
@@ -96,6 +117,7 @@ export interface HomepageHero {
   subtitle: string;
   ctas: HomepageCta[];
   trustBadges: { icon: string; label: string }[];
+  dataChips?: HomepageHeroDataChip[];
   mockup: HomepageHeroMockup;
 }
 
@@ -104,6 +126,7 @@ export interface HomepageModuleCard {
   icon: string;
   title: string;
   description: string;
+  hoverHint?: string;
 }
 
 export interface HomepageBenefitCard {
@@ -181,10 +204,67 @@ export interface HomepageSettings {
   market?: HomepageMarketSettings;
 }
 
+export interface HomepageUiStrings {
+  openMenu: string;
+  mainNav: string;
+  modeToggle: string;
+  langToggle: string;
+  langAr: string;
+  langEn: string;
+  trustAria: string;
+  platformStatusAria: string;
+  teaserLive: string;
+  teaserTablist: string;
+  selectActivity: string;
+  selectUsers: string;
+  footerContact: string;
+  counterZero: string;
+  cmdSales: string;
+  cmdInventory: string;
+  cmdCollection: string;
+  cmdUpdated: string;
+  ownerCashFlow: string;
+  ownerClear: string;
+  ownerStockAlerts: string;
+  ownerAlertsCount: string;
+  ownerSalesToday: string;
+  permFullAria: string;
+  permViewAria: string;
+  permLockAria: string;
+  afterZaErpSuffix: string;
+  whatsappForm: {
+    title: string;
+    name: string;
+    company: string;
+    phone: string;
+    activity: string;
+    users: string;
+    message: string;
+  };
+}
+
+export type HomepageLocaleCode = "ar" | "en";
+
+export interface HomepageLocaleBundle extends Partial<PublicHomepageContent> {
+  settings?: Partial<HomepageSettings>;
+  ui?: HomepageUiStrings;
+}
+
+export interface PublicHomepageContentBase {
+  version: string;
+  settings: Omit<HomepageSettings, "copyrightText"> & { copyrightText?: string };
+  sectionOrder: SectionId[];
+  sections: HomepageSectionVisibility;
+  media: HomepageMedia;
+  locales: Record<HomepageLocaleCode, HomepageLocaleBundle>;
+}
+
 export interface PublicHomepageContent {
   version: string;
+  lang?: HomepageLocaleCode;
   settings: HomepageSettings;
   seo: HomepageSeo;
+  ui?: HomepageUiStrings;
   brand: HomepageBrand;
   nav: HomepageNavLink[];
   headerCtas: HomepageCta[];
@@ -213,13 +293,64 @@ export interface PublicHomepageContent {
     title: string;
     items: { id: string; icon: string; title: string }[];
   };
+  intelligenceStrip?: {
+    label: string;
+    items: string[];
+  };
+  beforeAfter?: {
+    title: string;
+    before: { label: string; items: string[] };
+    after: { label: string; items: string[] };
+  };
+  commandCenter?: {
+    title: string;
+    text: string;
+    hubLabel: string;
+    nodes: { id: string; label: string; position: string }[];
+  };
+  productTeaser?: {
+    title: string;
+    subtitle?: string;
+    tabs: {
+      id: string;
+      label: string;
+      headline: string;
+      description: string;
+      highlights: string[];
+    }[];
+  };
+  ownerView?: {
+    title: string;
+    points: string[];
+    cta: HomepageCta;
+  };
+  pilotUrgencyCta?: {
+    title: string;
+    text: string;
+    note: string;
+    buttons: HomepageCta[];
+  };
+  systemFlow?: {
+    title: string;
+    subtitle: string;
+    nodes: { id: string; label: string }[];
+  };
+  productDepth?: {
+    title: string;
+    items: { id: string; icon: string; title: string }[];
+  };
   howItWorks: {
     title: string;
     steps: { id: string; title: string }[];
   };
   security: {
     title: string;
+    matrixTitle?: string;
     points: { id: string; icon: string; text: string }[];
+    matrix?: {
+      columns: string[];
+      rows: { role: string; access: ("full" | "view" | "lock")[] }[];
+    };
   };
   pilot: {
     title: string;
@@ -240,6 +371,8 @@ export interface PublicHomepageContent {
     title: string;
     subtitle: string;
     note: string;
+    pilotPlansNote?: string;
+    subscriptionTrustNote?: string;
     currencyNote?: string;
     plans: HomepagePricingPlan[];
     addons?: HomepagePricingAddons;
