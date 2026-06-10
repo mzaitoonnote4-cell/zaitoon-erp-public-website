@@ -451,10 +451,12 @@
     },
 
     media: {
-      logoMonogram: null,
+      logoDark: "assets/za-erp-logo-dark.png",
+      logoLight: "assets/za-erp-logo-light.png",
+      logoMonogram: "assets/za-erp-monogram.png",
       heroMockupImage: null,
       whyEmblemImage: null,
-      ogImage: "assets/brand/za-erp-logo.png"
+      ogImage: "assets/za-erp-logo-dark.png"
     }
   };
 

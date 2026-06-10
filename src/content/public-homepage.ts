@@ -159,6 +159,8 @@ export interface HomepageContactDetails {
 }
 
 export interface HomepageMedia {
+  logoDark?: string | null;
+  logoLight?: string | null;
   logoMonogram?: string | null;
   heroMockupImage?: string | null;
   whyEmblemImage?: string | null;
