@@ -36,14 +36,18 @@
   }
 
   function renderLogo(brand, footer) {
-    var cls = footer ? "logo logo--footer" : "logo";
-    return (
-      '<a href="#top" class="' + cls + '" aria-label="' + esc(brand.ariaLabel) + '">' +
-      '<span class="logo__monogram" aria-hidden="true">' + esc(brand.monogram) + "</span>" +
-      '<span class="logo__divider" aria-hidden="true">|</span>' +
-      '<span class="logo__wordmark">' + esc(brand.name) + ' <span class="logo__accent">' + esc(brand.accent) + "</span></span>" +
-      "</a>"
-    );
+    var cls = footer ? "logo logo--footer" : "logo logo--header";
+    var lockup =
+      global.ZA_BRAND_LOGO && (footer ? global.ZA_BRAND_LOGO.renderFooter() : global.ZA_BRAND_LOGO.renderNav());
+    if (!lockup) {
+      lockup =
+        '<span class="brand-lockup brand-lockup--fallback" dir="ltr">' +
+        esc(brand.name) +
+        ' <span class="brand-lockup__erp">' +
+        esc(brand.accent) +
+        "</span></span>";
+    }
+    return '<a href="#top" class="' + cls + '" aria-label="' + esc(brand.ariaLabel) + '">' + lockup + "</a>";
   }
 
   function renderHeader() {
@@ -190,32 +194,11 @@
     );
   }
 
-  function renderBrandEmblem(fallbackText) {
-    var src = content.media.whyEmblemImage;
-    var alt = content.brand.name + " " + content.brand.accent;
-    if (!src) {
-      return (
-        '<div class="za-brand-emblem za-brand-emblem--fallback">' +
-        '<span class="za-brand-emblem__fallback-text">' + esc(fallbackText || "ZA") + "</span></div>"
-      );
+  function renderBrandEmblem() {
+    if (global.ZA_BRAND_LOGO) {
+      return global.ZA_BRAND_LOGO.renderEmblem();
     }
-    return (
-      '<div class="za-brand-emblem">' +
-      '<div class="za-brand-emblem__orbit" aria-hidden="true"></div>' +
-      '<div class="za-brand-emblem__halo" aria-hidden="true"></div>' +
-      '<div class="za-brand-emblem__frame">' +
-      '<div class="za-brand-emblem__glass">' +
-      '<img src="' +
-      esc(src) +
-      '" alt="' +
-      esc(alt) +
-      '" class="za-brand-emblem__logo" width="520" height="320" loading="lazy" decoding="async">' +
-      "</div>" +
-      '<div class="za-brand-emblem__shine" aria-hidden="true"></div>' +
-      "</div>" +
-      '<div class="za-brand-emblem__base" aria-hidden="true"></div>' +
-      "</div>"
-    );
+    return "";
   }
 
   function renderWhy() {
@@ -230,7 +213,7 @@
       })
       .join("");
 
-    var emblem = renderBrandEmblem(w.emblemText);
+    var emblem = renderBrandEmblem();
 
     return (
       '<section class="public-why section" id="about" data-section-id="about">' +

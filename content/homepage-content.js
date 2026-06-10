@@ -453,7 +453,7 @@
     media: {
       logoMonogram: null,
       heroMockupImage: null,
-      whyEmblemImage: "assets/brand/za-erp-logo.png",
+      whyEmblemImage: null,
       ogImage: "assets/brand/za-erp-logo.png"
     }
   };
