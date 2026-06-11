@@ -814,23 +814,94 @@
     );
   }
 
+  function renderFaqItem(item) {
+    return (
+      '<details class="faq-item reveal" data-faq-id="' +
+      esc(item.id) +
+      '">' +
+      "<summary>" +
+      esc(item.question) +
+      "</summary>" +
+      "<p>" +
+      esc(item.answer) +
+      "</p></details>"
+    );
+  }
+
   function renderFaq() {
     var f = content.faq;
-    var items = f.items
-      .map(function (item) {
-        return (
-          '<details class="faq-item reveal">' +
-          "<summary>" + esc(item.question) + "</summary>" +
-          "<p>" + esc(item.answer) + "</p></details>"
-        );
-      })
-      .join("");
+    if (!f || !f.items || !f.items.length) return "";
+
+    var visibleItems = f.items.filter(function (item) {
+      return item.visible !== false;
+    });
+    if (!visibleItems.length) return "";
+
+    var groupsHtml = "";
+    var categories = f.categories || [];
+
+    if (categories.length) {
+      groupsHtml = categories
+        .map(function (cat) {
+          var catItems = visibleItems.filter(function (item) {
+            return item.category === cat.id;
+          });
+          if (!catItems.length) return "";
+          return (
+            '<div class="faq-group reveal" data-faq-group="' +
+            esc(cat.id) +
+            '">' +
+            '<h3 class="faq-group__title">' +
+            esc(cat.label) +
+            "</h3>" +
+            '<div class="faq-group__list">' +
+            catItems.map(renderFaqItem).join("") +
+            "</div></div>"
+          );
+        })
+        .join("");
+    } else {
+      groupsHtml =
+        '<div class="faq-group__list">' +
+        visibleItems.map(renderFaqItem).join("") +
+        "</div>";
+    }
+
+    var ctaHtml = "";
+    if (f.cta && f.cta.text) {
+      var waMsg =
+        f.cta.message ||
+        (content.whatsappCta && content.whatsappCta.message) ||
+        "";
+      var waHref = whatsappHref(waMsg);
+      ctaHtml =
+        '<div class="public-faq__cta reveal">' +
+        (f.cta.title ? "<h3>" + esc(f.cta.title) + "</h3>" : "") +
+        "<p>" +
+        esc(f.cta.text) +
+        "</p>" +
+        '<a href="' +
+        esc(waHref) +
+        '" class="btn btn--gold btn--lg" target="_blank" rel="noopener noreferrer">' +
+        esc(f.cta.buttonLabel || "WhatsApp") +
+        "</a></div>";
+    }
 
     return (
       '<section class="public-faq section section--alt" id="faq" data-section-id="faq">' +
       '<div class="container"><header class="section-header reveal">' +
-      "<h2>" + esc(f.title) + "</h2></header>" +
-      '<div class="faq-list">' + items + "</div></div></section>"
+      "<h2>" +
+      esc(f.title) +
+      "</h2>" +
+      (f.subtitle
+        ? '<p class="section-header__lead">' + esc(f.subtitle) + "</p>"
+        : "") +
+      "</header>" +
+      '<div class="public-faq__groups">' +
+      groupsHtml +
+      "</div>" +
+      ctaHtml +
+      "</div></section>"
     );
   }
 

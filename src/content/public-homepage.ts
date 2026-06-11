@@ -385,7 +385,21 @@ export interface PublicHomepageContent {
   };
   faq: {
     title: string;
-    items: { id: string; question: string; answer: string }[];
+    subtitle?: string;
+    categories?: { id: string; label: string }[];
+    items: {
+      id: string;
+      question: string;
+      answer: string;
+      category?: string;
+      visible?: boolean;
+    }[];
+    cta?: {
+      title?: string;
+      text: string;
+      buttonLabel: string;
+      message?: string;
+    };
   };
   whatsappCta: {
     title: string;

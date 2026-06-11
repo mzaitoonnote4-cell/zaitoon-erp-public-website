@@ -455,44 +455,120 @@
     },
 
     faq: {
-      title: "Frequently asked questions",
+      title: "Common Questions Before Trying ZA ERP",
+      subtitle:
+        "Clear answers to the most common questions before requesting a demo.",
+      categories: [
+        { id: "pilot-subscription", label: "Pilot & Subscription" },
+        { id: "features-permissions", label: "Features & Permissions" },
+        { id: "branches-operations", label: "Branches & Operations" },
+        { id: "security-support", label: "Security & Support" }
+      ],
       items: [
         {
+          id: "faq-suitability",
+          category: "pilot-subscription",
+          visible: true,
+          question: "Is ZA ERP suitable for my company?",
+          answer:
+            "Yes, if your business needs clearer control over sales, inventory, customers, employees, permissions, and reports. Suitability is reviewed based on your business type and workflow before the pilot starts."
+        },
+        {
+          id: "faq-pilot",
+          category: "pilot-subscription",
+          visible: true,
+          question: "Can I try the platform before subscribing?",
+          answer:
+            "Yes. Selected companies can start with a Pilot phase to understand the workflow and test the platform before expanding."
+        },
+        {
           id: "faq-arabic",
-          question: "Does the platform support Arabic?",
-          answer: "Yes. ZA ERP includes a full Arabic interface with RTL support for local teams."
+          category: "features-permissions",
+          visible: true,
+          question: "Does ZA ERP support Arabic?",
+          answer:
+            "Yes. ZA ERP is designed with an Arabic RTL interface, and the public website supports both Arabic and English."
         },
         {
           id: "faq-permissions",
-          question: "Can I control employee permissions?",
-          answer: "Yes. You can define what each employee can see and do based on their role and responsibilities."
+          category: "features-permissions",
+          visible: true,
+          question: "Can employee permissions be controlled?",
+          answer:
+            "Yes. Permissions can be organized by employee role and responsibility, such as sales, inventory, management, reporting, or delivery."
         },
         {
           id: "faq-branches",
-          question: "Does it support multiple branches?",
-          answer: "Yes. You can manage multiple branches and monitor operations between them depending on your plan."
-        },
-        {
-          id: "faq-invoices",
-          question: "Can I print invoices?",
-          answer: "Yes. You can issue and print invoices with your company details and invoice branding."
-        },
-        {
-          id: "faq-security",
-          question: "Is my data secure?",
-          answer: "Yes. We apply access controls and permissions to protect your company data and isolate it from other tenants."
+          category: "branches-operations",
+          visible: true,
+          question: "Does the platform support multiple branches?",
+          answer:
+            "Yes. ZA ERP can support businesses with more than one branch, with sales, inventory, and permissions managed according to the required structure."
         },
         {
           id: "faq-training",
-          question: "Is training included?",
-          answer: "Yes. Pilot companies receive onboarding and training based on team size and business needs."
+          category: "branches-operations",
+          visible: true,
+          question: "Is training provided when we start?",
+          answer:
+            "Yes. During the pilot or onboarding phase, the team can be guided on how to use the system based on roles and responsibilities."
+        },
+        {
+          id: "faq-pricing",
+          category: "pilot-subscription",
+          visible: true,
+          question: "Are the prices fixed?",
+          answer:
+            "Current prices are for the pilot launch phase and may vary depending on users, branches, company size, and operating requirements."
         },
         {
           id: "faq-custom",
-          question: "Can the platform be customized?",
-          answer: "Yes. Especially on Enterprise and Pilot plans, settings and reports can be tailored to your business."
+          category: "features-permissions",
+          visible: true,
+          question: "Can the platform be customized for our company?",
+          answer:
+            "Specific needs can be reviewed, but customizations are handled gradually based on technical and business priority, not randomly."
+        },
+        {
+          id: "faq-security",
+          category: "security-support",
+          visible: true,
+          question: "Is company data secure?",
+          answer:
+            "The platform is designed around company data separation and organized permissions. Data privacy is treated as a core part of the system."
+        },
+        {
+          id: "faq-after-demo",
+          category: "pilot-subscription",
+          visible: true,
+          question: "What happens after requesting a demo?",
+          answer:
+            "We contact you to understand your business type, users, and branches, then explain the suitable plan for testing ZA ERP."
+        },
+        {
+          id: "faq-technical",
+          category: "branches-operations",
+          visible: true,
+          question: "Do I need technical experience to use ZA ERP?",
+          answer:
+            "No. The goal is to make the platform clear for daily business users. Each team member can be guided based on their role."
+        },
+        {
+          id: "faq-mobile",
+          category: "branches-operations",
+          visible: true,
+          question: "Can ZA ERP be used from mobile?",
+          answer:
+            "The platform and website are designed with modern responsive usage in mind, but larger management tasks are usually better from a desktop or tablet."
         }
-      ]
+      ],
+      cta: {
+        title: "Still have a question?",
+        text: "Contact us and we’ll explain how ZA ERP can fit your business workflow.",
+        buttonLabel: "Ask us on WhatsApp",
+        message:
+          "Hello, I have a question about ZA ERP before requesting a demo.\n\nBusiness type:\nNumber of users:"
+      }
     },
 
     whatsappCta: {
