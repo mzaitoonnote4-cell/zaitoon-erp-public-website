@@ -150,6 +150,7 @@ export interface HomepagePricingPlan {
   featured?: boolean;
   badge?: string;
   features: string[];
+  suitableFor?: { label: string; items: string[] };
   cta: HomepageCta;
 }
 
@@ -419,8 +420,14 @@ export interface PublicHomepageContent {
     subtitle: string;
     note: string;
     pilotPlansNote?: string;
+    pilotTrustNote?: string;
     subscriptionTrustNote?: string;
     currencyNote?: string;
+    helper?: {
+      title: string;
+      text: string;
+      button: HomepageCta;
+    };
     plans: HomepagePricingPlan[];
     addons?: HomepagePricingAddons;
   };

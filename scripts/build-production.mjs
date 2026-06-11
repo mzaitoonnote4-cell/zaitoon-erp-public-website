@@ -24,6 +24,7 @@ const rootFiles = [
   "styles-faq.css",
   "styles-contact.css",
   "styles-pilot.css",
+  "styles-pricing.css",
   "styles-i18n.css",
   "styles-legal.css",
   "styles-updates.css",

@@ -1016,6 +1016,25 @@
     );
   }
 
+  function renderPlanSuitableFor(plan) {
+    var sf = plan.suitableFor;
+    if (!sf || !sf.items || !sf.items.length) return "";
+    var items = sf.items
+      .map(function (item) {
+        return "<li>" + esc(item) + "</li>";
+      })
+      .join("");
+    return (
+      '<div class="price-card__suitable">' +
+      '<p class="price-card__suitable-label">' +
+      esc(sf.label) +
+      "</p>" +
+      '<ul class="price-card__suitable-list">' +
+      items +
+      "</ul></div>"
+    );
+  }
+
   function renderPricing() {
     var p = content.pricing;
     var cards = p.plans
@@ -1030,6 +1049,7 @@
         return (
           '<article class="price-card' + featured + ' reveal">' + badge +
           "<h3>" + esc(plan.name) + "</h3>" + formatPrice(plan) +
+          renderPlanSuitableFor(plan) +
           '<ul class="price-card__list">' + features + "</ul>" +
           renderCta(plan.cta, "btn--block") + "</article>"
         );
@@ -1042,9 +1062,26 @@
     var pilotNote = p.pilotPlansNote
       ? '<p class="pricing-pilot-note reveal">' + esc(p.pilotPlansNote) + "</p>"
       : "";
+    var pilotTrustNote = p.pilotTrustNote
+      ? '<p class="pricing-pilot-trust reveal">' + esc(p.pilotTrustNote) + "</p>"
+      : "";
     var trustNote = p.subscriptionTrustNote
       ? '<p class="pricing-trust-note reveal">' + esc(p.subscriptionTrustNote) + "</p>"
       : "";
+
+    var helperHtml = "";
+    if (p.helper && p.helper.text && p.helper.button) {
+      helperHtml =
+        '<div class="pricing-helper glass-panel reveal">' +
+        "<h3>" +
+        esc(p.helper.title || "") +
+        "</h3>" +
+        "<p>" +
+        esc(p.helper.text) +
+        "</p>" +
+        renderCta(p.helper.button, "btn--lg") +
+        "</div>";
+    }
 
     return (
       '<section class="public-pricing section" id="pricing" data-section-id="pricing">' +
@@ -1056,6 +1093,8 @@
       currencyNote +
       "</header>" +
       '<div class="public-pricing__grid">' + cards + "</div>" +
+      pilotTrustNote +
+      helperHtml +
       trustNote +
       renderPricingAddons(p.addons) +
       "</div></section>"

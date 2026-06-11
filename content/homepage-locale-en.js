@@ -639,13 +639,25 @@
     },
 
     pricing: {
-      title: "Choose the plan that fits you",
-      subtitle: "Flexible plans for growing businesses",
+      title: "Choose the right Pilot plan",
+      subtitle:
+        "Start with the plan closest to your business size, then adjust based on users, branches, and operating needs.",
       note: "Pricing applies to the pilot launch phase and may vary by company size and number of users.",
       pilotPlansNote: "Pilot launch plans — customizable by company size",
+      pilotTrustNote:
+        "Pilot launch pricing may be adjusted based on company size and operating requirements.",
       subscriptionTrustNote:
         "Subscribing is not just buying software — it is the start of real operational structure for your company.",
       currencyNote: "Prices are shown in US Dollars (USD) during the Pilot phase.",
+      helper: {
+        title: "Not sure which plan fits?",
+        text: "Share your business type, users, and branches, and we’ll help you choose the most suitable Pilot plan.",
+        button: {
+          label: "Help me choose a plan",
+          href: "#contact",
+          variant: "gold"
+        }
+      },
       plans: [
         {
           id: "starter-pilot",
@@ -653,6 +665,15 @@
           price: 19,
           currency: "USD",
           periodLabel: "month",
+          suitableFor: {
+            label: "Suitable for:",
+            items: [
+              "Small businesses or first pilot",
+              "One branch",
+              "Small team",
+              "Basic sales and inventory"
+            ]
+          },
           features: [
             "Up to 3 users",
             "1 branch",
@@ -671,6 +692,15 @@
           periodLabel: "month",
           featured: true,
           badge: "Recommended",
+          suitableFor: {
+            label: "Suitable for:",
+            items: [
+              "Businesses with daily team activity",
+              "Multiple users",
+              "Employee permissions",
+              "Reports and inventory follow-up"
+            ]
+          },
           features: [
             "Up to 7 users",
             "Up to 2 branches",
@@ -688,6 +718,15 @@
           price: 69,
           currency: "USD",
           periodLabel: "month",
+          suitableFor: {
+            label: "Suitable for:",
+            items: [
+              "Businesses needing wider control",
+              "Multiple branches",
+              "Deeper permissions and reports",
+              "Clearer operational management"
+            ]
+          },
           features: [
             "Up to 15 users",
             "Up to 3 branches",
@@ -704,6 +743,15 @@
           name: "Enterprise",
           price: null,
           customLabel: "Custom pricing",
+          suitableFor: {
+            label: "Suitable for:",
+            items: [
+              "Companies requiring special setup",
+              "Larger users or branches",
+              "Advanced operating requirements",
+              "Dedicated support and follow-up"
+            ]
+          },
           features: [
             "Users based on agreement",
             "Branches based on agreement",
