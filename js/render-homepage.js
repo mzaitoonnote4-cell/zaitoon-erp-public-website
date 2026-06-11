@@ -665,6 +665,63 @@
     );
   }
 
+  function renderGettingStarted() {
+    var gs = content.gettingStarted;
+    if (!gs || !gs.steps || !gs.steps.length) return "";
+
+    var steps = gs.steps
+      .map(function (step, i) {
+        return (
+          '<li class="journey-step reveal">' +
+          '<div class="journey-step__track">' +
+          '<span class="journey-step__num" aria-hidden="true">' +
+          (i + 1) +
+          "</span>" +
+          (i < gs.steps.length - 1
+            ? '<span class="journey-step__connector" aria-hidden="true"></span>'
+            : "") +
+          "</div>" +
+          '<article class="journey-step__card glass-panel">' +
+          "<h3>" +
+          esc(step.title) +
+          "</h3>" +
+          (step.description
+            ? "<p>" + esc(step.description) + "</p>"
+            : "") +
+          "</article></li>"
+        );
+      })
+      .join("");
+
+    var ctaHtml = "";
+    if (gs.cta && gs.cta.text && gs.cta.button) {
+      ctaHtml =
+        '<div class="public-getting-started__cta reveal">' +
+        "<p>" +
+        esc(gs.cta.text) +
+        "</p>" +
+        renderCta(gs.cta.button, "btn--lg") +
+        "</div>";
+    }
+
+    return (
+      '<section class="public-getting-started section" id="getting-started" data-section-id="getting-started">' +
+      '<div class="container"><header class="section-header reveal">' +
+      "<h2>" +
+      esc(gs.title) +
+      "</h2>" +
+      (gs.subtitle
+        ? '<p class="section-header__lead">' + esc(gs.subtitle) + "</p>"
+        : "") +
+      "</header>" +
+      '<ol class="getting-started-journey">' +
+      steps +
+      "</ol>" +
+      ctaHtml +
+      "</div></section>"
+    );
+  }
+
   function renderHowItWorks() {
     var h = content.howItWorks;
     var steps = h.steps
@@ -1018,6 +1075,7 @@
     why: { flag: "showWhy", render: renderWhy },
     sectors: { flag: "showSectors", render: renderSectors },
     industries: { flag: "showIndustries", render: renderIndustries },
+    gettingStarted: { flag: "showGettingStarted", render: renderGettingStarted },
     howItWorks: { flag: "showHowItWorks", render: renderHowItWorks },
     productDepth: { flag: "showProductDepth", render: renderProductDepth },
     security: { flag: "showSecurity", render: renderSecurity },

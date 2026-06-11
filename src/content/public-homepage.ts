@@ -16,6 +16,7 @@ export type SectionId =
   | "why"
   | "sectors"
   | "industries"
+  | "gettingStarted"
   | "productDepth"
   | "howItWorks"
   | "security"
@@ -42,6 +43,7 @@ export interface HomepageSectionVisibility {
   showWhy: boolean;
   showSectors: boolean;
   showIndustries: boolean;
+  showGettingStarted: boolean;
   showProductDepth: boolean;
   showHowItWorks: boolean;
   showSecurity: boolean;
@@ -303,6 +305,15 @@ export interface PublicHomepageContent {
       category?: string;
       visible?: boolean;
     }[];
+    cta?: {
+      text: string;
+      button: HomepageCta;
+    };
+  };
+  gettingStarted?: {
+    title: string;
+    subtitle?: string;
+    steps: { id: string; title: string; description?: string }[];
     cta?: {
       text: string;
       button: HomepageCta;

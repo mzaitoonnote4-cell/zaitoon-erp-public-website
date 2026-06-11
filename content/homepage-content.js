@@ -345,6 +345,52 @@
       }
     },
 
+    gettingStarted: {
+      title: "كيف تبدأ مع ZA ERP؟",
+      subtitle:
+        "خطوات بسيطة تساعدك على الانتقال من الإدارة التقليدية إلى نظام واضح ومنظم.",
+      steps: [
+        {
+          id: "contact",
+          title: "تواصل معنا",
+          description:
+            "أرسل لنا نوع نشاطك وعدد المستخدمين والفروع المتوقعة."
+        },
+        {
+          id: "understand",
+          title: "نفهم طريقة عملك",
+          description:
+            "نراجع احتياجاتك الأساسية في المبيعات، المخزون، العملاء، الصلاحيات، والتقارير."
+        },
+        {
+          id: "pilot",
+          title: "نجهز تجربة Pilot",
+          description:
+            "نساعدك على تجربة المنصة بشكل مناسب لحجم شركتك وطبيعة نشاطك."
+        },
+        {
+          id: "train",
+          title: "ندرب فريقك",
+          description:
+            "نوضح طريقة استخدام النظام للموظفين حسب أدوارهم ومسؤولياتهم."
+        },
+        {
+          id: "manage",
+          title: "تبدأ الإدارة الفعلية",
+          description:
+            "تبدأ بمتابعة المبيعات، المخزون، العملاء، والصلاحيات من لوحة واحدة."
+        }
+      ],
+      cta: {
+        text: "جاهز لتجربة ZA ERP على طريقة عمل شركتك؟",
+        button: {
+          label: "ابدأ الآن بطلب تجربة",
+          href: "#contact",
+          variant: "gold"
+        }
+      }
+    },
+
     howItWorks: {
       title: "من أول عملية بيع إلى التقرير النهائي — كل شيء مترابط",
       steps: [
@@ -721,6 +767,7 @@
       "ownerView",
       "why",
       "industries",
+      "gettingStarted",
       "productDepth",
       "security",
       "pricing",
@@ -747,6 +794,7 @@
       showWhy: true,
       showSectors: false,
       showIndustries: true,
+      showGettingStarted: true,
       showHowItWorks: false,
       showProductDepth: true,
       showSecurity: true,

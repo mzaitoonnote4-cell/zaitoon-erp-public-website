@@ -344,6 +344,52 @@
       }
     },
 
+    gettingStarted: {
+      title: "How do you get started with ZA ERP?",
+      subtitle:
+        "A simple process to help your business move from scattered work to a clear, organized system.",
+      steps: [
+        {
+          id: "contact",
+          title: "Contact us",
+          description:
+            "Tell us about your business type, expected users, and branches."
+        },
+        {
+          id: "understand",
+          title: "We understand your workflow",
+          description:
+            "We review your key needs in sales, inventory, customers, permissions, and reports."
+        },
+        {
+          id: "pilot",
+          title: "We prepare a Pilot experience",
+          description:
+            "We help you test the platform based on your company size and business type."
+        },
+        {
+          id: "train",
+          title: "We train your team",
+          description:
+            "We explain how each role can use the system according to responsibilities."
+        },
+        {
+          id: "manage",
+          title: "You start managing clearly",
+          description:
+            "You begin tracking sales, inventory, customers, and permissions from one dashboard."
+        }
+      ],
+      cta: {
+        text: "Ready to see how ZA ERP can fit your business workflow?",
+        button: {
+          label: "Request a Demo",
+          href: "#contact",
+          variant: "gold"
+        }
+      }
+    },
+
     howItWorks: {
       title: "From the first sale to the final report — everything connected",
       steps: [

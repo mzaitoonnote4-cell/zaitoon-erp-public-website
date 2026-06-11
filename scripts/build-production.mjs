@@ -20,6 +20,7 @@ const rootFiles = [
   "styles-polish.css",
   "styles-experience.css",
   "styles-industries.css",
+  "styles-getting-started.css",
   "styles-i18n.css",
   "styles-legal.css",
   "styles-updates.css",
