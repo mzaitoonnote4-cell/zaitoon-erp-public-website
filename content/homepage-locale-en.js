@@ -102,6 +102,80 @@
       ]
     },
 
+    interactiveProductTour: {
+      title: "Choose your business type and see how ZA ERP helps",
+      subtitle:
+        "Explore how ZA ERP can support your workflow, from sales and inventory to permissions and reports.",
+      labels: {
+        challenge: "Challenge",
+        helps: "How ZA ERP helps",
+        result: "Result"
+      },
+      workflowDefault: ["Sale / Request", "Inventory", "Customers", "Reports"],
+      businessTypes: [
+        {
+          id: "trading",
+          label: "Trading",
+          scenario: {
+            challenge:
+              "Invoices, customers, and inventory can become scattered between notebooks and Excel.",
+            helps:
+              "Organizes sales, customers, products, and payments in one connected experience.",
+            result: "Clearer visibility over sales, balances, and inventory."
+          }
+        },
+        {
+          id: "store",
+          label: "Store or Warehouse",
+          scenario: {
+            challenge:
+              "It becomes difficult to know available quantities and update stock after each transaction.",
+            helps: "Connects invoices with inventory movement and product follow-up.",
+            result: "Less confusion and better daily inventory control."
+          }
+        },
+        {
+          id: "distribution",
+          label: "Distribution",
+          scenario: {
+            challenge:
+              "Customer follow-up, collections, and orders become harder with daily activity.",
+            helps: "Organizes customers, invoices, and balances in a clearer workflow.",
+            result: "Better follow-up for customers, collections, and sales."
+          }
+        },
+        {
+          id: "service",
+          label: "Service and Maintenance",
+          scenario: {
+            challenge:
+              "Service requests, spare parts, and invoicing can become mixed and delayed.",
+            helps: "Organizes service orders and links work with invoices and used items.",
+            result: "Clearer flow from receiving to service and invoicing."
+          },
+          workflow: ["Service Request", "Diagnosis", "Items / Work", "Invoicing"]
+        },
+        {
+          id: "multi-branch",
+          label: "Multi-Branch Company",
+          scenario: {
+            challenge:
+              "Managing several branches and employees without clear permissions can reduce control.",
+            helps: "Assigns permissions by role and helps follow operations from one place.",
+            result: "Clearer management visibility across branches and users."
+          }
+        }
+      ],
+      cta: {
+        text: "Want to see a flow closer to your business?",
+        button: {
+          label: "Request a Demo for Your Business Type",
+          href: "#contact",
+          variant: "gold"
+        }
+      }
+    },
+
     whatYouGain: {
       title: "What do you gain by organizing your business with ZA ERP?",
       cards: [
@@ -1084,6 +1158,8 @@
       platformStatusAria: "Platform indicators",
       teaserLive: "Live",
       teaserTablist: "Platform module preview",
+      tourTablist: "Business type",
+      tourWorkflowAria: "Workflow overview",
       selectActivity: "Select business type",
       selectUsers: "Select count",
       footerContact: "Contact us",

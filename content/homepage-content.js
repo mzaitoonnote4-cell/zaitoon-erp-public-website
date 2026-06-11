@@ -103,6 +103,78 @@
       ]
     },
 
+    interactiveProductTour: {
+      title: "اختر نوع نشاطك وشاهد كيف تساعدك ZA ERP",
+      subtitle:
+        "تعرّف على طريقة استخدام ZA ERP حسب طبيعة عملك، من المبيعات والمخزون إلى الصلاحيات والتقارير.",
+      labels: {
+        challenge: "التحدي",
+        helps: "كيف تساعد ZA ERP",
+        result: "النتيجة"
+      },
+      workflowDefault: ["البيع / الطلب", "المخزون", "العملاء", "التقارير"],
+      businessTypes: [
+        {
+          id: "trading",
+          label: "تجارة عامة",
+          scenario: {
+            challenge:
+              "متابعة الفواتير، العملاء، والمخزون قد تصبح متفرقة بين الدفاتر و Excel.",
+            helps: "تنظيم المبيعات، العملاء، المنتجات، والمدفوعات داخل تجربة واحدة.",
+            result: "رؤية أوضح للمبيعات والمتبقي والمخزون."
+          }
+        },
+        {
+          id: "store",
+          label: "متجر أو مخزن",
+          scenario: {
+            challenge: "صعوبة معرفة الكمية المتوفرة وتحديث المخزون بعد كل عملية.",
+            helps: "ربط الفواتير بحركة المخزون ومتابعة المنتجات بشكل أوضح.",
+            result: "تقليل الفوضى وتحسين متابعة المخزون اليومي."
+          }
+        },
+        {
+          id: "distribution",
+          label: "توزيع",
+          scenario: {
+            challenge:
+              "متابعة العملاء، التحصيل، والطلبيات تصبح أصعب مع كثرة الحركة اليومية.",
+            helps: "تنظيم بيانات العملاء والفواتير والمتبقي بطريقة أوضح.",
+            result: "متابعة أفضل للعملاء والتحصيل والمبيعات."
+          }
+        },
+        {
+          id: "service",
+          label: "صيانة وخدمات",
+          scenario: {
+            challenge:
+              "تداخل طلبات الخدمة، قطع الغيار، والفوترة قد يسبب تأخيراً أو ضياع تفاصيل.",
+            helps: "تنظيم أوامر الخدمة وربط العمل بالفواتير والمواد المستخدمة.",
+            result: "تجربة أوضح بين الاستلام، الصيانة، والفوترة."
+          },
+          workflow: ["طلب الخدمة", "التشخيص", "المواد / العمل", "الفوترة"]
+        },
+        {
+          id: "multi-branch",
+          label: "شركة متعددة الفروع",
+          scenario: {
+            challenge:
+              "متابعة أكثر من فرع وموظف بدون صلاحيات واضحة قد يضعف السيطرة.",
+            helps: "توزيع الصلاحيات حسب الدور ومتابعة العمل من مكان واحد.",
+            result: "رؤية إدارية أوضح بين الفروع والمستخدمين."
+          }
+        }
+      ],
+      cta: {
+        text: "هل تريد رؤية طريقة أقرب لنشاطك؟",
+        button: {
+          label: "اطلب تجربة حسب نوع نشاطك",
+          href: "#contact",
+          variant: "gold"
+        }
+      }
+    },
+
     whatYouGain: {
       title: "ماذا تكسب عند تنظيم عملك داخل ZA ERP؟",
       cards: [
@@ -1085,6 +1157,8 @@
       platformStatusAria: "مؤشرات المنصة",
       teaserLive: "مباشر",
       teaserTablist: "معاينة وحدات المنصة",
+      tourTablist: "نوع النشاط التجاري",
+      tourWorkflowAria: "مسار العمل المختصر",
       selectActivity: "اختر نوع النشاط",
       selectUsers: "اختر العدد",
       footerContact: "تواصل معنا",
@@ -1132,6 +1206,7 @@
 
     sectionOrder: [
       "hero",
+      "interactiveProductTour",
       "whyNow",
       "intelligenceStrip",
       "beforeAfter",
@@ -1163,6 +1238,7 @@
 
     sections: {
       showHero: true,
+      showInteractiveProductTour: true,
       showWhyNow: true,
       showWhatYouGain: true,
       showIntelligenceStrip: true,

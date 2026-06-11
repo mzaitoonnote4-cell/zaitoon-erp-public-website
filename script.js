@@ -375,24 +375,23 @@
     });
   }
 
-  function initProductTeaser() {
-    var root = document.querySelector("[data-product-teaser]");
+  function initTabPanels(root, tabAttr, panelAttr) {
     if (!root) return;
 
-    var tabs = root.querySelectorAll("[data-teaser-tab]");
-    var panels = root.querySelectorAll("[data-teaser-panel]");
+    var tabs = root.querySelectorAll("[" + tabAttr + "]");
+    var panels = root.querySelectorAll("[" + panelAttr + "]");
     if (!tabs.length || !panels.length) return;
 
     tabs.forEach(function (tab) {
       tab.addEventListener("click", function () {
-        var id = tab.getAttribute("data-teaser-tab");
+        var id = tab.getAttribute(tabAttr);
         tabs.forEach(function (t) {
           var active = t === tab;
           t.classList.toggle("is-active", active);
           t.setAttribute("aria-selected", active ? "true" : "false");
         });
         panels.forEach(function (panel) {
-          var active = panel.getAttribute("data-teaser-panel") === id;
+          var active = panel.getAttribute(panelAttr) === id;
           panel.classList.toggle("is-active", active);
           if (active) {
             panel.removeAttribute("hidden");
@@ -402,6 +401,22 @@
         });
       });
     });
+  }
+
+  function initProductTeaser() {
+    initTabPanels(
+      document.querySelector("[data-product-teaser]"),
+      "data-teaser-tab",
+      "data-teaser-panel"
+    );
+  }
+
+  function initInteractiveProductTour() {
+    initTabPanels(
+      document.querySelector("[data-product-tour]"),
+      "data-tour-tab",
+      "data-tour-panel"
+    );
   }
 
   function initMagneticCards() {
@@ -450,6 +465,7 @@
     initTiltMockup();
     initMagneticCards();
     initProductTeaser();
+    initInteractiveProductTour();
   }
 
   initMode();

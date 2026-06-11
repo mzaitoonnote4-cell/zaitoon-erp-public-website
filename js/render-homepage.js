@@ -244,6 +244,121 @@
     );
   }
 
+  function renderTourWorkflow(steps) {
+    return (steps || [])
+      .map(function (step, i) {
+        var arrow =
+          i < steps.length - 1
+            ? '<span class="tour-flow__arrow" aria-hidden="true"></span>'
+            : "";
+        return (
+          '<span class="tour-flow__step">' +
+          '<span class="tour-flow__num">' +
+          (i + 1) +
+          "</span>" +
+          '<span class="tour-flow__label">' +
+          esc(step) +
+          "</span></span>" +
+          arrow
+        );
+      })
+      .join("");
+  }
+
+  function renderInteractiveProductTour() {
+    var t = content.interactiveProductTour;
+    if (!t) return "";
+
+    var labels = t.labels || {};
+    var defaultWorkflow = t.workflowDefault || [];
+    var types = t.businessTypes || [];
+
+    var tabs = types
+      .map(function (bt, i) {
+        return (
+          '<button type="button" class="tour-tab' +
+          (i === 0 ? " is-active" : "") +
+          '" role="tab" aria-selected="' +
+          (i === 0 ? "true" : "false") +
+          '" data-tour-tab="' +
+          esc(bt.id) +
+          '">' +
+          esc(bt.label) +
+          "</button>"
+        );
+      })
+      .join("");
+
+    var panels = types
+      .map(function (bt, i) {
+        var s = bt.scenario || {};
+        var workflow =
+          bt.workflow && bt.workflow.length ? bt.workflow : defaultWorkflow;
+        return (
+          '<div class="tour-panel' +
+          (i === 0 ? " is-active" : "") +
+          '" role="tabpanel" data-tour-panel="' +
+          esc(bt.id) +
+          '"' +
+          (i === 0 ? "" : ' hidden="hidden"') +
+          ">" +
+          '<div class="tour-scenario glass-panel">' +
+          '<div class="tour-scenario__col tour-scenario__col--challenge">' +
+          '<span class="tour-scenario__label">' +
+          esc(labels.challenge) +
+          "</span>" +
+          "<p>" +
+          esc(s.challenge) +
+          "</p></div>" +
+          '<div class="tour-scenario__col tour-scenario__col--helps">' +
+          '<span class="tour-scenario__label">' +
+          esc(labels.helps) +
+          "</span>" +
+          "<p>" +
+          esc(s.helps) +
+          "</p></div>" +
+          '<div class="tour-scenario__col tour-scenario__col--result">' +
+          '<span class="tour-scenario__label">' +
+          esc(labels.result) +
+          "</span>" +
+          "<p>" +
+          esc(s.result) +
+          "</p></div></div>" +
+          '<div class="tour-flow" role="list" aria-label="' +
+          esc(uiText("tourWorkflowAria", "Workflow overview")) +
+          '">' +
+          renderTourWorkflow(workflow) +
+          "</div></div>"
+        );
+      })
+      .join("");
+
+    var ctaBlock = t.cta ? renderSectionInlineCta(t.cta) : "";
+
+    return (
+      '<section class="public-product-tour section section--alt" id="product-tour" data-section-id="product-tour">' +
+      '<div class="container"><header class="section-header reveal">' +
+      "<h2>" +
+      esc(t.title) +
+      "</h2>" +
+      (t.subtitle
+        ? '<p class="section-header__lead">' + esc(t.subtitle) + "</p>"
+        : "") +
+      "</header>" +
+      '<div class="product-tour reveal" data-product-tour>' +
+      '<div class="tour-tabs" role="tablist" aria-label="' +
+      esc(uiText("tourTablist", "Business type")) +
+      '">' +
+      tabs +
+      "</div>" +
+      '<div class="tour-panels">' +
+      panels +
+      "</div>" +
+      ctaBlock +
+      "</div></div></section>"
+    );
+  }
+
   function renderWhyNow() {
     var w = content.whyNow;
     if (!w) return "";
@@ -1670,6 +1785,10 @@
 
   var sectionRenderers = {
     hero: { flag: "showHero", render: renderHero },
+    interactiveProductTour: {
+      flag: "showInteractiveProductTour",
+      render: renderInteractiveProductTour
+    },
     whyNow: { flag: "showWhyNow", render: renderWhyNow },
     whatYouGain: { flag: "showWhatYouGain", render: renderWhatYouGain },
     intelligenceStrip: { flag: "showIntelligenceStrip", render: renderIntelligenceStrip },

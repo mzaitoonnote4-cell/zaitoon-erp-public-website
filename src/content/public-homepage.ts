@@ -6,6 +6,7 @@
 
 export type SectionId =
   | "hero"
+  | "interactiveProductTour"
   | "whyNow"
   | "whatYouGain"
   | "intelligenceStrip"
@@ -35,6 +36,7 @@ export type SectionId =
 
 export interface HomepageSectionVisibility {
   showHero: boolean;
+  showInteractiveProductTour: boolean;
   showWhyNow: boolean;
   showWhatYouGain: boolean;
   showIntelligenceStrip: boolean;
@@ -226,6 +228,8 @@ export interface HomepageUiStrings {
   platformStatusAria: string;
   teaserLive: string;
   teaserTablist: string;
+  tourTablist: string;
+  tourWorkflowAria: string;
   selectActivity: string;
   selectUsers: string;
   footerContact: string;
@@ -286,6 +290,30 @@ export interface PublicHomepageContent {
     title: string;
     text: string;
     cards: { icon: string; title: string }[];
+  };
+  interactiveProductTour?: {
+    title: string;
+    subtitle: string;
+    labels: {
+      challenge: string;
+      helps: string;
+      result: string;
+    };
+    workflowDefault: string[];
+    businessTypes: {
+      id: string;
+      label: string;
+      scenario: {
+        challenge: string;
+        helps: string;
+        result: string;
+      };
+      workflow?: string[];
+    }[];
+    cta: {
+      text: string;
+      button: HomepageCta;
+    };
   };
   whatYouGain?: {
     title: string;
