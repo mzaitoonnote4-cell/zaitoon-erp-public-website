@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem("za-erp-language");
+        var isAr = lang !== "en";
+        document.documentElement.lang = isAr ? "ar" : "en";
+        document.documentElement.dir = isAr ? "rtl" : "ltr";
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <title>ZA ERP | سياسة الخصوصية</title>
+  <meta name="description" content="سياسة الخصوصية لموقع ZA ERP العام — كيف نتعامل مع بيانات الزوار ونماذج التواصل.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-polish.css">
+  <link rel="stylesheet" href="styles-i18n.css">
+  <link rel="stylesheet" href="styles-legal.css">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("za-erp-mode");
+        document.documentElement.setAttribute("data-mode", mode === "day" ? "day" : "night");
+      } catch (e) {
+        document.documentElement.setAttribute("data-mode", "night");
+      }
+    })();
+  </script>
+</head>
+<body class="mode-night legal-page" data-page="privacy">
+  <script>
+    (function () {
+      var mode = document.documentElement.getAttribute("data-mode");
+      document.body.classList.remove("mode-day", "mode-night");
+      document.body.classList.add(mode === "day" ? "mode-day" : "mode-night");
+    })();
+  </script>
+
+  <div class="bg-effects" aria-hidden="true">
+    <span class="bg-effects__glow bg-effects__glow--gold"></span>
+    <span class="bg-effects__glow bg-effects__glow--emerald"></span>
+  </div>
+
+  <header class="legal-header">
+    <div class="legal-header__inner container">
+      <a href="index.html" class="brand-lockup brand-lockup--nav brand-lockup--img" dir="ltr">
+        <img class="brand-lockup__img brand-lockup__img--dark" src="assets/za-erp-logo-dark.png" alt="ZA ERP" decoding="async">
+        <img class="brand-lockup__img brand-lockup__img--light" src="assets/za-erp-logo-light.png" alt="ZA ERP" decoding="async">
+      </a>
+      <div class="legal-header__actions">
+        <a class="legal-header__home" href="index.html" data-legal-home-ar>العودة للرئيسية</a>
+        <a class="legal-header__home" href="index.html" data-legal-home-en>Back to home</a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-switch__btn is-active" data-lang-btn="ar" aria-pressed="true">العربية</button>
+          <button type="button" class="lang-switch__btn" data-lang-btn="en" aria-pressed="false">English</button>
+        </div>
+        <button type="button" class="mode-toggle" data-mode-toggle aria-label="Toggle day/night mode">
+          <span class="mode-toggle__icon mode-toggle__icon--sun" aria-hidden="true"></span>
+          <span class="mode-toggle__icon mode-toggle__icon--moon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="legal-article glass-panel" style="padding: 2rem 1.5rem;">
+
+      <div class="legal-lang legal-lang--ar" data-legal-lang="ar">
+        <h1>سياسة الخصوصية</h1>
+        <p class="legal-article__meta">آخر تحديث: يونيو 2026 · موقع ZA ERP العام (zaitoonerp.com)</p>
+        <p>نحن في ZA ERP نحترم خصوصيتك. توضح هذه السياسة كيف قد نجمع ونستخدم معلومات الزوار عند تصفح موقعنا العام أو التواصل معنا لطلب عرض تجريبي أو معلومات عن المنصة.</p>
+
+        <h2>1. نطاق هذه السياسة</h2>
+        <p>تنطبق هذه السياسة على الموقع التسويقي العام لـ ZA ERP. لا تشمل سياسات الخصوصية الداخلية لمنصة ERP المشتركين، والتي تُدار بشكل منفصل ضمن اتفاقية الخدمة مع العملاء.</p>
+
+        <h2>2. البيانات التي قد نجمعها</h2>
+        <ul>
+          <li><strong>بيانات التصفح الأساسية:</strong> مثل نوع المتصفح، نوع الجهاز، الصفحات التي تزورها، والوقت التقريبي للزيارة — عادةً عبر أدوات تحليلات الويب مثل Cloudflare Analytics.</li>
+          <li><strong>بيانات نماذج التواصل والعرض التجريبي:</strong> الاسم، اسم الشركة، رقم الهاتف، نوع النشاط، عدد المستخدمين المتوقع، والرسالة التي تقدمها طوعاً عبر نموذج الموقع.</li>
+          <li><strong>بيانات التواصل عبر واتساب:</strong> عند اختيارك التواصل عبر واتساب، تُرسل المعلومات التي تكتبها إلى محادثة واتساب وفق سياسة واتساب وإعدادات جهازك.</li>
+          <li><strong>تفضيلات الموقع:</strong> مثل اللغة (عربي/إنجليزي) والوضع النهاري/الليلي — تُخزَّن محلياً في متصفحك عبر localStorage ولا تُرسل تلقائياً إلى خوادمنا.</li>
+        </ul>
+
+        <h2>3. كيف نستخدم البيانات</h2>
+        <ul>
+          <li>الرد على طلبات العروض التجريبية والاستفسارات التجارية.</li>
+          <li>تحسين أداء الموقع وتجربة الزائر وفهم الاهتمام بالمحتوى بشكل إجمالي.</li>
+          <li>الحماية من إساءة الاستخدام أو محاولات الاحتيال أو الهجمات التقنية.</li>
+        </ul>
+
+        <h2>4. تحليلات Cloudflare</h2>
+        <p>قد نستخدم أدوات تحليلات مثل <strong>Cloudflare Analytics</strong> لفهم عدد الزيارات والصفحات الأكثر مشاهدة بشكل مجمّع. لا نستخدم هذه الأدوات لبيع بياناتك الشخصية. عند تفعيل سكربت التحليلات من Cloudflare، يُضاف وفق تعليماتهم — عادةً قبل إغلاق وسم <code>&lt;/head&gt;</code>.</p>
+
+        <h2>5. عدم بيع البيانات</h2>
+        <p><strong>لا نبيع بيانات زوار الموقع لأطراف ثالثة.</strong> لا نشارك معلوماتك التجارية إلا عند الضرورة لتقديم خدمة طلبتها (مثل فتح محادثة واتساب) أو عند وجود التزام قانوني.</p>
+
+        <h2>6. الاحتفاظ بالبيانات</h2>
+        <p>نحتفظ بطلبات التواصل والعروض التجريبية للمدة اللازمة للمتابعة التجارية والدعم، ثم نحذفها أو نخزنها بشكل آمن حسب الحاجة الداخلية.</p>
+
+        <h2>7. حقوقك وأسئلة الخصوصية</h2>
+        <p>يمكنك التواصل معنا لطلب توضيح حول بياناتك أو لتصحيحها أو لطلب حذف طلب تواصل سابق، ضمن ما يسمح به القانون المعمول به:</p>
+        <ul>
+          <li>البريد: <a href="mailto:info@zaitoonerp.com">info@zaitoonerp.com</a></li>
+          <li>الهاتف: <a href="tel:+9647808500591" dir="ltr">+964 780 850 0591</a></li>
+        </ul>
+
+        <h2>8. تحديثات السياسة</h2>
+        <p>قد نحدّث هذه السياسة عند إضافة ميزات جديدة للموقع أو أدوات تحليلات. يُعتد بتاريخ «آخر تحديث» أعلاه.</p>
+      </div>
+
+      <div class="legal-lang legal-lang--en" data-legal-lang="en" hidden>
+        <h1>Privacy Policy</h1>
+        <p class="legal-article__meta">Last updated: June 2026 · ZA ERP public website (zaitoonerp.com)</p>
+        <p>At ZA ERP we respect your privacy. This policy explains how we may collect and use visitor information when you browse our public website or contact us to request a demo or platform information.</p>
+
+        <h2>1. Scope</h2>
+        <p>This policy applies to the ZA ERP marketing website. It does not replace privacy terms for subscribed customers using the ERP platform, which are governed separately under service agreements.</p>
+
+        <h2>2. Data we may collect</h2>
+        <ul>
+          <li><strong>Basic browsing data:</strong> such as browser type, device type, pages visited, and approximate visit time — often via web analytics tools such as Cloudflare Analytics.</li>
+          <li><strong>Contact and demo form data:</strong> name, company name, phone number, business type, expected number of users, and any message you voluntarily submit.</li>
+          <li><strong>WhatsApp communication:</strong> when you choose WhatsApp, the information you send is handled in the WhatsApp app under WhatsApp’s policies and your device settings.</li>
+          <li><strong>Site preferences:</strong> language (Arabic/English) and day/night mode are stored locally in your browser via localStorage and are not automatically sent to our servers.</li>
+        </ul>
+
+        <h2>3. How we use data</h2>
+        <ul>
+          <li>Respond to demo requests and business inquiries.</li>
+          <li>Improve site performance and understand aggregate interest in our content.</li>
+          <li>Protect against abuse, fraud, or technical attacks.</li>
+        </ul>
+
+        <h2>4. Cloudflare Analytics</h2>
+        <p>We may use tools such as <strong>Cloudflare Analytics</strong> to understand visit counts and popular pages in aggregate. We do not use these tools to sell your personal data. When enabled, the Cloudflare script is added per their instructions — typically before the closing <code>&lt;/head&gt;</code> tag.</p>
+
+        <h2>5. We do not sell your data</h2>
+        <p><strong>We do not sell website visitor data to third parties.</strong> We share business contact details only when needed to deliver a service you requested (for example opening a WhatsApp conversation) or when required by law.</p>
+
+        <h2>6. Data retention</h2>
+        <p>We retain contact and demo requests for as long as needed for sales follow-up and support, then delete or securely archive them according to internal needs.</p>
+
+        <h2>7. Your rights and privacy questions</h2>
+        <p>Contact us to ask about your data, request corrections, or ask us to delete a prior inquiry where applicable:</p>
+        <ul>
+          <li>Email: <a href="mailto:info@zaitoonerp.com">info@zaitoonerp.com</a></li>
+          <li>Phone: <a href="tel:+9647808500591" dir="ltr">+964 780 850 0591</a></li>
+        </ul>
+
+        <h2>8. Policy updates</h2>
+        <p>We may update this policy when we add new site features or analytics tools. The “Last updated” date above applies.</p>
+      </div>
+
+      <footer class="legal-footer">
+        <nav class="legal-footer__links" aria-label="Legal">
+          <a href="privacy.html" aria-current="page" data-legal-footer-privacy-ar>سياسة الخصوصية</a>
+          <a href="privacy.html" aria-current="page" data-legal-footer-privacy-en hidden>Privacy Policy</a>
+          <a href="terms.html" data-legal-footer-terms-ar>شروط الاستخدام</a>
+          <a href="terms.html" data-legal-footer-terms-en hidden>Terms of Use</a>
+          <a href="index.html" data-legal-footer-home-ar>الرئيسية</a>
+          <a href="index.html" data-legal-footer-home-en hidden>Home</a>
+        </nav>
+        <p>© 2026 ZA ERP</p>
+      </footer>
+    </article>
+  </main>
+
+  <script src="js/icons.js"></script>
+  <script src="js/legal-page.js"></script>
+</body>
+</html>

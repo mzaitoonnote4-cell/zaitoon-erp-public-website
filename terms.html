@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem("za-erp-language");
+        var isAr = lang !== "en";
+        document.documentElement.lang = isAr ? "ar" : "en";
+        document.documentElement.dir = isAr ? "rtl" : "ltr";
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <title>ZA ERP | شروط الاستخدام</title>
+  <meta name="description" content="شروط استخدام موقع ZA ERP العام ومنصة إدارة الأعمال السحابية.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-polish.css">
+  <link rel="stylesheet" href="styles-i18n.css">
+  <link rel="stylesheet" href="styles-legal.css">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("za-erp-mode");
+        document.documentElement.setAttribute("data-mode", mode === "day" ? "day" : "night");
+      } catch (e) {
+        document.documentElement.setAttribute("data-mode", "night");
+      }
+    })();
+  </script>
+</head>
+<body class="mode-night legal-page" data-page="terms">
+  <script>
+    (function () {
+      var mode = document.documentElement.getAttribute("data-mode");
+      document.body.classList.remove("mode-day", "mode-night");
+      document.body.classList.add(mode === "day" ? "mode-day" : "mode-night");
+    })();
+  </script>
+
+  <div class="bg-effects" aria-hidden="true">
+    <span class="bg-effects__glow bg-effects__glow--gold"></span>
+    <span class="bg-effects__glow bg-effects__glow--emerald"></span>
+  </div>
+
+  <header class="legal-header">
+    <div class="legal-header__inner container">
+      <a href="index.html" class="brand-lockup brand-lockup--nav brand-lockup--img" dir="ltr">
+        <img class="brand-lockup__img brand-lockup__img--dark" src="assets/za-erp-logo-dark.png" alt="ZA ERP" decoding="async">
+        <img class="brand-lockup__img brand-lockup__img--light" src="assets/za-erp-logo-light.png" alt="ZA ERP" decoding="async">
+      </a>
+      <div class="legal-header__actions">
+        <a class="legal-header__home" href="index.html" data-legal-home-ar>العودة للرئيسية</a>
+        <a class="legal-header__home" href="index.html" data-legal-home-en>Back to home</a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-switch__btn is-active" data-lang-btn="ar" aria-pressed="true">العربية</button>
+          <button type="button" class="lang-switch__btn" data-lang-btn="en" aria-pressed="false">English</button>
+        </div>
+        <button type="button" class="mode-toggle" data-mode-toggle aria-label="Toggle day/night mode">
+          <span class="mode-toggle__icon mode-toggle__icon--sun" aria-hidden="true"></span>
+          <span class="mode-toggle__icon mode-toggle__icon--moon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="legal-article glass-panel" style="padding: 2rem 1.5rem;">
+
+      <div class="legal-lang legal-lang--ar" data-legal-lang="ar">
+        <h1>شروط الاستخدام</h1>
+        <p class="legal-article__meta">آخر تحديث: يونيو 2026 · موقع ZA ERP العام (zaitoonerp.com)</p>
+        <p>باستخدامك لموقع ZA ERP العام فإنك توافق على الشروط التالية. إذا لم توافق عليها، يرجى عدم استخدام الموقع.</p>
+
+        <h2>1. الموقع والمنصة</h2>
+        <p>يوفر هذا الموقع معلومات تسويقية عن <strong>ZA ERP</strong> — منصة سحابية (SaaS) لإدارة الأعمال تشمل المبيعات، المخزون، المشتريات، المالية، العملاء، الموظفين، العمليات، والتقارير. الوصول الفعلي إلى منصة ERP يتم عبر بوابة المشتركين المنفصلة وليس عبر صفحات العرض التسويقية فقط.</p>
+
+        <h2>2. الاستخدام المسموح</h2>
+        <ul>
+          <li>تصفح المحتوى لأغراض تجارية مشروعة والتعرف على المنصة.</li>
+          <li>إرسال طلبات عرض تجريبي أو استفسارات عبر النماذج أو واتساب.</li>
+          <li>مشاركة روابط الموقع مع الآخرين دون تعديل المحتوى أو انتحال الهوية.</li>
+        </ul>
+
+        <h2>3. الاستخدام المحظور</h2>
+        <ul>
+          <li>محاولة اختراق الموقع أو المنصة أو إتلافها أو إثقالها بشكل متعمد.</li>
+          <li>جمع بيانات المستخدمين أو الزوار بوسائل آلية دون إذن.</li>
+          <li>انتحال علاقة رسمية مع ZA ERP أو نشر معلومات مضللة باسمنا.</li>
+          <li>إعادة نشر محتوى الموقع أو شعاراته أو واجهاته دون إذن كتابي.</li>
+        </ul>
+
+        <h2>4. العروض التجريبية والاشتراك</h2>
+        <p>طلب عرض تجريبي أو تعبئة نموذج التواصل <strong>لا يضمن</strong> قبولك تلقائياً كمشترك أو تفعيل حساب على المنصة. تقيّم ZA ERP الطلبات وفق سياسة Pilot والطاقة الاستيعابية للفريق.</p>
+
+        <h2>5. الأسعار ومرحلة Pilot</h2>
+        <p>الأسعار المعروضة على الموقع (بالدولار الأمريكي USD) خاصة بمرحلة الإطلاق التجريبي (Pilot) وقد تتغير أو تُخصَّص حسب حجم الشركة وعدد المستخدمين والفروع. أي عرض سعري نهائي يُؤكَّد كتابياً عند الاتفاق وليس من خلال الموقع وحده.</p>
+
+        <h2>6. توفر الخدمة</h2>
+        <p>خلال مرحلة التطوير أو Pilot قد تتغير ميزات المنصة، أوقات التوفر، أو نطاق الدعم. نسعى للشفافية مع العملاء المقبولين في Pilot، لكن الموقع العام لا يُعد التزاماً بمستوى خدمة (SLA) محدد.</p>
+
+        <h2>7. الملكية الفكرية</h2>
+        <p>جميع العلامات التجارية، الشعارات، التصاميم، النصوص، والمحتوى المرئي على الموقع ومنصة ZA ERP مملوكة لـ ZA ERP أو مرخصة لها. لا يمنحك استخدام الموقع أي حقوق ملكية على البرمجيات أو المحتوى.</p>
+
+        <h2>8. روابط خارجية</h2>
+        <p>قد يحتوي الموقع على روابط لخدمات خارجية (مثل واتساب أو تسجيل الدخول إلى المنصة على <a href="https://erpv1.zaitoonerp.com/" target="_blank" rel="noopener noreferrer">erpv1.zaitoonerp.com</a>). لسنا مسؤولين عن محتوى أو سياسات تلك الخدمات.</p>
+
+        <h2>9. إخلاء المسؤولية</h2>
+        <p>يُقدَّم الموقع «كما هو» لأغراض معلوماتية. لا نضمن خلو الموقع من الأخطاء في كل الأوقات، ولا نتحمل مسؤولية قرارات تجارية تتخذها بناءً على محتوى تسويقي عام دون استشارة مباشرة.</p>
+
+        <h2>10. التواصل</h2>
+        <p>لأي أسئلة حول هذه الشروط:</p>
+        <ul>
+          <li>البريد: <a href="mailto:info@zaitoonerp.com">info@zaitoonerp.com</a></li>
+          <li>الهاتف: <a href="tel:+9647808500591" dir="ltr">+964 780 850 0591</a></li>
+        </ul>
+      </div>
+
+      <div class="legal-lang legal-lang--en" data-legal-lang="en" hidden>
+        <h1>Terms of Use</h1>
+        <p class="legal-article__meta">Last updated: June 2026 · ZA ERP public website (zaitoonerp.com)</p>
+        <p>By using the ZA ERP public website you agree to the following terms. If you do not agree, please do not use the site.</p>
+
+        <h2>1. Website and platform</h2>
+        <p>This website provides marketing information about <strong>ZA ERP</strong> — a cloud SaaS business management platform covering sales, inventory, purchases, finance, customers, employees, operations, and reporting. Actual ERP access is provided through a separate subscriber portal, not through marketing pages alone.</p>
+
+        <h2>2. Permitted use</h2>
+        <ul>
+          <li>Browse content for legitimate business evaluation.</li>
+          <li>Submit demo requests or inquiries via forms or WhatsApp.</li>
+          <li>Share site links without altering content or impersonating ZA ERP.</li>
+        </ul>
+
+        <h2>3. Prohibited use</h2>
+        <ul>
+          <li>Attempting to hack, damage, or overload the website or platform.</li>
+          <li>Scraping visitor or user data without permission.</li>
+          <li>Impersonating ZA ERP or publishing misleading information in our name.</li>
+          <li>Republishing site content, branding, or UI without written permission.</li>
+        </ul>
+
+        <h2>4. Demos and subscription</h2>
+        <p>Requesting a demo or submitting a contact form <strong>does not guarantee</strong> automatic acceptance as a subscriber or account activation. ZA ERP reviews requests according to Pilot policy and team capacity.</p>
+
+        <h2>5. Pricing and Pilot phase</h2>
+        <p>Prices shown on the website (in US Dollars, USD) apply to the Pilot launch phase and may change or be customized by company size, users, and branches. Final pricing is confirmed in writing upon agreement, not by the website alone.</p>
+
+        <h2>6. Service availability</h2>
+        <p>During development or Pilot, platform features, uptime, or support scope may change. We aim for transparency with accepted Pilot customers, but the public site does not constitute a specific service level agreement (SLA).</p>
+
+        <h2>7. Intellectual property</h2>
+        <p>All trademarks, logos, designs, copy, and visual content on the website and ZA ERP platform are owned by or licensed to ZA ERP. Using the website does not grant you ownership rights in the software or content.</p>
+
+        <h2>8. External links</h2>
+        <p>The site may link to external services (such as WhatsApp or platform login at <a href="https://erpv1.zaitoonerp.com/" target="_blank" rel="noopener noreferrer">erpv1.zaitoonerp.com</a>). We are not responsible for their content or policies.</p>
+
+        <h2>9. Disclaimer</h2>
+        <p>The website is provided “as is” for informational purposes. We do not guarantee the site is error-free at all times, and we are not liable for business decisions made solely on general marketing content without direct consultation.</p>
+
+        <h2>10. Contact</h2>
+        <p>Questions about these terms:</p>
+        <ul>
+          <li>Email: <a href="mailto:info@zaitoonerp.com">info@zaitoonerp.com</a></li>
+          <li>Phone: <a href="tel:+9647808500591" dir="ltr">+964 780 850 0591</a></li>
+        </ul>
+      </div>
+
+      <footer class="legal-footer">
+        <nav class="legal-footer__links" aria-label="Legal">
+          <a href="privacy.html" data-legal-footer-privacy-ar>سياسة الخصوصية</a>
+          <a href="privacy.html" data-legal-footer-privacy-en hidden>Privacy Policy</a>
+          <a href="terms.html" aria-current="page" data-legal-footer-terms-ar>شروط الاستخدام</a>
+          <a href="terms.html" aria-current="page" data-legal-footer-terms-en hidden>Terms of Use</a>
+          <a href="index.html" data-legal-footer-home-ar>الرئيسية</a>
+          <a href="index.html" data-legal-footer-home-en hidden>Home</a>
+        </nav>
+        <p>© 2026 ZA ERP</p>
+      </footer>
+    </article>
+  </main>
+
+  <script src="js/icons.js"></script>
+  <script src="js/legal-page.js"></script>
+</body>
+</html>

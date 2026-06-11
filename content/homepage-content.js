@@ -552,7 +552,9 @@
             { label: "من نحن", href: "#about" },
             { label: "الوظائف", href: "#about" },
             { label: "الأخبار", href: "#resources" },
-            { label: "تواصل معنا", href: "#contact" }
+            { label: "تواصل معنا", href: "#contact" },
+            { label: "سياسة الخصوصية", href: "privacy.html" },
+            { label: "شروط الاستخدام", href: "terms.html" }
           ]
         }
       ],

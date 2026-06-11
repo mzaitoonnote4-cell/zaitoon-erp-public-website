@@ -12,11 +12,14 @@ New-Item -ItemType Directory -Path $Out -Force | Out-Null
 
 $files = @(
   "index.html",
+  "privacy.html",
+  "terms.html",
   "favicon.ico",
   "styles.css",
   "styles-polish.css",
   "styles-experience.css",
   "styles-i18n.css",
+  "styles-legal.css",
   "script.js"
 )
 

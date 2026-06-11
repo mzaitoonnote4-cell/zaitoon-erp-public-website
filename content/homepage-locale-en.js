@@ -551,7 +551,9 @@
             { label: "About", href: "#about" },
             { label: "Careers", href: "#about" },
             { label: "News", href: "#resources" },
-            { label: "Contact", href: "#contact" }
+            { label: "Contact", href: "#contact" },
+            { label: "Privacy Policy", href: "privacy.html" },
+            { label: "Terms of Use", href: "terms.html" }
           ]
         }
       ],
