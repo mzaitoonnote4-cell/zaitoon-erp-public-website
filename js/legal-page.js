@@ -87,6 +87,23 @@
     applyMode(saved === "day" ? "day" : "night");
   }
 
+  function applySeo() {
+    var page = document.body.getAttribute("data-page");
+    if (!page || !window.ZA_SEO_META || !window.ZA_SEO_META.applyPageSeo) return;
+
+    var title = document.title || "";
+    var meta = document.querySelector('meta[name="description"]');
+    var description = meta ? meta.getAttribute("content") || "" : "";
+    var path = page === "privacy" ? "privacy.html" : page === "terms" ? "terms.html" : page + ".html";
+
+    window.ZA_SEO_META.applyPageSeo({
+      title: title,
+      description: description,
+      ogImage: window.ZA_SEO_META.DEFAULT_OG_IMAGE,
+      ogUrl: window.ZA_SEO_META.PUBLIC_SITE_URL + path
+    });
+  }
+
   function bindControls() {
     document.querySelectorAll("[data-lang-btn]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -116,6 +133,7 @@
     initMode();
     injectModeIcons();
     applyLang(getLang());
+    applySeo();
     bindControls();
   }
 

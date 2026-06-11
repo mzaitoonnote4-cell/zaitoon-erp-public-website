@@ -42,7 +42,7 @@
         external: true
       },
       {
-        label: "Book a Demo",
+        label: "Request a Demo",
         href: "#contact",
         variant: "gold"
       }
@@ -881,9 +881,9 @@
 
     cta: {
       title: "Ready to elevate your business?",
-      text: "Join companies that run with confidence on ZA ERP",
+      text: "Start with an initial review and see how ZA ERP can help organize your business gradually.",
       buttons: [
-        { label: "Book a Demo Now", href: "#contact", variant: "gold" },
+        { label: "Request a Demo", href: "#contact", variant: "gold" },
         { label: "Contact us", href: "#contact", variant: "outline" }
       ]
     },
@@ -895,7 +895,7 @@
         {
           id: "pilot-launch",
           title: "Pilot launch for growing companies",
-          excerpt: "Join early customers and try the platform with flexible pilot pricing.",
+          excerpt: "Selected companies can start a Pilot experience with flexible launch pricing.",
           slug: "pilot-launch",
           publishedAt: "2026-01-15",
           coverImage: null,

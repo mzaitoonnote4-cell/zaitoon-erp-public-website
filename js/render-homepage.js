@@ -1605,6 +1605,9 @@
       .join("");
 
     var social = f.social
+      .filter(function (s) {
+        return s.href && s.href !== "#";
+      })
       .map(function (s) {
         return '<a href="' + esc(s.href) + '" aria-label="' + esc(s.label) + '" class="social-link">' + icons.get(s.id) + "</a>";
       })

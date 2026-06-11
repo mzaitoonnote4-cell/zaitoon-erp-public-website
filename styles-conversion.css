@@ -268,6 +268,32 @@ body.mode-day .public-contact--final .contact-form {
   }
 }
 
+@media (max-width: 430px) {
+  .hero-data-chip {
+    font-size: 0.66rem;
+    padding: 0.32rem 0.55rem;
+    max-width: calc(100% - 0.5rem);
+    white-space: normal;
+    text-align: start;
+  }
+
+  .hero-data-chip--top-end,
+  .hero-data-chip--bottom-end {
+    inset-inline-end: 0;
+    max-width: 48%;
+  }
+
+  .hero-data-chip--top-start,
+  .hero-data-chip--bottom-start {
+    inset-inline-start: 0;
+    max-width: 48%;
+  }
+
+  .public-hero__mockup-wrap {
+    overflow: hidden;
+  }
+}
+
 @media (max-width: 389px) {
   .public-hero__trust {
     grid-template-columns: 1fr;

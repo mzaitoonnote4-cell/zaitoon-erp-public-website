@@ -84,13 +84,12 @@
     if (seo.title) document.title = seo.title;
     var meta = document.querySelector('meta[name="description"]');
     if (meta && seo.description) meta.setAttribute("content", seo.description);
-    if (window.ZA_SEO_META) {
-      window.ZA_SEO_META.applyHomepageSeo({
-        seo: {
-          title: seo.title,
-          description: seo.description,
-          ogImage: window.ZA_SEO_META.DEFAULT_OG_IMAGE
-        }
+    if (window.ZA_SEO_META && window.ZA_SEO_META.applyPageSeo) {
+      window.ZA_SEO_META.applyPageSeo({
+        title: seo.title,
+        description: seo.description,
+        ogImage: window.ZA_SEO_META.DEFAULT_OG_IMAGE,
+        ogUrl: window.ZA_SEO_META.PUBLIC_SITE_URL + "roadmap.html"
       });
     }
   }

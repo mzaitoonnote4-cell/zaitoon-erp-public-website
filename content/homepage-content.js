@@ -43,7 +43,7 @@
         external: true
       },
       {
-        label: "احجز عرضاً تجريبياً",
+        label: "اطلب تجربة الآن",
         href: "#contact",
         variant: "gold"
       }
@@ -882,9 +882,9 @@
 
     cta: {
       title: "جاهز للارتقاء بأعمالك؟",
-      text: "انضم إلى الشركات التي تدير أعمالها بثقة مع ZA ERP",
+      text: "ابدأ بتقييم أولي لنشاطك واكتشف كيف يمكن أن يساعدك ZA ERP على تنظيم عملك تدريجياً.",
       buttons: [
-        { label: "احجز عرضاً تجريبياً الآن", href: "#contact", variant: "gold" },
+        { label: "اطلب تجربة الآن", href: "#contact", variant: "gold" },
         { label: "تواصل معنا", href: "#contact", variant: "outline" }
       ]
     },
@@ -896,7 +896,7 @@
         {
           id: "pilot-launch",
           title: "إطلاق مرحلة Pilot للشركات الناشئة",
-          excerpt: "انضم إلى أوائل العملاء وجرّب المنصة بأسعار تجريبية مرنة.",
+          excerpt: "يمكن للشركات المختارة البدء بتجربة Pilot بأسعار إطلاق مرنة.",
           slug: "pilot-launch",
           publishedAt: "2026-01-15",
           coverImage: null,
