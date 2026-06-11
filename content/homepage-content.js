@@ -911,7 +911,7 @@
         {
           title: "الشركة",
           links: [
-            { label: "من نحن", href: "#about" },
+            { label: "من نحن", href: "about.html" },
             { label: "الوظائف", href: "#about" },
             { label: "الأخبار", href: "#resources" },
             { label: "تواصل معنا", href: "#contact" },

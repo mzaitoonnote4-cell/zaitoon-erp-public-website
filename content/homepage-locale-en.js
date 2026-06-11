@@ -910,7 +910,7 @@
         {
           title: "Company",
           links: [
-            { label: "About", href: "#about" },
+            { label: "About ZA ERP", href: "about.html" },
             { label: "Careers", href: "#about" },
             { label: "News", href: "#resources" },
             { label: "Contact", href: "#contact" },

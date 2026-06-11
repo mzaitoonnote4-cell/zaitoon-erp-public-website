@@ -46,12 +46,14 @@
       "[data-legal-footer-privacy-ar],[data-legal-footer-privacy-en]," +
         "[data-legal-footer-terms-ar],[data-legal-footer-terms-en]," +
         "[data-legal-footer-updates-ar],[data-legal-footer-updates-en]," +
+        "[data-legal-footer-about-ar],[data-legal-footer-about-en]," +
         "[data-legal-footer-home-ar],[data-legal-footer-home-en]"
     ).forEach(function (el) {
       var wantsAr =
         el.hasAttribute("data-legal-footer-privacy-ar") ||
         el.hasAttribute("data-legal-footer-terms-ar") ||
         el.hasAttribute("data-legal-footer-updates-ar") ||
+        el.hasAttribute("data-legal-footer-about-ar") ||
         el.hasAttribute("data-legal-footer-home-ar");
       el.hidden = wantsAr ? !isAr : isAr;
     });

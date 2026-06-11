@@ -1,11 +1,20 @@
 /**
- * Shared behavior for legal pages (privacy, terms).
+ * About page (about.html)
  */
 (function () {
   "use strict";
 
   var LANG_KEY = "za-erp-language";
   var MODE_KEY = "za-erp-mode";
+
+  function esc(str) {
+    if (str == null) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
 
   function getLang() {
     try {
@@ -21,6 +30,7 @@
       localStorage.setItem(LANG_KEY, lang);
     } catch (e) { /* ignore */ }
     applyLang(lang);
+    renderPage(lang);
   }
 
   function applyLang(lang) {
@@ -29,11 +39,6 @@
     document.documentElement.dir = isAr ? "rtl" : "ltr";
     document.body.classList.toggle("is-rtl", isAr);
     document.body.classList.toggle("is-ltr", !isAr);
-
-    document.querySelectorAll("[data-legal-lang]").forEach(function (block) {
-      var show = block.getAttribute("data-legal-lang") === lang;
-      block.hidden = !show;
-    });
 
     document.querySelectorAll("[data-lang-btn]").forEach(function (btn) {
       var active = btn.getAttribute("data-lang-btn") === lang;
@@ -63,6 +68,81 @@
     });
   }
 
+  function applySeo(lang) {
+    var data = window.ABOUT_CONTENT;
+    if (!data || !data.seo) return;
+    var seo = data.seo[lang] || data.seo.ar;
+    if (seo.title) document.title = seo.title;
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta && seo.description) meta.setAttribute("content", seo.description);
+    if (window.ZA_SEO_META) {
+      window.ZA_SEO_META.applyHomepageSeo({
+        seo: {
+          title: seo.title,
+          description: seo.description,
+          ogImage: window.ZA_SEO_META.DEFAULT_OG_IMAGE
+        }
+      });
+    }
+  }
+
+  function renderSection(section, lang) {
+    var copy = section[lang] || section.ar;
+    if (!copy) return "";
+
+    if (section.type === "bullets" && copy.items && copy.items.length) {
+      var items = copy.items
+        .map(function (item) {
+          return "<li>" + esc(item) + "</li>";
+        })
+        .join("");
+      return (
+        '<section class="about-section reveal">' +
+        "<h2>" + esc(copy.title) + "</h2>" +
+        '<ul class="about-section__list">' + items + "</ul>" +
+        "</section>"
+      );
+    }
+
+    return (
+      '<section class="about-section reveal">' +
+      "<h2>" + esc(copy.title) + "</h2>" +
+      "<p>" + esc(copy.text) + "</p>" +
+      "</section>"
+    );
+  }
+
+  function renderPage(lang) {
+    var data = window.ABOUT_CONTENT;
+    if (!data) return;
+
+    applySeo(lang);
+
+    var page = data.page[lang] || data.page.ar;
+    var titleEl = document.getElementById("about-page-title");
+    if (titleEl) titleEl.textContent = page.title;
+
+    var mount = document.getElementById("about-sections");
+    if (mount && data.sections) {
+      mount.innerHTML = data.sections
+        .map(function (section) {
+          return renderSection(section, lang);
+        })
+        .join("");
+    }
+
+    var ctaMount = document.getElementById("about-cta");
+    if (ctaMount && data.cta) {
+      var cta = data.cta[lang] || data.cta.ar;
+      ctaMount.innerHTML =
+        '<div class="about-cta glass-panel reveal">' +
+        "<p>" + esc(cta.text) + "</p>" +
+        '<a class="btn btn--gold btn--lg" href="' + esc(cta.button.href) + '">' +
+        esc(cta.button.label) +
+        "</a></div>";
+    }
+  }
+
   function applyMode(mode) {
     if (mode !== "day") mode = "night";
     document.body.classList.remove("mode-day", "mode-night");
@@ -83,6 +163,15 @@
     applyMode(saved === "day" ? "day" : "night");
   }
 
+  function injectModeIcons() {
+    var icons = window.HOMEPAGE_ICONS;
+    if (!icons || typeof icons.get !== "function") return;
+    var sun = document.querySelector(".mode-toggle__icon--sun");
+    var moon = document.querySelector(".mode-toggle__icon--moon");
+    if (sun) sun.innerHTML = icons.get("sun");
+    if (moon) moon.innerHTML = icons.get("moon");
+  }
+
   function bindControls() {
     document.querySelectorAll("[data-lang-btn]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -99,20 +188,13 @@
     }
   }
 
-  function injectModeIcons() {
-    var icons = window.HOMEPAGE_ICONS;
-    if (!icons || typeof icons.get !== "function") return;
-    var sun = document.querySelector(".mode-toggle__icon--sun");
-    var moon = document.querySelector(".mode-toggle__icon--moon");
-    if (sun) sun.innerHTML = icons.get("sun");
-    if (moon) moon.innerHTML = icons.get("moon");
-  }
-
   function init() {
     initMode();
     injectModeIcons();
-    applyLang(getLang());
+    var lang = getLang();
+    applyLang(lang);
     bindControls();
+    renderPage(lang);
   }
 
   if (document.readyState === "loading") {
