@@ -23,6 +23,7 @@ export type SectionId =
   | "productDepth"
   | "howItWorks"
   | "security"
+  | "trustSecurityTeaser"
   | "pricing"
   | "pilotUrgencyCta"
   | "pilot"
@@ -53,6 +54,7 @@ export interface HomepageSectionVisibility {
   showProductDepth: boolean;
   showHowItWorks: boolean;
   showSecurity: boolean;
+  showTrustSecurityTeaser: boolean;
   showPricing: boolean;
   showPilotUrgencyCTA: boolean;
   showPilot: boolean;
@@ -423,6 +425,11 @@ export interface PublicHomepageContent {
       columns: string[];
       rows: { role: string; access: ("full" | "view" | "lock")[] }[];
     };
+  };
+  trustSecurity?: {
+    title: string;
+    text: string;
+    button: HomepageCta;
   };
   pilot: {
     title: string;

@@ -508,6 +508,16 @@
       }
     },
 
+    trustSecurity: {
+      title: "الثقة والأمان في ZA ERP",
+      text: "تعرف على طريقة تعامل ZA ERP مع الخصوصية، الصلاحيات، وفصل بيانات الشركات.",
+      button: {
+        label: "عرض مركز الثقة والأمان",
+        href: "trust-security.html",
+        variant: "gold"
+      }
+    },
+
     traditionalVsZaerp: {
       title: "لماذا تنتقل من Excel والدفاتر إلى ZA ERP؟",
       subtitle:
@@ -1123,6 +1133,7 @@
           title: "الشركة",
           links: [
             { label: "من نحن", href: "about.html" },
+            { label: "الثقة والأمان", href: "trust-security.html" },
             { label: "تواصل معنا", href: "#contact" },
             { label: "سياسة الخصوصية", href: "privacy.html" },
             { label: "شروط الاستخدام", href: "terms.html" }
@@ -1224,6 +1235,7 @@
       "pilot",
       "productDepth",
       "security",
+      "trustSecurityTeaser",
       "pricing",
       "pilotUrgencyCta",
       "platformUpdates",
@@ -1257,6 +1269,7 @@
       showHowItWorks: false,
       showProductDepth: true,
       showSecurity: true,
+      showTrustSecurityTeaser: true,
       showPricing: true,
       showPilotUrgencyCTA: true,
       showPilot: true,

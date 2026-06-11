@@ -16,6 +16,7 @@ const rootFiles = [
   "terms.html",
   "updates.html",
   "about.html",
+  "trust-security.html",
   "use-case.html",
   "roadmap.html",
   "favicon.ico",
@@ -32,6 +33,7 @@ const rootFiles = [
   "styles-legal.css",
   "styles-updates.css",
   "styles-about.css",
+  "styles-trust-security.css",
   "styles-use-case.css",
   "styles-traditional-compare.css",
   "styles-roadmap.css",
@@ -45,6 +47,7 @@ const contentFiles = [
   "homepage-locale-en.js",
   "updates-content.js",
   "about-content.js",
+  "trust-security-content.js",
   "use-case-content.js",
   "roadmap-content.js"
 ];

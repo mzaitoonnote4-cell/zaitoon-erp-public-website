@@ -1,0 +1,220 @@
+/* Trust & Security Center — page + homepage teaser */
+
+.trust-page .trust-card.reveal,
+.trust-page .trust-cta.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.trust-page__header {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.trust-page__header h1 {
+  margin: 0;
+  font-size: clamp(1.65rem, 4vw, 2.15rem);
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.trust-page__subtitle {
+  margin: 0.85rem auto 0;
+  max-width: 40rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.trust-sections {
+  display: grid;
+  gap: 1rem;
+}
+
+.trust-card {
+  padding: 1.25rem 1.2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+.trust-card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--accent-light);
+}
+
+.trust-card p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.85;
+  font-size: 0.95rem;
+}
+
+.trust-card__link {
+  color: var(--emerald);
+  font-weight: 700;
+  word-break: break-all;
+}
+
+.trust-card__link:hover {
+  color: var(--accent-light);
+}
+
+.trust-card__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.trust-card__list li {
+  position: relative;
+  padding-inline-start: 1.35rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.94rem;
+}
+
+.trust-card__list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.55rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--emerald));
+  box-shadow: 0 0 8px rgba(212, 168, 83, 0.35);
+}
+
+.trust-card--muted {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.trust-card--muted h2 {
+  color: var(--text);
+}
+
+.trust-cta {
+  margin-top: 1.75rem;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent-border);
+  background: linear-gradient(160deg, rgba(212, 168, 83, 0.08), rgba(16, 185, 129, 0.05));
+}
+
+.trust-cta p {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.trust-cta .btn {
+  min-width: min(100%, 18rem);
+}
+
+.trust-page .legal-article {
+  max-width: 52rem;
+}
+
+/* Homepage teaser */
+.public-trust-teaser {
+  padding-block: 2.5rem;
+  scroll-margin-top: 5rem;
+}
+
+.trust-teaser-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.75rem 1.75rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(212, 168, 83, 0.06));
+}
+
+.trust-teaser-card__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--accent-border);
+  background: rgba(212, 168, 83, 0.1);
+  color: var(--accent-light);
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.trust-teaser-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.trust-teaser-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  color: var(--text);
+}
+
+.trust-teaser-card p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.trust-teaser-card .btn {
+  flex-shrink: 0;
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+  .trust-page__header {
+    margin-bottom: 1.35rem;
+    text-align: start;
+  }
+
+  .trust-page__subtitle {
+    text-align: start;
+  }
+
+  .trust-cta {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .trust-teaser-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.35rem 1.15rem;
+  }
+
+  .trust-teaser-card__icon {
+    align-self: flex-start;
+  }
+
+  .trust-teaser-card .btn {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .trust-card {
+    padding: 1.1rem 1rem;
+  }
+
+  .trust-card h2 {
+    font-size: 1rem;
+  }
+}

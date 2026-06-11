@@ -1,5 +1,5 @@
 /**
- * Practical use case page (use-case.html)
+ * Trust & Security Center page (trust-security.html)
  */
 (function () {
   "use strict";
@@ -75,7 +75,7 @@
   }
 
   function applySeo(lang) {
-    var data = window.USE_CASE_CONTENT;
+    var data = window.TRUST_SECURITY_CONTENT;
     if (!data || !data.seo) return;
     var seo = data.seo[lang] || data.seo.ar;
     if (seo.title) document.title = seo.title;
@@ -86,139 +86,100 @@
         title: seo.title,
         description: seo.description,
         ogImage: window.ZA_SEO_META.DEFAULT_OG_IMAGE,
-        ogUrl: window.ZA_SEO_META.PUBLIC_SITE_URL + "use-case.html"
+        ogUrl: window.ZA_SEO_META.PUBLIC_SITE_URL + "trust-security.html"
       });
     }
   }
 
-  function renderBeforeAfter(data, lang) {
-    var before = data.beforeAfter.before[lang] || data.beforeAfter.before.ar;
-    var after = data.beforeAfter.after[lang] || data.beforeAfter.after.ar;
-    var beforeItems = before.items
-      .map(function (item) {
-        return (
-          '<li class="compare-panel__item">' +
-          '<span class="compare-panel__mark compare-panel__mark--warn" aria-hidden="true"></span>' +
-          esc(item) +
-          "</li>"
-        );
-      })
-      .join("");
-    var afterItems = after.items
-      .map(function (item) {
-        return (
-          '<li class="compare-panel__item">' +
-          '<span class="compare-panel__mark compare-panel__mark--ok" aria-hidden="true">✓</span>' +
-          esc(item) +
-          "</li>"
-        );
-      })
-      .join("");
+  function renderSection(section, lang) {
+    var copy = section[lang] || section.ar;
+    if (!copy) return "";
+
+    var mod = section.variant === "muted" ? " trust-card--muted" : "";
+    var inner = "";
+
+    if (section.type === "bullets" && copy.items && copy.items.length) {
+      inner =
+        "<h2>" +
+        esc(copy.title) +
+        "</h2>" +
+        '<ul class="trust-card__list">' +
+        copy.items
+          .map(function (item) {
+            return "<li>" + esc(item) + "</li>";
+          })
+          .join("") +
+        "</ul>";
+    } else if (section.type === "platform") {
+      var url = section.platformUrl || "https://erpv1.zaitoonerp.com/";
+      inner =
+        "<h2>" +
+        esc(copy.title) +
+        "</h2>" +
+        "<p>" +
+        esc(copy.textBefore) +
+        ' <a href="' +
+        esc(url) +
+        '" target="_blank" rel="noopener noreferrer" class="trust-card__link">' +
+        esc(url) +
+        "</a> " +
+        esc(copy.textAfter) +
+        "</p>";
+    } else {
+      inner = "<h2>" + esc(copy.title) + "</h2><p>" + esc(copy.text) + "</p>";
+    }
 
     return (
-      '<section class="use-case-section">' +
-      '<div class="before-after-grid use-case-compare">' +
-      '<article class="compare-panel compare-panel--before">' +
-      '<span class="compare-panel__badge">' +
-      esc(before.label) +
-      "</span>" +
-      '<ul class="compare-panel__list">' +
-      beforeItems +
-      "</ul></article>" +
-      '<div class="before-after-divider" aria-hidden="true"><span></span></div>' +
-      '<article class="compare-panel compare-panel--after">' +
-      '<span class="compare-panel__badge compare-panel__badge--gold">' +
-      esc(after.label) +
-      "</span>" +
-      '<ul class="compare-panel__list">' +
-      afterItems +
-      "</ul></article>" +
-      "</div></section>"
+      '<article class="trust-card glass-panel reveal' +
+      mod +
+      '" data-trust-section="' +
+      esc(section.id) +
+      '">' +
+      inner +
+      "</article>"
     );
   }
 
-  function renderWorkflow(data, lang) {
-    var wf = data.workflow[lang] || data.workflow.ar;
-    var steps = wf.steps
-      .map(function (step, i) {
-        return (
-          '<li class="use-case-workflow__step">' +
-          '<span class="use-case-workflow__num" aria-hidden="true">' +
-          (i + 1) +
-          "</span>" +
-          '<p class="use-case-workflow__text">' +
-          esc(step) +
-          "</p></li>"
-        );
-      })
-      .join("");
-
-    return (
-      '<section class="use-case-section">' +
-      "<h2>" +
-      esc(wf.title) +
-      "</h2>" +
-      '<ol class="use-case-workflow">' +
-      steps +
-      "</ol></section>"
-    );
-  }
-
-  function renderOwnerGains(data, lang) {
-    var og = data.ownerGains[lang] || data.ownerGains.ar;
-    var items = og.items
-      .map(function (item) {
-        return "<li>" + esc(item) + "</li>";
-      })
-      .join("");
-
-    return (
-      '<section class="use-case-section">' +
-      "<h2>" +
-      esc(og.title) +
-      "</h2>" +
-      '<ul class="use-case-gains">' +
-      items +
-      "</ul></section>"
-    );
+  function renderFallbackContent() {
+    var mount = document.getElementById("trust-sections");
+    var fallback = document.getElementById("trust-sections-fallback");
+    if (!mount || !fallback) return;
+    mount.innerHTML = fallback.innerHTML;
   }
 
   function renderPage(lang) {
-    var data = window.USE_CASE_CONTENT;
-    if (!data) return;
-
-    applySeo(lang);
-
-    var page = data.page[lang] || data.page.ar;
-    var titleEl = document.getElementById("use-case-page-title");
-    if (titleEl) titleEl.textContent = page.title;
-
-    var disclaimerEl = document.getElementById("use-case-disclaimer");
-    if (disclaimerEl) {
-      disclaimerEl.textContent = data.disclaimer[lang] || data.disclaimer.ar;
+    var data = window.TRUST_SECURITY_CONTENT;
+    if (!data) {
+      renderFallbackContent();
+      return;
     }
 
-    var mount = document.getElementById("use-case-body");
-    if (!mount) return;
+    try {
+      applySeo(lang);
+    } catch (e) {
+      /* SEO must not block content */
+    }
 
-    var scenario = data.scenario[lang] || data.scenario.ar;
-    mount.innerHTML =
-      '<section class="use-case-section">' +
-      "<h2>" +
-      esc(scenario.title) +
-      "</h2>" +
-      "<p>" +
-      esc(scenario.text) +
-      "</p></section>" +
-      renderBeforeAfter(data, lang) +
-      renderWorkflow(data, lang) +
-      renderOwnerGains(data, lang);
+    var page = data.page[lang] || data.page.ar;
+    var titleEl = document.getElementById("trust-page-title");
+    var subtitleEl = document.getElementById("trust-page-subtitle");
+    if (titleEl) titleEl.textContent = page.title;
+    if (subtitleEl) subtitleEl.textContent = page.subtitle;
 
-    var ctaMount = document.getElementById("use-case-cta");
+    var mount = document.getElementById("trust-sections");
+    if (mount && data.sections) {
+      mount.innerHTML = data.sections
+        .map(function (section) {
+          return renderSection(section, lang);
+        })
+        .join("");
+    }
+
+    var ctaMount = document.getElementById("trust-cta");
     if (ctaMount && data.cta) {
       var cta = data.cta[lang] || data.cta.ar;
       ctaMount.innerHTML =
-        '<div class="use-case-cta glass-panel">' +
+        '<div class="trust-cta glass-panel reveal">' +
         "<p>" +
         esc(cta.text) +
         "</p>" +
@@ -227,6 +188,10 @@
         '">' +
         esc(cta.button.label) +
         "</a></div>";
+    }
+
+    if (window.ZA_PAGE_REVEAL && typeof window.ZA_PAGE_REVEAL.init === "function") {
+      window.ZA_PAGE_REVEAL.init();
     }
   }
 

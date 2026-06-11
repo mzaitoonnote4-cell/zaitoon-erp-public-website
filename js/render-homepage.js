@@ -950,6 +950,25 @@
     );
   }
 
+  function renderTrustSecurityTeaser() {
+    var ts = content.trustSecurity;
+    if (!ts || !ts.title) return "";
+
+    return (
+      '<section class="public-trust-teaser section section--alt" id="trust-security-teaser" data-section-id="trust-security-teaser">' +
+      '<div class="container"><div class="trust-teaser-card glass-panel reveal">' +
+      '<span class="trust-teaser-card__icon" aria-hidden="true">◆</span>' +
+      '<div class="trust-teaser-card__body">' +
+      "<h2>" +
+      esc(ts.title) +
+      "</h2>" +
+      (ts.text ? "<p>" + esc(ts.text) + "</p>" : "") +
+      "</div>" +
+      renderCta(ts.button, "btn--gold") +
+      "</div></div></section>"
+    );
+  }
+
   function renderTraditionalVsZaerp() {
     var c = content.traditionalVsZaerp;
     if (!c || !c.title) return "";
@@ -1807,6 +1826,10 @@
     howItWorks: { flag: "showHowItWorks", render: renderHowItWorks },
     productDepth: { flag: "showProductDepth", render: renderProductDepth },
     security: { flag: "showSecurity", render: renderSecurity },
+    trustSecurityTeaser: {
+      flag: "showTrustSecurityTeaser",
+      render: renderTrustSecurityTeaser
+    },
     pricing: { flag: "showPricing", render: renderPricing },
     pilotUrgencyCta: { flag: "showPilotUrgencyCTA", render: renderPilotUrgencyCta },
     pilot: { flag: "showPilot", render: renderPilot },

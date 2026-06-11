@@ -509,6 +509,16 @@
       }
     },
 
+    trustSecurity: {
+      title: "Trust and Security at ZA ERP",
+      text: "Learn how ZA ERP approaches privacy, permissions, and company data separation.",
+      button: {
+        label: "View Trust Center",
+        href: "trust-security.html",
+        variant: "gold"
+      }
+    },
+
     traditionalVsZaerp: {
       title: "Why move from Excel and notebooks to ZA ERP?",
       subtitle:
@@ -1124,6 +1134,7 @@
           title: "Company",
           links: [
             { label: "About ZA ERP", href: "about.html" },
+            { label: "Trust & Security", href: "trust-security.html" },
             { label: "Contact", href: "#contact" },
             { label: "Privacy Policy", href: "privacy.html" },
             { label: "Terms of Use", href: "terms.html" }
