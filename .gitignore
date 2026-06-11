@@ -5,6 +5,8 @@ desktop.ini
 .env
 .env.*
 
+node_modules/
+
 # Generated production packages
 dist/
 deploy/za-erp-public-live/

@@ -149,7 +149,7 @@
     if (mockup.mode === "image" && mockup.image) {
       return (
         '<div class="public-hero__visual reveal reveal--delay">' +
-        '<img src="' + esc(mockup.image) + '" alt="' + esc(mockup.imageAlt || "") + '" class="hero-mockup-image" loading="lazy">' +
+        '<img src="' + esc(mockup.image) + '" alt="' + esc(mockup.imageAlt || "") + '" class="hero-mockup-image" width="520" height="390" loading="eager" fetchpriority="high" decoding="async">' +
         "</div>"
       );
     }
@@ -1511,7 +1511,7 @@
     var articles = n.items
       .map(function (item) {
         var cover = item.coverImage
-          ? '<img src="' + esc(item.coverImage) + '" alt="" class="news-card__cover" loading="lazy">'
+          ? '<img src="' + esc(item.coverImage) + '" alt="" class="news-card__cover" loading="lazy" decoding="async">'
           : '<div class="news-card__cover news-card__cover--placeholder" aria-hidden="true"></div>';
         return (
           '<article class="news-card reveal">' + cover +

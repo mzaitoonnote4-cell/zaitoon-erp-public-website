@@ -1,6 +1,6 @@
 # Performance Audit Report — ZA ERP Public Website
 
-**Date:** June 10, 2026  
+**Date:** June 10, 2026 (updated June 11, 2026 — pass 2)  
 **Scope:** `zaitoon-erp-public-website` only (static marketing site)  
 **Goal:** Core Web Vitals and mobile load improvements without visual redesign
 
@@ -108,6 +108,13 @@ No raster hero photos on the site; LCP is primarily typography, glass panels, an
 
 - `styles-perf.css` added to `scripts/build-production.mjs` and `deploy/build-production.ps1`.
 
+### 8. Pass 2 refinements (CLS / LCP edge cases)
+
+- Hero **image mode** (when used): `loading="eager"`, `fetchpriority="high"`, `decoding="async"`, intrinsic `width`/`height` — no lazy-load on above-the-fold hero visuals.
+- News card covers: `decoding="async"` on lazy images.
+- `styles-perf.css`: empty mount placeholders (`#public-header-mount`, `#public-main-mount`) to reduce CLS while deferred JS renders; mobile hero `min-height`; `body { overflow-x: clip }`.
+- `node_modules/` added to `.gitignore` (dev-only `sharp` installs).
+
 ---
 
 ## Intentionally left unchanged
@@ -134,9 +141,18 @@ No raster hero photos on the site; LCP is primarily typography, glass panels, an
 
 ## Cloudflare recommendations
 
-- Enable **Brotli** and **Auto Minify** (HTML/CSS/JS) at the edge.
-- Cache static assets (`assets/*`, `*.css`, `*.js`) with long TTL; purge on deploy.
-- Ensure `deploy/za-erp-public-live/` contents are uploaded atomically after each release.
+Safe settings for the **public marketing site only** (`zaitoonerp.com`). Do **not** change DNS, `erpv1` subdomain, or internal ERP application settings.
+
+| Setting | Recommendation |
+|---------|----------------|
+| **Brotli** | Enable compression for HTML, CSS, JS, SVG |
+| **Browser Cache TTL** | Respect existing headers; use Page Rules or Cache Rules for `*.css`, `*.js`, `assets/*` → long TTL (e.g. 1 month) with purge on deploy |
+| **Polish / Image optimization** | Optional for raster assets; logos are already optimized locally — test before enabling to avoid over-compression |
+| **Auto Minify** | HTML/CSS/JS minify at edge is safe for this static site |
+| **Always Online** | Optional; static site has no origin dependency beyond files |
+| **Deploy** | Upload only `deploy/za-erp-public-live/` contents; purge cache after each release |
+
+Analytics beacon (`static.cloudflareinsights.com`) must remain a single deferred script per page — do not duplicate.
 
 ---
 

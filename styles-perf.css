@@ -4,6 +4,19 @@ html {
   overflow-x: clip;
 }
 
+body {
+  overflow-x: clip;
+}
+
+/* Reserve space while deferred scripts render header/hero (reduces CLS) */
+#public-header-mount:empty {
+  min-height: 4.25rem;
+}
+
+#public-main-mount:empty {
+  min-height: 72vh;
+}
+
 /* Reserve space for async section paint below the hero */
 .public-main-mount > section:not(#hero) {
   content-visibility: auto;
@@ -25,10 +38,19 @@ html {
 @media (max-width: 768px) {
   .hero-mockup-stage {
     animation: none !important;
+    min-height: 300px;
   }
 
   .bg-effects__orb {
     opacity: 0.65;
+  }
+
+  .bg-effects__circuit {
+    opacity: 0.5;
+  }
+
+  .product-tour__tabs {
+    max-width: 100%;
   }
 }
 
