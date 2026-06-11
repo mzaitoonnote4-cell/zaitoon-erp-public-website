@@ -51,18 +51,19 @@
 
     hero: {
       eyebrow: "ادخل إلى عالم إدارة شركتك باحترافية",
-      headlineBefore: "حوّل شركتك من الفوضى إلى",
-      headlineHighlight: "نظام واضح وقرارات دقيقة",
+      headlineBefore: "حوّل إدارة شركتك إلى مركز قيادة واضح مع",
+      headlineHighlight: "ZA ERP",
       subtitle:
-        "ZA ERP لا يعرض لك أرقاماً فقط، بل يمنحك رؤية كاملة لكل ما يحدث داخل شركتك: المبيعات، المخزون، العملاء، الموظفين، الصلاحيات، والتحصيل — في شاشة واحدة واضحة.",
+        "منصة عربية سحابية تساعدك على ربط المبيعات، المخزون، العملاء، الموظفين، الصلاحيات، والتقارير في تجربة واحدة منظمة.",
       ctas: [
-        { label: "احجز عرضاً تجريبياً", href: "#contact", variant: "gold" },
-        { label: "استكشف المميزات", href: "#features", variant: "outline" }
+        { label: "اطلب تجربة الآن", href: "#contact", variant: "gold" },
+        { label: "شاهد كيف تعمل المنصة", href: "#getting-started", variant: "outline" }
       ],
       trustBadges: [
-        { icon: "shield", label: "سحابي وآمن" },
-        { icon: "refresh", label: "تحديثات مستمرة" },
-        { icon: "chat", label: "دعم فني متخصص" }
+        { icon: "decisions", label: "تجربة Pilot منظمة" },
+        { icon: "flexibility", label: "واجهة عربية وإنكليزية" },
+        { icon: "shield", label: "صلاحيات حسب الدور" },
+        { icon: "indicators", label: "تقارير أوضح لصاحب العمل" }
       ],
       mockup: {
         mode: "composed",
@@ -88,6 +89,29 @@
         { id: "stock", label: "مخزون محدث", position: "top-end" },
         { id: "perms", label: "صلاحيات آمنة", position: "bottom-start" },
         { id: "reports", label: "تقارير فورية", position: "bottom-end" }
+      ]
+    },
+
+    whyNow: {
+      title: "لماذا الآن؟",
+      text:
+        "كلما زادت الفواتير، المنتجات، الموظفون، والفروع، يصبح الاعتماد على الدفاتر و Excel وحده أصعب. ZA ERP يساعدك على الانتقال تدريجياً إلى إدارة أوضح قبل أن تصبح الفوضى مكلفة.",
+      cards: [
+        { icon: "flexibility", title: "نمو العمل يحتاج نظاماً أوضح" },
+        { icon: "efficiency", title: "الأخطاء الصغيرة قد تصبح مكلفة" },
+        { icon: "indicators", title: "القرارات تحتاج بيانات أسرع" }
+      ]
+    },
+
+    whatYouGain: {
+      title: "ماذا تكسب عند تنظيم عملك داخل ZA ERP؟",
+      cards: [
+        { icon: "sales", title: "رؤية أوضح للمبيعات" },
+        { icon: "inventory", title: "متابعة أفضل للمخزون" },
+        { icon: "employees", title: "صلاحيات منظمة للموظفين" },
+        { icon: "indicators", title: "تقارير تساعد صاحب القرار" },
+        { icon: "decisions", title: "تجربة مناسبة لمرحلة Pilot" },
+        { icon: "operations", title: "قابلية للتوسع مع نمو الشركة" }
       ]
     },
 
@@ -336,9 +360,9 @@
         }
       ],
       cta: {
-        text: "هل نشاطك مختلف؟ تواصل معنا لنوضح كيف يمكن تكييف ZA ERP مع طريقة عمل شركتك.",
+        text: "هل تريد معرفة هل المنصة مناسبة لنشاطك؟",
         button: {
-          label: "استفسر عن ملاءمة المنصة لنشاطك",
+          label: "اطلب تقييم أولي لنشاطك",
           href: "#contact",
           variant: "gold"
         }
@@ -382,9 +406,9 @@
         }
       ],
       cta: {
-        text: "جاهز لتجربة ZA ERP على طريقة عمل شركتك؟",
+        text: "اطلب تقييم أولي لنشاطك",
         button: {
-          label: "ابدأ الآن بطلب تجربة",
+          label: "ابدأ بتجربة Pilot منظمة",
           href: "#contact",
           variant: "gold"
         }
@@ -498,14 +522,16 @@
     },
 
     security: {
-      title: "تحكم كامل بمن يرى ماذا داخل شركتك",
+      title: "ثقة وأمان وتنظيم صلاحيات",
       matrixTitle: "أمان وصلاحيات مصممة للشركات",
+      showMatrix: true,
       points: [
-        { id: "roles", icon: "employees", text: "صلاحيات حسب دور الموظف" },
         { id: "isolation", icon: "security", text: "فصل بيانات كل شركة" },
-        { id: "access", icon: "shield", text: "منع الوصول غير المصرح" },
-        { id: "audit", icon: "indicators", text: "سجل تدقيق للعمليات" },
-        { id: "manager", icon: "decisions", text: "تحكم المدير بما يراه كل مستخدم" }
+        { id: "roles", icon: "employees", text: "صلاحيات حسب دور الموظف" },
+        { id: "domain", icon: "shield", text: "دخول المنصة عبر نطاق منفصل" },
+        { id: "legal", icon: "decisions", text: "صفحات خصوصية وشروط واضحة" },
+        { id: "analytics", icon: "indicators", text: "تحليلات زيارات بدون بيع بيانات الزوار" },
+        { id: "scaling", icon: "flexibility", text: "تصميم يراعي التوسع التدريجي" }
       ],
       matrix: {
         columns: ["المبيعات", "المخزون", "التقارير", "الإعدادات"],
@@ -576,7 +602,7 @@
         ]
       },
       cta: {
-        text: "هل تريد معرفة هل ZA ERP مناسب لشركتك؟",
+        text: "ابدأ بتجربة Pilot منظمة",
         button: {
           label: "اطلب تقييم أولي لنشاطك",
           href: "#contact",
@@ -694,11 +720,12 @@
         }
       ],
       cta: {
-        title: "هل لديك سؤال آخر؟",
-        text: "تواصل معنا وسنوضح لك كيف يمكن أن تناسب ZA ERP طريقة عمل شركتك.",
-        buttonLabel: "اسألنا عبر واتساب",
-        message:
-          "مرحباً، لدي سؤال حول ZA ERP قبل طلب التجربة.\n\nنوع النشاط:\nعدد المستخدمين:"
+        text: "هل تريد معرفة هل المنصة مناسبة لنشاطك؟",
+        button: {
+          label: "اطلب تقييم أولي لنشاطك",
+          href: "#contact",
+          variant: "gold"
+        }
       }
     },
 
@@ -725,6 +752,14 @@
         text: "أرسل لنا نوع نشاطك وعدد المستخدمين والفروع، وسنساعدك على اختيار الباقة الأنسب لمرحلة Pilot.",
         button: {
           label: "ساعدني في اختيار الباقة",
+          href: "#contact",
+          variant: "gold"
+        }
+      },
+      cta: {
+        text: "هل تريد معرفة هل المنصة مناسبة لنشاطك؟",
+        button: {
+          label: "اطلب تقييم أولي لنشاطك",
           href: "#contact",
           variant: "gold"
         }
@@ -887,9 +922,9 @@
     },
 
     contact: {
-      title: "اطلب تجربة ZA ERP",
+      title: "ابدأ الآن بتقييم أولي لنشاطك",
       subtitle:
-        "أرسل لنا معلومات نشاطك وسنساعدك على معرفة كيف يمكن أن تناسب ZA ERP طريقة عمل شركتك.",
+        "أرسل لنا تفاصيل نشاطك وسنساعدك على فهم الباقة الأنسب وطريقة بدء تجربة Pilot.",
       submitLabel: "إرسال الطلب عبر واتساب",
       submitHelper: "سنراجع المعلومات ونوضح لك الخطوة المناسبة.",
       privacyNote:
@@ -1077,6 +1112,7 @@
 
     sectionOrder: [
       "hero",
+      "whyNow",
       "intelligenceStrip",
       "beforeAfter",
       "commandCenter",
@@ -1084,6 +1120,7 @@
       "productTeaser",
       "systemFlow",
       "ownerView",
+      "whatYouGain",
       "why",
       "industries",
       "gettingStarted",
@@ -1106,6 +1143,8 @@
 
     sections: {
       showHero: true,
+      showWhyNow: true,
+      showWhatYouGain: true,
       showIntelligenceStrip: true,
       showBeforeAfter: true,
       showCommandCenter: true,

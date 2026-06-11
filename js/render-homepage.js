@@ -44,6 +44,19 @@
     return "<a " + attrs + ">" + esc(cta.label) + "</a>";
   }
 
+  function renderSectionInlineCta(cta) {
+    if (!cta || !cta.text || !cta.button) return "";
+    return (
+      '<div class="section-inline-cta reveal">' +
+      (cta.title ? "<h3>" + esc(cta.title) + "</h3>" : "") +
+      "<p>" +
+      esc(cta.text) +
+      "</p>" +
+      renderCta(cta.button, "btn--lg") +
+      "</div>"
+    );
+  }
+
   function renderLogo(brand, footer) {
     var cls = footer ? "logo logo--footer" : "logo logo--header";
     var lockup =
@@ -227,6 +240,70 @@
       '<div class="public-hero__mockup-wrap">' +
       renderHeroDataChips(h.dataChips) +
       renderHeroMockup(h.mockup) +
+      "</div></div></section>"
+    );
+  }
+
+  function renderWhyNow() {
+    var w = content.whyNow;
+    if (!w) return "";
+
+    var cards = (w.cards || [])
+      .map(function (card) {
+        return (
+          '<article class="why-now-card glass-panel reveal">' +
+          '<span class="why-now-card__icon" aria-hidden="true">' +
+          icons.get(card.icon) +
+          "</span>" +
+          "<h3>" +
+          esc(card.title) +
+          "</h3></article>"
+        );
+      })
+      .join("");
+
+    return (
+      '<section class="public-why-now section section--alt" id="why-now" data-section-id="why-now">' +
+      '<div class="container"><header class="section-header reveal">' +
+      "<h2>" +
+      esc(w.title) +
+      "</h2>" +
+      (w.text ? '<p class="section-header__lead">' + esc(w.text) + "</p>" : "") +
+      "</header>" +
+      '<div class="why-now-grid">' +
+      cards +
+      "</div></div></section>"
+    );
+  }
+
+  function renderWhatYouGain() {
+    var g = content.whatYouGain;
+    if (!g) return "";
+
+    var cards = (g.cards || [])
+      .map(function (card) {
+        return (
+          '<article class="gain-card glass-panel reveal">' +
+          '<span class="gain-card__icon" aria-hidden="true">' +
+          icons.get(card.icon) +
+          "</span>" +
+          "<h3>" +
+          esc(card.title) +
+          "</h3></article>"
+        );
+      })
+      .join("");
+
+    return (
+      '<section class="public-what-you-gain section" id="what-you-gain" data-section-id="what-you-gain">' +
+      '<div class="container"><header class="section-header reveal">' +
+      "<h2>" +
+      esc(g.title) +
+      "</h2>" +
+      (g.subtitle ? '<p class="section-header__lead">' + esc(g.subtitle) + "</p>" : "") +
+      "</header>" +
+      '<div class="gain-grid">' +
+      cards +
       "</div></div></section>"
     );
   }
@@ -918,13 +995,15 @@
       })
       .join("");
 
+    var matrixHtml = s.showMatrix !== false && s.matrix ? renderSecurityMatrix(s.matrix) : "";
+
     return (
       '<section class="public-security section section--alt" id="security" data-section-id="security">' +
       '<div class="container public-security__grid"><div>' +
       '<header class="section-header section-header--start reveal">' +
       "<h2>" + esc(s.title) + "</h2></header>" +
       '<ul class="security-points">' + points + "</ul></div>" +
-      renderSecurityMatrix(s.matrix) +
+      matrixHtml +
       "</div></section>"
     );
   }
@@ -1068,7 +1147,10 @@
     }
 
     var ctaHtml = "";
-    if (f.cta && f.cta.text) {
+    if (f.cta && f.cta.button) {
+      ctaHtml =
+        '<div class="public-faq__cta reveal">' + renderSectionInlineCta(f.cta) + "</div>";
+    } else if (f.cta && f.cta.text) {
       var waMsg =
         f.cta.message ||
         (content.whatsappCta && content.whatsappCta.message) ||
@@ -1210,6 +1292,8 @@
         "</div>";
     }
 
+    var sectionCtaHtml = p.cta ? renderSectionInlineCta(p.cta) : "";
+
     return (
       '<section class="public-pricing section" id="pricing" data-section-id="pricing">' +
       '<div class="container"><header class="section-header reveal">' +
@@ -1224,6 +1308,7 @@
       helperHtml +
       trustNote +
       renderPricingAddons(p.addons) +
+      sectionCtaHtml +
       "</div></section>"
     );
   }
@@ -1484,7 +1569,7 @@
       : "";
 
     return (
-      '<section class="section section--alt public-contact" id="contact" data-section-id="contact">' +
+      '<section class="section section--alt public-contact public-contact--final" id="contact" data-section-id="contact">' +
       '<div class="container contact-grid"><header class="section-header reveal">' +
       "<h2>" +
       esc(c.title) +
@@ -1544,6 +1629,8 @@
 
   var sectionRenderers = {
     hero: { flag: "showHero", render: renderHero },
+    whyNow: { flag: "showWhyNow", render: renderWhyNow },
+    whatYouGain: { flag: "showWhatYouGain", render: renderWhatYouGain },
     intelligenceStrip: { flag: "showIntelligenceStrip", render: renderIntelligenceStrip },
     beforeAfter: { flag: "showBeforeAfter", render: renderBeforeAfter },
     commandCenter: { flag: "showCommandCenter", render: renderCommandCenter },

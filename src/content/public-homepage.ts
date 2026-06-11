@@ -6,6 +6,8 @@
 
 export type SectionId =
   | "hero"
+  | "whyNow"
+  | "whatYouGain"
   | "intelligenceStrip"
   | "beforeAfter"
   | "commandCenter"
@@ -33,6 +35,8 @@ export type SectionId =
 
 export interface HomepageSectionVisibility {
   showHero: boolean;
+  showWhyNow: boolean;
+  showWhatYouGain: boolean;
   showIntelligenceStrip: boolean;
   showBeforeAfter: boolean;
   showCommandCenter: boolean;
@@ -276,6 +280,16 @@ export interface PublicHomepageContent {
   sectionOrder: SectionId[];
   sections: HomepageSectionVisibility;
   hero: HomepageHero;
+  whyNow?: {
+    title: string;
+    text: string;
+    cards: { icon: string; title: string }[];
+  };
+  whatYouGain?: {
+    title: string;
+    subtitle?: string;
+    cards: { icon: string; title: string }[];
+  };
   modules: {
     title: string;
     subtitle: string;
@@ -373,6 +387,7 @@ export interface PublicHomepageContent {
   security: {
     title: string;
     matrixTitle?: string;
+    showMatrix?: boolean;
     points: { id: string; icon: string; text: string }[];
     matrix?: {
       columns: string[];
@@ -405,7 +420,8 @@ export interface PublicHomepageContent {
     cta?: {
       title?: string;
       text: string;
-      buttonLabel: string;
+      button?: HomepageCta;
+      buttonLabel?: string;
       message?: string;
     };
   };
@@ -425,6 +441,10 @@ export interface PublicHomepageContent {
     currencyNote?: string;
     helper?: {
       title: string;
+      text: string;
+      button: HomepageCta;
+    };
+    cta?: {
       text: string;
       button: HomepageCta;
     };

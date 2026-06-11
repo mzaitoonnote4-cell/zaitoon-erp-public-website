@@ -50,18 +50,19 @@
 
     hero: {
       eyebrow: "Enter the world of professional company management",
-      headlineBefore: "Control every detail of your business with",
+      headlineBefore: "Turn your business management into a clear command center with",
       headlineHighlight: "ZA ERP",
       subtitle:
-        "ZA ERP is a cloud-based business management platform that connects sales, inventory, customers, employees, permissions, payments, and reports in one clear system.",
+        "A cloud-based Arabic ERP platform that helps connect sales, inventory, customers, employees, permissions, and reports in one organized experience.",
       ctas: [
-        { label: "Book a Demo", href: "#contact", variant: "gold" },
-        { label: "Explore Features", href: "#features", variant: "outline" }
+        { label: "Request a Demo", href: "#contact", variant: "gold" },
+        { label: "See How It Works", href: "#getting-started", variant: "outline" }
       ],
       trustBadges: [
-        { icon: "shield", label: "Secure Cloud Platform" },
-        { icon: "refresh", label: "Continuous Updates" },
-        { icon: "chat", label: "Dedicated Support" }
+        { icon: "decisions", label: "Structured Pilot Experience" },
+        { icon: "flexibility", label: "Arabic & English Interface" },
+        { icon: "shield", label: "Role-Based Permissions" },
+        { icon: "indicators", label: "Clearer Owner Reports" }
       ],
       mockup: {
         mode: "composed",
@@ -87,6 +88,29 @@
         { id: "stock", label: "Updated stock", position: "top-end" },
         { id: "perms", label: "Secure permissions", position: "bottom-start" },
         { id: "reports", label: "Instant reports", position: "bottom-end" }
+      ]
+    },
+
+    whyNow: {
+      title: "Why now?",
+      text:
+        "As invoices, products, employees, and branches increase, relying only on notebooks and Excel becomes harder. ZA ERP helps you move gradually toward clearer management before daily confusion becomes costly.",
+      cards: [
+        { icon: "flexibility", title: "Growth needs a clearer system" },
+        { icon: "efficiency", title: "Small errors can become costly" },
+        { icon: "indicators", title: "Decisions need faster data" }
+      ]
+    },
+
+    whatYouGain: {
+      title: "What do you gain by organizing your business with ZA ERP?",
+      cards: [
+        { icon: "sales", title: "Clearer sales visibility" },
+        { icon: "inventory", title: "Better inventory follow-up" },
+        { icon: "employees", title: "Organized employee permissions" },
+        { icon: "indicators", title: "Reports for better decisions" },
+        { icon: "decisions", title: "A suitable Pilot experience" },
+        { icon: "operations", title: "Scalability as your business grows" }
       ]
     },
 
@@ -335,9 +359,9 @@
         }
       ],
       cta: {
-        text: "Is your business different? Contact us and we’ll explain how ZA ERP can fit your workflow.",
+        text: "Want to know if ZA ERP fits your business?",
         button: {
-          label: "Ask if ZA ERP fits your business",
+          label: "Request an initial review",
           href: "#contact",
           variant: "gold"
         }
@@ -381,9 +405,9 @@
         }
       ],
       cta: {
-        text: "Ready to see how ZA ERP can fit your business workflow?",
+        text: "Request an initial review",
         button: {
-          label: "Request a Demo",
+          label: "Start with a structured Pilot",
           href: "#contact",
           variant: "gold"
         }
@@ -497,14 +521,16 @@
     },
 
     security: {
-      title: "Full control over who sees what inside your company",
+      title: "Trust, security, and organized permissions",
       matrixTitle: "Security and permissions built for businesses",
+      showMatrix: true,
       points: [
-        { id: "roles", icon: "employees", text: "Permissions by employee role" },
-        { id: "isolation", icon: "security", text: "Isolated data per company" },
-        { id: "access", icon: "shield", text: "Block unauthorized access" },
-        { id: "audit", icon: "indicators", text: "Operational audit trail" },
-        { id: "manager", icon: "decisions", text: "Manager control over user visibility" }
+        { id: "isolation", icon: "security", text: "Company data separation" },
+        { id: "roles", icon: "employees", text: "Permissions based on employee roles" },
+        { id: "domain", icon: "shield", text: "Platform login through a separate domain" },
+        { id: "legal", icon: "decisions", text: "Clear Privacy and Terms pages" },
+        { id: "analytics", icon: "indicators", text: "Website analytics without selling visitor data" },
+        { id: "scaling", icon: "flexibility", text: "Designed for gradual scaling" }
       ],
       matrix: {
         columns: ["Sales", "Inventory", "Reports", "Settings"],
@@ -575,9 +601,9 @@
         ]
       },
       cta: {
-        text: "Want to know whether ZA ERP fits your business?",
+        text: "Start with a structured Pilot",
         button: {
-          label: "Request an Initial Review",
+          label: "Request an initial review",
           href: "#contact",
           variant: "gold"
         }
@@ -693,11 +719,12 @@
         }
       ],
       cta: {
-        title: "Still have a question?",
-        text: "Contact us and we’ll explain how ZA ERP can fit your business workflow.",
-        buttonLabel: "Ask us on WhatsApp",
-        message:
-          "Hello, I have a question about ZA ERP before requesting a demo.\n\nBusiness type:\nNumber of users:"
+        text: "Want to know if ZA ERP fits your business?",
+        button: {
+          label: "Request an initial review",
+          href: "#contact",
+          variant: "gold"
+        }
       }
     },
 
@@ -724,6 +751,14 @@
         text: "Share your business type, users, and branches, and we’ll help you choose the most suitable Pilot plan.",
         button: {
           label: "Help me choose a plan",
+          href: "#contact",
+          variant: "gold"
+        }
+      },
+      cta: {
+        text: "Want to know if ZA ERP fits your business?",
+        button: {
+          label: "Request an initial review",
           href: "#contact",
           variant: "gold"
         }
@@ -886,9 +921,9 @@
     },
 
     contact: {
-      title: "Request a ZA ERP Demo",
+      title: "Start with an initial business review",
       subtitle:
-        "Share your business details and we’ll help you understand how ZA ERP can fit your workflow.",
+        "Share your business details and we’ll help you understand the suitable plan and how to begin a Pilot experience.",
       submitLabel: "Send Request via WhatsApp",
       submitHelper: "We’ll review the details and suggest the suitable next step.",
       privacyNote:
