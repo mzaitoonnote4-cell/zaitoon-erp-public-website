@@ -293,7 +293,20 @@ export interface PublicHomepageContent {
   };
   industries: {
     title: string;
-    items: { id: string; icon: string; title: string }[];
+    subtitle?: string;
+    categories?: { id: string; label: string }[];
+    items: {
+      id: string;
+      icon: string;
+      title: string;
+      description?: string;
+      category?: string;
+      visible?: boolean;
+    }[];
+    cta?: {
+      text: string;
+      button: HomepageCta;
+    };
   };
   intelligenceStrip?: {
     label: string;

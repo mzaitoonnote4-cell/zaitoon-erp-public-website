@@ -252,15 +252,97 @@
     },
 
     industries: {
-      title: "مصممة لتناسب طبيعة أعمال الشركات والمتاجر",
+      title: "لمن صُممت ZA ERP؟",
+      subtitle:
+        "منصة مرنة تناسب الشركات والمتاجر التي تحتاج إلى إدارة أوضح للمبيعات، المخزون، العملاء، الموظفين، والصلاحيات.",
+      categories: [
+        { id: "trade-sales", label: "تجارة ومبيعات" },
+        { id: "inventory-distribution", label: "مخزون وتوزيع" },
+        { id: "service-maintenance", label: "خدمات وصيانة" },
+        { id: "management-permissions", label: "إدارة وصلاحيات" }
+      ],
       items: [
-        { id: "trade", icon: "sales", title: "شركات تجارة عامة" },
-        { id: "retail", icon: "inventory", title: "متاجر ومخازن" },
-        { id: "distribution", icon: "purchases", title: "شركات توزيع" },
-        { id: "showrooms", icon: "customers", title: "معارض ومبيعات" },
-        { id: "service", icon: "maintenance", title: "شركات صيانة وخدمات" },
-        { id: "branches", icon: "operations", title: "فروع متعددة" }
-      ]
+        {
+          id: "trading",
+          icon: "sales",
+          category: "trade-sales",
+          visible: true,
+          title: "شركات التجارة العامة",
+          description:
+            "إدارة المبيعات، العملاء، الفواتير، المخزون، والتحصيل من مكان واحد."
+        },
+        {
+          id: "stores",
+          icon: "inventory",
+          category: "inventory-distribution",
+          visible: true,
+          title: "المتاجر والمخازن",
+          description:
+            "متابعة المنتجات والكميات والتنبيهات وحركة المخزون بشكل أوضح."
+        },
+        {
+          id: "distribution",
+          icon: "purchases",
+          category: "inventory-distribution",
+          visible: true,
+          title: "شركات التوزيع",
+          description:
+            "تنظيم الطلبات، العملاء، الفروع، التوصيل، ومتابعة التحصيل."
+        },
+        {
+          id: "showrooms",
+          icon: "customers",
+          category: "trade-sales",
+          visible: true,
+          title: "معارض ومراكز البيع",
+          description:
+            "إدارة عمليات البيع اليومية، الفواتير، العملاء، والموظفين بسهولة."
+        },
+        {
+          id: "service",
+          icon: "maintenance",
+          category: "service-maintenance",
+          visible: true,
+          title: "شركات الصيانة والخدمات",
+          description:
+            "تنظيم طلبات الخدمة، قطع الغيار، الفنيين، الفوترة، ومتابعة الحالة."
+        },
+        {
+          id: "multi-branch",
+          icon: "operations",
+          category: "management-permissions",
+          visible: true,
+          title: "الشركات متعددة الفروع",
+          description:
+            "متابعة المبيعات والمخزون والصلاحيات لكل فرع من لوحة واحدة."
+        },
+        {
+          id: "smb",
+          icon: "flexibility",
+          category: "management-permissions",
+          visible: true,
+          title: "المشاريع الصغيرة والمتوسطة",
+          description:
+            "حل عملي للشركات التي تريد الانتقال من الدفاتر و Excel إلى نظام واضح."
+        },
+        {
+          id: "permissions",
+          icon: "security",
+          category: "management-permissions",
+          visible: true,
+          title: "الشركات التي تحتاج صلاحيات دقيقة",
+          description:
+            "تحديد من يرى ماذا داخل الشركة حسب الدور والمسؤولية."
+        }
+      ],
+      cta: {
+        text: "هل نشاطك مختلف؟ تواصل معنا لنوضح كيف يمكن تكييف ZA ERP مع طريقة عمل شركتك.",
+        button: {
+          label: "استفسر عن ملاءمة المنصة لنشاطك",
+          href: "#contact",
+          variant: "gold"
+        }
+      }
     },
 
     howItWorks: {

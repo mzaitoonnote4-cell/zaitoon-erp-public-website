@@ -251,15 +251,97 @@
     },
 
     industries: {
-      title: "Built for how companies and stores actually work",
+      title: "Who is ZA ERP built for?",
+      subtitle:
+        "A flexible business management platform for companies and stores that need clearer control over sales, inventory, customers, employees, and permissions.",
+      categories: [
+        { id: "trade-sales", label: "Trade & Sales" },
+        { id: "inventory-distribution", label: "Inventory & Distribution" },
+        { id: "service-maintenance", label: "Service & Maintenance" },
+        { id: "management-permissions", label: "Management & Permissions" }
+      ],
       items: [
-        { id: "trade", icon: "sales", title: "General trading companies" },
-        { id: "retail", icon: "inventory", title: "Stores and warehouses" },
-        { id: "distribution", icon: "purchases", title: "Distribution companies" },
-        { id: "showrooms", icon: "customers", title: "Showrooms and sales floors" },
-        { id: "service", icon: "maintenance", title: "Service and maintenance firms" },
-        { id: "branches", icon: "operations", title: "Multi-branch operations" }
-      ]
+        {
+          id: "trading",
+          icon: "sales",
+          category: "trade-sales",
+          visible: true,
+          title: "Trading Companies",
+          description:
+            "Manage sales, customers, invoices, inventory, and collections from one place."
+        },
+        {
+          id: "stores",
+          icon: "inventory",
+          category: "inventory-distribution",
+          visible: true,
+          title: "Stores and Warehouses",
+          description:
+            "Track products, quantities, stock alerts, and inventory movements more clearly."
+        },
+        {
+          id: "distribution",
+          icon: "purchases",
+          category: "inventory-distribution",
+          visible: true,
+          title: "Distribution Businesses",
+          description:
+            "Organize orders, customers, branches, delivery, and payment follow-up."
+        },
+        {
+          id: "showrooms",
+          icon: "customers",
+          category: "trade-sales",
+          visible: true,
+          title: "Showrooms and Sales Centers",
+          description:
+            "Manage daily sales, invoices, customers, and staff with a clear workflow."
+        },
+        {
+          id: "service",
+          icon: "maintenance",
+          category: "service-maintenance",
+          visible: true,
+          title: "Service and Maintenance Companies",
+          description:
+            "Organize service requests, spare parts, technicians, invoicing, and job status."
+        },
+        {
+          id: "multi-branch",
+          icon: "operations",
+          category: "management-permissions",
+          visible: true,
+          title: "Multi-Branch Companies",
+          description:
+            "Monitor sales, inventory, and permissions across branches from one dashboard."
+        },
+        {
+          id: "smb",
+          icon: "flexibility",
+          category: "management-permissions",
+          visible: true,
+          title: "Small and Medium Businesses",
+          description:
+            "A practical step from notebooks and Excel into a structured business system."
+        },
+        {
+          id: "permissions",
+          icon: "security",
+          category: "management-permissions",
+          visible: true,
+          title: "Companies Requiring Strict Permissions",
+          description:
+            "Control who can see what inside the company based on roles and responsibilities."
+        }
+      ],
+      cta: {
+        text: "Is your business different? Contact us and we’ll explain how ZA ERP can fit your workflow.",
+        button: {
+          label: "Ask if ZA ERP fits your business",
+          href: "#contact",
+          variant: "gold"
+        }
+      }
     },
 
     howItWorks: {

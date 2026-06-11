@@ -19,6 +19,7 @@ $files = @(
   "styles.css",
   "styles-polish.css",
   "styles-experience.css",
+  "styles-industries.css",
   "styles-i18n.css",
   "styles-legal.css",
   "styles-updates.css",

@@ -578,23 +578,90 @@
     );
   }
 
+  function renderIndustryCard(item) {
+    return (
+      '<article class="industry-card industry-card--glass reveal" data-industry-id="' +
+      esc(item.id) +
+      '">' +
+      '<div class="industry-card__icon" aria-hidden="true">' +
+      icons.get(item.icon) +
+      "</div>" +
+      "<h3>" +
+      esc(item.title) +
+      "</h3>" +
+      (item.description
+        ? '<p class="industry-card__desc">' + esc(item.description) + "</p>"
+        : "") +
+      "</article>"
+    );
+  }
+
   function renderIndustries() {
     var ind = content.industries;
-    var cards = ind.items
-      .map(function (item) {
-        return (
-          '<article class="industry-card reveal">' +
-          '<div class="industry-card__icon" aria-hidden="true">' + icons.get(item.icon) + "</div>" +
-          "<h3>" + esc(item.title) + "</h3></article>"
-        );
-      })
-      .join("");
+    if (!ind || !ind.items || !ind.items.length) return "";
+
+    var visibleItems = ind.items.filter(function (item) {
+      return item.visible !== false;
+    });
+    if (!visibleItems.length) return "";
+
+    var groupsHtml = "";
+    var categories = ind.categories || [];
+
+    if (categories.length) {
+      groupsHtml = categories
+        .map(function (cat) {
+          var catItems = visibleItems.filter(function (item) {
+            return item.category === cat.id;
+          });
+          if (!catItems.length) return "";
+          var cards = catItems.map(renderIndustryCard).join("");
+          return (
+            '<div class="industries-group reveal" data-industry-group="' +
+            esc(cat.id) +
+            '">' +
+            '<h3 class="industries-group__title">' +
+            esc(cat.label) +
+            "</h3>" +
+            '<div class="industries-grid">' +
+            cards +
+            "</div></div>"
+          );
+        })
+        .join("");
+    } else {
+      groupsHtml =
+        '<div class="industries-grid">' +
+        visibleItems.map(renderIndustryCard).join("") +
+        "</div>";
+    }
+
+    var ctaHtml = "";
+    if (ind.cta && ind.cta.text && ind.cta.button) {
+      ctaHtml =
+        '<div class="public-industries__cta reveal">' +
+        "<p>" +
+        esc(ind.cta.text) +
+        "</p>" +
+        renderCta(ind.cta.button, "btn--lg") +
+        "</div>";
+    }
 
     return (
       '<section class="public-industries section section--alt" id="industries" data-section-id="industries">' +
       '<div class="container"><header class="section-header reveal">' +
-      "<h2>" + esc(ind.title) + "</h2></header>" +
-      '<div class="industries-grid">' + cards + "</div></div></section>"
+      "<h2>" +
+      esc(ind.title) +
+      "</h2>" +
+      (ind.subtitle
+        ? '<p class="section-header__lead">' + esc(ind.subtitle) + "</p>"
+        : "") +
+      "</header>" +
+      '<div class="public-industries__groups">' +
+      groupsHtml +
+      "</div>" +
+      ctaHtml +
+      "</div></section>"
     );
   }
 
