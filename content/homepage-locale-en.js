@@ -927,7 +927,29 @@
       submitLabel: "Send Request via WhatsApp",
       submitHelper: "We’ll review the details and suggest the suitable next step.",
       privacyNote:
-        "This form does not send your data to a database. It opens a prepared WhatsApp message using the information you entered.",
+        "This form does not send your data to a database. It opens a prepared WhatsApp message or email using the information you entered.",
+      emailOption: {
+        label: "Or contact us through the official email",
+        address: "info@zaitoonerp.com"
+      },
+      emailMessage: {
+        subject: "ZA ERP Demo Request",
+        greeting: "Hello,",
+        intro: "I would like to request a ZA ERP demo.",
+        sectionTitle: "Request details:",
+        bulletPrefix: "* ",
+        name: "Name",
+        phone: "Phone / WhatsApp",
+        company: "Company Name",
+        businessType: "Business Type",
+        users: "Expected Users",
+        branches: "Branches",
+        problem: "Main Problem",
+        notes: "Additional Notes",
+        outro:
+          "I would like to understand how ZA ERP can fit my business workflow and which Pilot plan may be suitable.",
+        emptyValue: "—"
+      },
       businessTypeOptions: [
         "Trading",
         "Store or Warehouse",
@@ -1040,6 +1062,7 @@
       ],
       contact: {
         email: "info@zaitoonerp.com",
+        emailLabel: "Official email",
         phone: "+964 780 850 0591",
         phoneHref: "tel:+9647808500591",
         location: "Baghdad, Iraq"

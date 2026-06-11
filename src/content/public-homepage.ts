@@ -185,6 +185,7 @@ export interface HomepageFooterColumn {
 
 export interface HomepageContactDetails {
   email: string;
+  emailLabel?: string;
   phone: string;
   phoneHref: string;
   location: string;
@@ -471,7 +472,29 @@ export interface PublicHomepageContent {
     title: string;
     subtitle: string;
     submitLabel: string;
+    submitHelper?: string;
     privacyNote?: string;
+    emailOption?: {
+      label: string;
+      address: string;
+    };
+    emailMessage?: {
+      subject: string;
+      greeting?: string;
+      intro?: string;
+      sectionTitle?: string;
+      bulletPrefix?: string;
+      name: string;
+      phone: string;
+      company: string;
+      businessType: string;
+      users: string;
+      branches: string;
+      problem: string;
+      notes: string;
+      outro?: string;
+      emptyValue?: string;
+    };
     businessTypeOptions?: string[];
     problemOptions?: string[];
     branchOptions?: { value: string; label: string }[];

@@ -238,31 +238,78 @@
     return valid;
   }
 
+  function demoRequestBullet(prefix, label, value, empty) {
+    var v = value && value.trim() ? value.trim() : empty;
+    return (prefix || "* ") + label + ": " + v;
+  }
+
   function buildDemoWhatsAppMessage(contact) {
     var wm = (contact && contact.whatsappMessage) || {};
     var empty = wm.emptyValue || "—";
 
-    function bullet(label, value) {
-      var v = value && value.trim() ? value.trim() : empty;
-      return (wm.bulletPrefix || "* ") + label + ": " + v;
-    }
-
     var lines = [wm.intro || "ZA ERP demo request", "", wm.sectionTitle || "", ""];
 
-    lines.push(bullet(wm.name || "Name", getFieldValue("name")));
-    lines.push(bullet(wm.phone || "Phone", getFieldValue("phone")));
-    lines.push(bullet(wm.company || "Company", getFieldValue("company")));
-    lines.push(bullet(wm.businessType || "Business type", getSelectLabel("business-type")));
-    lines.push(bullet(wm.users || "Expected users", getSelectLabel("users")));
-    lines.push(bullet(wm.branches || "Branches", getSelectLabel("branches")));
-    lines.push(bullet(wm.problem || "Main problem", getSelectLabel("problem")));
-    lines.push(bullet(wm.notes || "Notes", getFieldValue("notes")));
+    lines.push(demoRequestBullet(wm.bulletPrefix, wm.name || "Name", getFieldValue("name"), empty));
+    lines.push(demoRequestBullet(wm.bulletPrefix, wm.phone || "Phone", getFieldValue("phone"), empty));
+    lines.push(demoRequestBullet(wm.bulletPrefix, wm.company || "Company", getFieldValue("company"), empty));
+    lines.push(
+      demoRequestBullet(wm.bulletPrefix, wm.businessType || "Business type", getSelectLabel("business-type"), empty)
+    );
+    lines.push(demoRequestBullet(wm.bulletPrefix, wm.users || "Expected users", getSelectLabel("users"), empty));
+    lines.push(demoRequestBullet(wm.bulletPrefix, wm.branches || "Branches", getSelectLabel("branches"), empty));
+    lines.push(demoRequestBullet(wm.bulletPrefix, wm.problem || "Main problem", getSelectLabel("problem"), empty));
+    lines.push(demoRequestBullet(wm.bulletPrefix, wm.notes || "Notes", getFieldValue("notes"), empty));
 
     if (wm.outro) {
       lines.push("", wm.outro);
     }
 
     return lines.join("\n");
+  }
+
+  function buildDemoEmailMessage(contact) {
+    var em = (contact && contact.emailMessage) || {};
+    var empty = em.emptyValue || "—";
+    var lines = [];
+
+    if (em.greeting) lines.push(em.greeting);
+    if (em.intro) lines.push(em.intro);
+    lines.push("");
+    if (em.sectionTitle) lines.push(em.sectionTitle);
+
+    lines.push(demoRequestBullet(em.bulletPrefix, em.name || "Name", getFieldValue("name"), empty));
+    lines.push(demoRequestBullet(em.bulletPrefix, em.phone || "Phone", getFieldValue("phone"), empty));
+    lines.push(demoRequestBullet(em.bulletPrefix, em.company || "Company", getFieldValue("company"), empty));
+    lines.push(
+      demoRequestBullet(em.bulletPrefix, em.businessType || "Business type", getSelectLabel("business-type"), empty)
+    );
+    lines.push(demoRequestBullet(em.bulletPrefix, em.users || "Expected users", getSelectLabel("users"), empty));
+    lines.push(demoRequestBullet(em.bulletPrefix, em.branches || "Branches", getSelectLabel("branches"), empty));
+    lines.push(demoRequestBullet(em.bulletPrefix, em.problem || "Main problem", getSelectLabel("problem"), empty));
+    lines.push(demoRequestBullet(em.bulletPrefix, em.notes || "Notes", getFieldValue("notes"), empty));
+
+    if (em.outro) {
+      lines.push("");
+      lines.push(em.outro);
+    }
+
+    return lines.join("\n");
+  }
+
+  function buildMailtoHref(contact) {
+    var address =
+      (contact && contact.emailOption && contact.emailOption.address) || "info@zaitoonerp.com";
+    var em = (contact && contact.emailMessage) || {};
+    var subject = em.subject || "ZA ERP Demo Request";
+    var body = buildDemoEmailMessage(contact);
+    return (
+      "mailto:" +
+      address +
+      "?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(body)
+    );
   }
 
   function initContactForm() {
@@ -293,6 +340,18 @@
         "noopener,noreferrer"
       );
     });
+
+    var emailBtn = document.getElementById("contact-email-btn");
+    if (emailBtn) {
+      emailBtn.addEventListener("click", function () {
+        var c = getContent();
+        var contact = c && c.contact ? c.contact : {};
+
+        if (!validateDemoForm(form, contact)) return;
+
+        window.location.href = buildMailtoHref(contact);
+      });
+    }
   }
 
   function initTiltMockup() {

@@ -1568,6 +1568,18 @@
       ? '<p class="contact-form__privacy">' + esc(c.privacyNote) + "</p>"
       : "";
 
+    var emailAltHtml = "";
+    if (c.emailOption && c.emailOption.address) {
+      emailAltHtml =
+        '<div class="contact-form__email-alt">' +
+        '<p class="contact-form__email-intro">' +
+        esc(c.emailOption.label) +
+        "</p>" +
+        '<button type="button" class="contact-form__email-link" id="contact-email-btn">' +
+        esc(c.emailOption.address) +
+        "</button></div>";
+    }
+
     return (
       '<section class="section section--alt public-contact public-contact--final" id="contact" data-section-id="contact">' +
       '<div class="container contact-grid"><header class="section-header reveal">' +
@@ -1585,7 +1597,9 @@
         : "") +
       '<button type="submit" class="btn btn--gold btn--lg btn--block">' +
       esc(c.submitLabel) +
-      "</button></div>" +
+      "</button>" +
+      emailAltHtml +
+      "</div>" +
       privacyHtml +
       "</form></div></section>"
     );
@@ -1613,9 +1627,21 @@
       })
       .join("");
 
+    var emailLabelHtml = f.contact.emailLabel
+      ? '<span class="footer-contact__label">' + esc(f.contact.emailLabel) + ": </span>"
+      : "";
+
     var contactCol =
       '<div class="footer-col"><h4>' + esc(uiText("footerContact", "Contact us")) + '</h4><ul class="footer-contact">' +
-      "<li>" + icons.get("mail") + '<a href="mailto:' + esc(f.contact.email) + '">' + esc(f.contact.email) + "</a></li>" +
+      "<li>" +
+      icons.get("mail") +
+      '<span class="footer-contact__item">' +
+      emailLabelHtml +
+      '<a href="mailto:' +
+      esc(f.contact.email) +
+      '">' +
+      esc(f.contact.email) +
+      "</a></span></li>" +
       "<li>" + icons.get("phone") + '<a href="' + esc(f.contact.phoneHref) + '" dir="ltr">' + esc(f.contact.phone) + "</a></li>" +
       "<li>" + icons.get("location") + "<span>" + esc(f.contact.location) + "</span></li></ul></div>";
 

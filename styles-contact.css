@@ -66,6 +66,65 @@ html[dir="rtl"] .contact-form--demo .form-row select {
   box-shadow: 0 8px 28px var(--accent-inset);
 }
 
+.contact-form__email-alt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact-form__email-intro {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.contact-form__email-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.35rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  background: rgba(212, 168, 83, 0.06);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease);
+  direction: ltr;
+}
+
+.contact-form__email-link:hover {
+  color: var(--text);
+  background: rgba(212, 168, 83, 0.1);
+  border-color: var(--accent-light);
+}
+
+body.mode-day .contact-form__email-link {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.footer-contact__item {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.footer-contact__label {
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
 .contact-form--demo .form-row input,
 .contact-form--demo .form-row select,
 .contact-form--demo .form-row textarea {
