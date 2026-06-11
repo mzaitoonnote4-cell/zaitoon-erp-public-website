@@ -32,6 +32,7 @@ const rootFiles = [
   "styles-updates.css",
   "styles-about.css",
   "styles-use-case.css",
+  "styles-traditional-compare.css",
   "script.js"
 ];
 

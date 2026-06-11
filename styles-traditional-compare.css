@@ -1,0 +1,93 @@
+/* Traditional vs ZA ERP comparison — homepage section */
+
+.public-traditional-vs {
+  padding-block: 2.5rem;
+}
+
+.traditional-vs-grid .compare-panel {
+  padding: 1.2rem 1.1rem;
+}
+
+.traditional-signs {
+  margin-top: 1.75rem;
+  padding: 1.35rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.traditional-signs h3 {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--accent-light);
+  text-align: center;
+}
+
+.traditional-signs__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem 1.25rem;
+}
+
+.traditional-signs__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.traditional-signs__icon {
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: 0.45rem;
+  border-radius: 50%;
+  background: rgba(212, 168, 83, 0.55);
+  box-shadow: 0 0 6px rgba(212, 168, 83, 0.35);
+}
+
+.traditional-vs-cta {
+  margin-top: 1.75rem;
+  padding: 1.5rem 1.35rem;
+  text-align: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent-border);
+  background: linear-gradient(160deg, rgba(212, 168, 83, 0.07), rgba(16, 185, 129, 0.04));
+}
+
+.traditional-vs-cta p {
+  margin: 0 0 1.15rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .traditional-signs__list {
+    grid-template-columns: 1fr;
+  }
+
+  .traditional-signs h3 {
+    text-align: start;
+  }
+
+  .traditional-vs-cta {
+    padding: 1.2rem 1rem;
+  }
+
+  .traditional-vs-cta p {
+    font-size: 0.95rem;
+    text-align: start;
+  }
+
+  .traditional-vs-cta .btn {
+    width: 100%;
+  }
+}

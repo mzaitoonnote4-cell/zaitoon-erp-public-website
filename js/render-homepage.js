@@ -740,6 +740,97 @@
     );
   }
 
+  function renderTraditionalVsZaerp() {
+    var c = content.traditionalVsZaerp;
+    if (!c || !c.title) return "";
+
+    var beforeItems = (c.before.items || [])
+      .map(function (item) {
+        return (
+          '<li class="compare-panel__item">' +
+          '<span class="compare-panel__mark compare-panel__mark--warn" aria-hidden="true"></span>' +
+          esc(item) +
+          "</li>"
+        );
+      })
+      .join("");
+    var afterItems = (c.after.items || [])
+      .map(function (item) {
+        return (
+          '<li class="compare-panel__item">' +
+          '<span class="compare-panel__mark compare-panel__mark--ok" aria-hidden="true">✓</span>' +
+          esc(item) +
+          "</li>"
+        );
+      })
+      .join("");
+
+    var signsHtml = "";
+    if (c.signs && c.signs.items && c.signs.items.length) {
+      var signItems = c.signs.items
+        .map(function (item) {
+          return (
+            '<li class="traditional-signs__item">' +
+            '<span class="traditional-signs__icon" aria-hidden="true"></span>' +
+            esc(item) +
+            "</li>"
+          );
+        })
+        .join("");
+      signsHtml =
+        '<div class="traditional-signs reveal">' +
+        "<h3>" +
+        esc(c.signs.title) +
+        "</h3>" +
+        '<ul class="traditional-signs__list">' +
+        signItems +
+        "</ul></div>";
+    }
+
+    var ctaHtml = "";
+    if (c.cta && c.cta.text && c.cta.button) {
+      ctaHtml =
+        '<div class="traditional-vs-cta reveal">' +
+        "<p>" +
+        esc(c.cta.text) +
+        "</p>" +
+        renderCta(c.cta.button, "btn--lg") +
+        "</div>";
+    }
+
+    return (
+      '<section class="public-traditional-vs section" id="traditional-vs-zaerp" data-section-id="traditional-vs-zaerp">' +
+      '<div class="container"><header class="section-header reveal">' +
+      "<h2>" +
+      esc(c.title) +
+      "</h2>" +
+      (c.subtitle
+        ? '<p class="section-header__lead">' + esc(c.subtitle) + "</p>"
+        : "") +
+      "</header>" +
+      '<div class="before-after-grid traditional-vs-grid">' +
+      '<article class="compare-panel compare-panel--before reveal">' +
+      '<span class="compare-panel__badge">' +
+      esc(c.before.label) +
+      "</span>" +
+      '<ul class="compare-panel__list">' +
+      beforeItems +
+      "</ul></article>" +
+      '<div class="before-after-divider reveal" aria-hidden="true"><span></span></div>' +
+      '<article class="compare-panel compare-panel--after reveal">' +
+      '<span class="compare-panel__badge compare-panel__badge--gold">' +
+      esc(c.after.label) +
+      "</span>" +
+      '<ul class="compare-panel__list">' +
+      afterItems +
+      "</ul></article>" +
+      "</div>" +
+      signsHtml +
+      ctaHtml +
+      "</div></section>"
+    );
+  }
+
   function renderHowItWorks() {
     var h = content.howItWorks;
     var steps = h.steps
@@ -1444,6 +1535,7 @@
     industries: { flag: "showIndustries", render: renderIndustries },
     gettingStarted: { flag: "showGettingStarted", render: renderGettingStarted },
     useCaseTeaser: { flag: "showUseCaseTeaser", render: renderUseCaseTeaser },
+    traditionalVsZaerp: { flag: "showTraditionalVsZaerp", render: renderTraditionalVsZaerp },
     howItWorks: { flag: "showHowItWorks", render: renderHowItWorks },
     productDepth: { flag: "showProductDepth", render: renderProductDepth },
     security: { flag: "showSecurity", render: renderSecurity },

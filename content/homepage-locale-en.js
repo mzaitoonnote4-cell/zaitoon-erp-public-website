@@ -401,6 +401,55 @@
       }
     },
 
+    traditionalVsZaerp: {
+      title: "Why move from Excel and notebooks to ZA ERP?",
+      subtitle:
+        "As daily operations grow, notebooks and spreadsheets alone become harder to manage for sales, inventory, customers, and permissions.",
+      before: {
+        label: "Traditional Management",
+        items: [
+          "Data scattered between notebooks and Excel",
+          "Difficulty knowing actual inventory",
+          "Repeated errors in invoices or updates",
+          "No clear employee permissions",
+          "Harder customer balance follow-up",
+          "Reports require time and effort",
+          "Branch follow-up becomes more complex"
+        ]
+      },
+      after: {
+        label: "With ZA ERP",
+        items: [
+          "Organized data in one place",
+          "Clearer connection between invoices and inventory",
+          "Better customer and payment follow-up",
+          "Permissions based on employee roles",
+          "Reports that help owners monitor the business",
+          "Clearer visibility over sales and inventory",
+          "Scalable as the company grows"
+        ]
+      },
+      signs: {
+        title: "When do you know your business needs a clearer system?",
+        items: [
+          "When actual inventory is hard to know quickly",
+          "When daily or monthly reports are delayed",
+          "When work depends on one person knowing all details",
+          "When you cannot track who edited, sold, or collected",
+          "When branches or employees start increasing",
+          "When repeated errors become costly"
+        ]
+      },
+      cta: {
+        text: "If notebooks and spreadsheets no longer feel enough, it may be time to explore ZA ERP.",
+        button: {
+          label: "See how ZA ERP can organize your work",
+          href: "#contact",
+          variant: "gold"
+        }
+      }
+    },
+
     howItWorks: {
       title: "From the first sale to the final report — everything connected",
       steps: [
