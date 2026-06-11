@@ -1,0 +1,9 @@
+{
+  "name": "zaitoon-erp-public-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ZA ERP public marketing website — static build for Cloudflare Pages",
+  "scripts": {
+    "build": "node scripts/build-production.mjs"
+  }
+}
