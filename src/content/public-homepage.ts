@@ -22,6 +22,7 @@ export type SectionId =
   | "pricing"
   | "pilotUrgencyCta"
   | "pilot"
+  | "platformUpdates"
   | "faq"
   | "cta"
   | "whatsappCta"
@@ -47,6 +48,7 @@ export interface HomepageSectionVisibility {
   showPricing: boolean;
   showPilotUrgencyCTA: boolean;
   showPilot: boolean;
+  showPlatformUpdates: boolean;
   showFaq: boolean;
   showCta: boolean;
   showWhatsappCta: boolean;

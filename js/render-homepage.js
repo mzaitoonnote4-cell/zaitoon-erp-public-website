@@ -806,6 +806,33 @@
     );
   }
 
+  function renderPlatformUpdates() {
+    var U = global.ZA_UPDATES;
+    var data = global.UPDATES_CONTENT;
+    if (!U || !data) return "";
+
+    var lang = content.lang || (global.ZA_HOMEPAGE_I18N && global.ZA_HOMEPAGE_I18N.getLang()) || "ar";
+    var copy = data.homepage[lang] || data.homepage.ar;
+    var items = U.getVisibleUpdates(3);
+    if (!items.length) return "";
+
+    var cards = items
+      .map(function (item) {
+        return U.renderUpdateCard(item, lang);
+      })
+      .join("");
+
+    return (
+      '<section class="public-platform-updates section section--alt" id="platform-updates" data-section-id="platform-updates">' +
+      '<div class="container"><header class="section-header reveal">' +
+      "<h2>" + esc(copy.title) + "</h2>" +
+      '<p class="section-header__lead">' + esc(copy.subtitle) + "</p></header>" +
+      '<div class="public-platform-updates__grid">' + cards + "</div>" +
+      '<div class="public-platform-updates__cta reveal">' +
+      '<a href="updates.html" class="btn btn--gold btn--lg">' + esc(copy.cta) + "</a></div></div></section>"
+    );
+  }
+
   function renderNews() {
     var n = content.news;
     if (!n.items.length) return "";
@@ -933,6 +960,7 @@
     faq: { flag: "showFaq", render: renderFaq },
     cta: { flag: "showCta", render: renderCtaSection },
     whatsappCta: { flag: "showWhatsappCta", render: renderWhatsappCta },
+    platformUpdates: { flag: "showPlatformUpdates", render: renderPlatformUpdates },
     news: { flag: "showNews", render: renderNews },
     video: { flag: "showVideo", render: renderVideo },
     contact: { flag: "showContact", render: renderContact }

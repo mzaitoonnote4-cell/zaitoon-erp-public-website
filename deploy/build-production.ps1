@@ -14,12 +14,14 @@ $files = @(
   "index.html",
   "privacy.html",
   "terms.html",
+  "updates.html",
   "favicon.ico",
   "styles.css",
   "styles-polish.css",
   "styles-experience.css",
   "styles-i18n.css",
   "styles-legal.css",
+  "styles-updates.css",
   "script.js"
 )
 
@@ -29,7 +31,8 @@ foreach ($f in $files) {
 
 $contentFiles = @(
   "homepage-content.js",
-  "homepage-locale-en.js"
+  "homepage-locale-en.js",
+  "updates-content.js"
 )
 New-Item -ItemType Directory -Path (Join-Path $Out "content") -Force | Out-Null
 foreach ($f in $contentFiles) {

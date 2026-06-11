@@ -541,6 +541,7 @@
           links: [
             { label: "Blog", href: "#resources" },
             { label: "Guides", href: "#resources" },
+            { label: "Platform Updates", href: "updates.html" },
             { label: "FAQ", href: "#faq" },
             { label: "Support center", href: "#contact" }
           ]

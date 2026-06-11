@@ -542,6 +542,7 @@
           links: [
             { label: "المدونة", href: "#resources" },
             { label: "الأدلة", href: "#resources" },
+            { label: "تحديثات المنصة", href: "updates.html" },
             { label: "الأسئلة الشائعة", href: "#faq" },
             { label: "مركز الدعم", href: "#contact" }
           ]
@@ -643,6 +644,7 @@
       "pricing",
       "pilotUrgencyCta",
       "pilot",
+      "platformUpdates",
       "faq",
       "cta",
       "whatsappCta",
@@ -669,6 +671,7 @@
       showPricing: true,
       showPilotUrgencyCTA: true,
       showPilot: true,
+      showPlatformUpdates: true,
       showFaq: true,
       showCta: true,
       showWhatsappCta: true,

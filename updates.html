@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem("za-erp-language");
+        var isAr = lang !== "en";
+        document.documentElement.lang = isAr ? "ar" : "en";
+        document.documentElement.dir = isAr ? "rtl" : "ltr";
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <title>تحديثات ZA ERP | آخر تطويرات المنصة</title>
+  <meta name="description" content="تابع آخر تحديثات وتطويرات ZA ERP، من تحسينات الموقع وتجربة المستخدم إلى تطويرات المنصة والخدمات.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-polish.css">
+  <link rel="stylesheet" href="styles-i18n.css">
+  <link rel="stylesheet" href="styles-legal.css">
+  <link rel="stylesheet" href="styles-updates.css">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("za-erp-mode");
+        document.documentElement.setAttribute("data-mode", mode === "day" ? "day" : "night");
+      } catch (e) {
+        document.documentElement.setAttribute("data-mode", "night");
+      }
+    })();
+  </script>
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "affb5ebacee24320bdce1dac6c8204f8"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body class="mode-night legal-page updates-page" data-page="updates">
+  <script>
+    (function () {
+      var mode = document.documentElement.getAttribute("data-mode");
+      document.body.classList.remove("mode-day", "mode-night");
+      document.body.classList.add(mode === "day" ? "mode-day" : "mode-night");
+    })();
+  </script>
+
+  <div class="bg-effects" aria-hidden="true">
+    <span class="bg-effects__glow bg-effects__glow--gold"></span>
+    <span class="bg-effects__glow bg-effects__glow--emerald"></span>
+  </div>
+
+  <header class="legal-header">
+    <div class="legal-header__inner container">
+      <a href="index.html" class="brand-lockup brand-lockup--nav brand-lockup--img" dir="ltr">
+        <img class="brand-lockup__img brand-lockup__img--dark" src="assets/za-erp-logo-dark.png" alt="ZA ERP" decoding="async">
+        <img class="brand-lockup__img brand-lockup__img--light" src="assets/za-erp-logo-light.png" alt="ZA ERP" decoding="async">
+      </a>
+      <div class="legal-header__actions">
+        <a class="legal-header__home" href="index.html" data-legal-home-ar>العودة للرئيسية</a>
+        <a class="legal-header__home" href="index.html" data-legal-home-en hidden>Back to home</a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-switch__btn is-active" data-lang-btn="ar" aria-pressed="true">العربية</button>
+          <button type="button" class="lang-switch__btn" data-lang-btn="en" aria-pressed="false">English</button>
+        </div>
+        <button type="button" class="mode-toggle" data-mode-toggle aria-label="Toggle day/night mode">
+          <span class="mode-toggle__icon mode-toggle__icon--sun" aria-hidden="true"></span>
+          <span class="mode-toggle__icon mode-toggle__icon--moon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="legal-article glass-panel" style="padding: 2rem 1.5rem;">
+      <header class="updates-page__header">
+        <h1 id="updates-page-title">تحديثات المنصة</h1>
+        <p class="updates-page__subtitle" id="updates-page-subtitle">آخر التحسينات والتطويرات على منصة ZA ERP والموقع الرسمي.</p>
+      </header>
+
+      <div class="updates-timeline" id="updates-timeline" aria-live="polite"></div>
+
+      <footer class="legal-footer">
+        <nav class="legal-footer__links" aria-label="Legal">
+          <a href="privacy.html" data-legal-footer-privacy-ar>سياسة الخصوصية</a>
+          <a href="privacy.html" data-legal-footer-privacy-en hidden>Privacy Policy</a>
+          <a href="terms.html" data-legal-footer-terms-ar>شروط الاستخدام</a>
+          <a href="terms.html" data-legal-footer-terms-en hidden>Terms of Use</a>
+          <a href="updates.html" aria-current="page" data-legal-footer-updates-ar>تحديثات المنصة</a>
+          <a href="updates.html" aria-current="page" data-legal-footer-updates-en hidden>Platform Updates</a>
+          <a href="index.html" data-legal-footer-home-ar>الرئيسية</a>
+          <a href="index.html" data-legal-footer-home-en hidden>Home</a>
+        </nav>
+        <p>© 2026 ZA ERP</p>
+      </footer>
+    </article>
+  </main>
+
+  <script src="js/icons.js"></script>
+  <script src="content/updates-content.js"></script>
+  <script src="js/updates-shared.js"></script>
+  <script src="js/seo-meta.js"></script>
+  <script src="js/updates-page.js"></script>
+</body>
+</html>
