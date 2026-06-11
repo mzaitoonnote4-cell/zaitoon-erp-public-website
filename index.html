@@ -15,6 +15,21 @@
   </script>
   <title>ZA ERP | نظام عربي متكامل لإدارة الأعمال</title>
   <meta name="description" content="ZA ERP منصة عربية سحابية لإدارة المبيعات، المخزون، المشتريات، المالية، العملاء، الموظفين، الصيانة، العمليات والتقارير من مكان واحد.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:title" content="ZA ERP | نظام عربي متكامل لإدارة الأعمال">
+  <meta property="og:description" content="ZA ERP منصة عربية سحابية لإدارة المبيعات، المخزون، المشتريات، المالية، العملاء، الموظفين، الصيانة، العمليات والتقارير من مكان واحد.">
+  <meta property="og:image" content="https://zaitoonerp.com/assets/og-image.png">
+  <meta property="og:url" content="https://zaitoonerp.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ZA ERP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ZA ERP | نظام عربي متكامل لإدارة الأعمال">
+  <meta name="twitter:description" content="ZA ERP منصة عربية سحابية لإدارة المبيعات، المخزون، المشتريات، المالية، العملاء، الموظفين، الصيانة، العمليات والتقارير من مكان واحد.">
+  <meta name="twitter:image" content="https://zaitoonerp.com/assets/og-image.png">
+  <link rel="canonical" href="https://zaitoonerp.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,6 +40,7 @@
   <script src="content/homepage-locale-en.js"></script>
   <script src="content/homepage-content.js"></script>
   <script src="js/homepage-i18n.js"></script>
+  <script src="js/seo-meta.js"></script>
   <script>
     (function () {
       try {
@@ -33,11 +49,8 @@
       } catch (e) {
         document.documentElement.setAttribute("data-mode", "night");
       }
-      var c = window.HOMEPAGE_CONTENT;
-      if (c && c.seo) {
-        if (c.seo.title) document.title = c.seo.title;
-        var meta = document.querySelector('meta[name="description"]');
-        if (meta && c.seo.description) meta.setAttribute("content", c.seo.description);
+      if (window.ZA_SEO_META && window.HOMEPAGE_CONTENT) {
+        window.ZA_SEO_META.applyHomepageSeo(window.HOMEPAGE_CONTENT);
       }
     })();
   </script>

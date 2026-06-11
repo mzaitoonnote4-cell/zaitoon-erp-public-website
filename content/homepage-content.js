@@ -15,7 +15,7 @@
       title: "ZA ERP | نظام عربي متكامل لإدارة الأعمال",
       description:
         "ZA ERP منصة عربية سحابية لإدارة المبيعات، المخزون، المشتريات، المالية، العملاء، الموظفين، الصيانة، العمليات والتقارير من مكان واحد.",
-      ogImage: null
+      ogImage: "https://zaitoonerp.com/assets/og-image.png"
     },
 
     brand: {

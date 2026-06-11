@@ -949,6 +949,10 @@
   }
 
   function applySeo() {
+    if (global.ZA_SEO_META && typeof global.ZA_SEO_META.applyHomepageSeo === "function") {
+      global.ZA_SEO_META.applyHomepageSeo(content);
+      return;
+    }
     if (content.seo.title) document.title = content.seo.title;
     var meta = document.querySelector('meta[name="description"]');
     if (meta && content.seo.description) meta.setAttribute("content", content.seo.description);

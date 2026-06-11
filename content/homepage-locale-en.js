@@ -14,7 +14,7 @@
       title: "ZA ERP | Cloud ERP Platform for Business Management",
       description:
         "ZA ERP is a cloud-based ERP platform for managing sales, inventory, purchases, finance, customers, employees, service operations, permissions, and business reports.",
-      ogImage: null
+      ogImage: "https://zaitoonerp.com/assets/og-image.png"
     },
 
     brand: {
