@@ -437,8 +437,33 @@ export interface PublicHomepageContent {
     title: string;
     subtitle: string;
     submitLabel: string;
-    activityOptions: string[];
+    privacyNote?: string;
+    businessTypeOptions?: string[];
+    problemOptions?: string[];
+    branchOptions?: { value: string; label: string }[];
     userCountOptions: { label: string; value: string }[];
+    placeholders?: {
+      businessType?: string;
+      users?: string;
+      problem?: string;
+      branches?: string;
+    };
+    validation?: {
+      nameRequired?: string;
+      phoneRequired?: string;
+      businessTypeRequired?: string;
+      problemRequired?: string;
+    };
+    whatsappMessage?: {
+      intro: string;
+      name: string;
+      company: string;
+      businessType: string;
+      users: string;
+      branches: string;
+      problem: string;
+      notes: string;
+    };
     fields: { id: string; label: string; type: string; required: boolean }[];
   };
   footer: {

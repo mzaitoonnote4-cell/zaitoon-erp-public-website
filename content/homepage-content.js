@@ -709,23 +709,72 @@
     },
 
     contact: {
-      title: "احجز عرضاً تجريبياً",
-      subtitle: "املأ النموذج وسنفتح محادثة واتساب مع تفاصيل طلبك.",
+      title: "اطلب تجربة ZA ERP",
+      subtitle:
+        "أرسل لنا معلومات نشاطك وسنساعدك على معرفة كيف يمكن أن تناسب ZA ERP طريقة عمل شركتك.",
       submitLabel: "إرسال عبر واتساب",
-      activityOptions: ["تجارة تجزئة", "تجارة جملة", "مطعم / مقهى", "خدمات", "تصنيع", "أخرى"],
+      privacyNote:
+        "لن يتم إرسال بياناتك إلى قاعدة بيانات من هذا النموذج. سيتم فتح رسالة واتساب جاهزة بالمعلومات التي أدخلتها.",
+      businessTypeOptions: [
+        "تجارة عامة",
+        "متجر أو مخزن",
+        "توزيع",
+        "معرض أو مركز بيع",
+        "صيانة وخدمات",
+        "شركة متعددة الفروع",
+        "نشاط آخر"
+      ],
+      problemOptions: [
+        "تنظيم المبيعات والفواتير",
+        "متابعة المخزون",
+        "صلاحيات الموظفين",
+        "التقارير والإدارة",
+        "متابعة العملاء",
+        "التوصيل والتحصيل",
+        "الصيانة والخدمات",
+        "أخرى"
+      ],
+      branchOptions: [
+        { value: "yes", label: "نعم" },
+        { value: "no", label: "لا" }
+      ],
       userCountOptions: [
         { label: "1–3", value: "1-3" },
         { label: "4–10", value: "4-10" },
         { label: "11–25", value: "11-25" },
         { label: "26+", value: "26+" }
       ],
+      placeholders: {
+        businessType: "اختر نوع النشاط",
+        users: "اختر العدد",
+        problem: "اختر المشكلة الأساسية",
+        branches: "اختر"
+      },
+      validation: {
+        nameRequired: "يرجى إدخال الاسم.",
+        phoneRequired: "يرجى إدخال رقم الهاتف أو واتساب.",
+        businessTypeRequired: "يرجى اختيار نوع النشاط.",
+        problemRequired: "يرجى اختيار المشكلة الأساسية."
+      },
+      whatsappMessage: {
+        intro: "مرحباً، أرغب بطلب تجربة لمنصة ZA ERP.",
+        name: "الاسم",
+        company: "اسم الشركة",
+        businessType: "نوع النشاط",
+        users: "عدد المستخدمين المتوقع",
+        branches: "هل يوجد أكثر من فرع",
+        problem: "المشكلة الأساسية",
+        notes: "ملاحظات"
+      },
       fields: [
         { id: "name", label: "الاسم", type: "text", required: true },
-        { id: "company", label: "اسم الشركة", type: "text", required: true },
-        { id: "phone", label: "رقم الهاتف", type: "tel", required: true },
-        { id: "activity", label: "نوع النشاط", type: "select-activity", required: true },
-        { id: "users", label: "عدد المستخدمين المتوقع", type: "select-users", required: true },
-        { id: "message", label: "رسالة", type: "textarea", required: true }
+        { id: "phone", label: "رقم الهاتف / واتساب", type: "tel", required: true },
+        { id: "company", label: "اسم الشركة", type: "text", required: false },
+        { id: "business-type", label: "نوع النشاط", type: "select-business", required: true },
+        { id: "users", label: "عدد المستخدمين المتوقع", type: "select-users", required: false },
+        { id: "branches", label: "هل لديك أكثر من فرع؟", type: "select-branches", required: false },
+        { id: "problem", label: "أكثر مشكلة تريد حلها", type: "select-problem", required: true },
+        { id: "notes", label: "ملاحظات إضافية", type: "textarea", required: false }
       ]
     },
 
@@ -807,13 +856,15 @@
       permLockAria: "مقفل",
       afterZaErpSuffix: " ZA ERP",
       whatsappForm: {
-        title: "طلب عرض تجريبي — ZA ERP",
+        title: "طلب تجربة ZA ERP",
         name: "الاسم",
         company: "اسم الشركة",
-        phone: "رقم الهاتف",
-        activity: "نوع النشاط",
+        phone: "رقم الهاتف / واتساب",
+        businessType: "نوع النشاط",
         users: "عدد المستخدمين المتوقع",
-        message: "الرسالة"
+        branches: "هل يوجد أكثر من فرع",
+        problem: "المشكلة الأساسية",
+        notes: "ملاحظات"
       }
     }
   };

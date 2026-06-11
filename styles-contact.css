@@ -1,0 +1,57 @@
+/* Demo request contact form */
+
+.public-contact .contact-grid {
+  max-width: 720px;
+}
+
+.contact-form--demo {
+  padding: 2rem 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem 1.25rem;
+}
+
+.contact-form--demo .form-row--full {
+  grid-column: 1 / -1;
+}
+
+.contact-form__privacy {
+  grid-column: 1 / -1;
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.contact-form--demo .form-row select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent-light) 50%),
+    linear-gradient(135deg, var(--accent-light) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% + 2px),
+    calc(100% - 12px) calc(50% + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-inline-end: 2.25rem;
+}
+
+html[dir="rtl"] .contact-form--demo .form-row select {
+  background-position:
+    12px calc(50% + 2px),
+    18px calc(50% + 2px);
+  padding-inline-start: 2.25rem;
+  padding-inline-end: 1rem;
+}
+
+.contact-form--demo .btn--block {
+  margin-top: 0.25rem;
+  box-shadow: 0 8px 28px var(--accent-inset);
+}
+
+@media (max-width: 640px) {
+  .contact-form--demo {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.25rem;
+  }
+}

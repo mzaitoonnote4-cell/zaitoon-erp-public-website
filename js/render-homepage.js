@@ -1066,34 +1066,200 @@
     );
   }
 
+  function renderContactField(field, contact) {
+    var ph = contact.placeholders || {};
+    var req = field.required ? " required" : "";
+    var full = field.type === "textarea" ? " form-row--full" : "";
+
+    if (field.type === "text" || field.type === "tel") {
+      var attrs =
+        field.type === "tel"
+          ? ' type="tel" autocomplete="tel" dir="ltr"'
+          : ' type="text" autocomplete="' + (field.id === "name" ? "name" : "organization") + '"';
+      return (
+        '<div class="form-row' +
+        full +
+        '"><label for="' +
+        esc(field.id) +
+        '">' +
+        esc(field.label) +
+        "</label><input" +
+        attrs +
+        ' id="' +
+        esc(field.id) +
+        '" name="' +
+        esc(field.id) +
+        '"' +
+        req +
+        "></div>"
+      );
+    }
+
+    if (field.type === "textarea") {
+      return (
+        '<div class="form-row form-row--full"><label for="' +
+        esc(field.id) +
+        '">' +
+        esc(field.label) +
+        '</label><textarea id="' +
+        esc(field.id) +
+        '" name="' +
+        esc(field.id) +
+        '" rows="4"' +
+        req +
+        "></textarea></div>"
+      );
+    }
+
+    if (field.type === "select-business") {
+      var businessOpts = (contact.businessTypeOptions || [])
+        .map(function (opt) {
+          return '<option value="' + esc(opt) + '">' + esc(opt) + "</option>";
+        })
+        .join("");
+      return (
+        '<div class="form-row' +
+        full +
+        '"><label for="' +
+        esc(field.id) +
+        '">' +
+        esc(field.label) +
+        '</label><select id="' +
+        esc(field.id) +
+        '" name="' +
+        esc(field.id) +
+        '"' +
+        req +
+        ">" +
+        '<option value="">' +
+        esc(ph.businessType || uiText("selectActivity", "Select business type")) +
+        "</option>" +
+        businessOpts +
+        "</select></div>"
+      );
+    }
+
+    if (field.type === "select-users") {
+      var userOpts = (contact.userCountOptions || [])
+        .map(function (opt) {
+          return (
+            '<option value="' + esc(opt.value) + '">' + esc(opt.label) + "</option>"
+          );
+        })
+        .join("");
+      return (
+        '<div class="form-row' +
+        full +
+        '"><label for="' +
+        esc(field.id) +
+        '">' +
+        esc(field.label) +
+        '</label><select id="' +
+        esc(field.id) +
+        '" name="' +
+        esc(field.id) +
+        '"' +
+        req +
+        ">" +
+        '<option value="">' +
+        esc(ph.users || uiText("selectUsers", "Select count")) +
+        "</option>" +
+        userOpts +
+        "</select></div>"
+      );
+    }
+
+    if (field.type === "select-branches") {
+      var branchOpts = (contact.branchOptions || [])
+        .map(function (opt) {
+          return (
+            '<option value="' + esc(opt.value) + '">' + esc(opt.label) + "</option>"
+          );
+        })
+        .join("");
+      return (
+        '<div class="form-row' +
+        full +
+        '"><label for="' +
+        esc(field.id) +
+        '">' +
+        esc(field.label) +
+        '</label><select id="' +
+        esc(field.id) +
+        '" name="' +
+        esc(field.id) +
+        '"' +
+        req +
+        ">" +
+        '<option value="">' +
+        esc(ph.branches || "—") +
+        "</option>" +
+        branchOpts +
+        "</select></div>"
+      );
+    }
+
+    if (field.type === "select-problem") {
+      var problemOpts = (contact.problemOptions || [])
+        .map(function (opt) {
+          return '<option value="' + esc(opt) + '">' + esc(opt) + "</option>";
+        })
+        .join("");
+      return (
+        '<div class="form-row' +
+        full +
+        '"><label for="' +
+        esc(field.id) +
+        '">' +
+        esc(field.label) +
+        '</label><select id="' +
+        esc(field.id) +
+        '" name="' +
+        esc(field.id) +
+        '"' +
+        req +
+        ">" +
+        '<option value="">' +
+        esc(ph.problem || "—") +
+        "</option>" +
+        problemOpts +
+        "</select></div>"
+      );
+    }
+
+    return "";
+  }
+
   function renderContact() {
     var c = content.contact;
-    var activityOpts = c.activityOptions
-      .map(function (opt) {
-        return '<option value="' + esc(opt) + '">' + esc(opt) + "</option>";
-      })
-      .join("");
-    var userOpts = c.userCountOptions
-      .map(function (opt) {
-        return '<option value="' + esc(opt.value) + '">' + esc(opt.label) + "</option>";
+    if (!c) return "";
+
+    var fieldsHtml = (c.fields || [])
+      .map(function (field) {
+        return renderContactField(field, c);
       })
       .join("");
 
+    var privacyHtml = c.privacyNote
+      ? '<p class="contact-form__privacy">' + esc(c.privacyNote) + "</p>"
+      : "";
+
     return (
-      '<section class="section section--alt" id="contact" data-section-id="contact">' +
+      '<section class="section section--alt public-contact" id="contact" data-section-id="contact">' +
       '<div class="container contact-grid"><header class="section-header reveal">' +
-      "<h2>" + esc(c.title) + "</h2>" +
-      '<p class="section-header__lead">' + esc(c.subtitle) + "</p></header>" +
-      '<form class="contact-form glass-panel reveal" id="contact-form" novalidate>' +
-      '<div class="form-row"><label for="name">' + esc(c.fields[0].label) + '</label><input type="text" id="name" name="name" required autocomplete="name"></div>' +
-      '<div class="form-row"><label for="company">' + esc(c.fields[1].label) + '</label><input type="text" id="company" name="company" required autocomplete="organization"></div>' +
-      '<div class="form-row"><label for="phone">' + esc(c.fields[2].label) + '</label><input type="tel" id="phone" name="phone" required autocomplete="tel" dir="ltr"></div>' +
-      '<div class="form-row"><label for="activity">' + esc(c.fields[3].label) + '</label><select id="activity" name="activity" required>' +
-      '<option value="">' + esc(uiText("selectActivity", "Select business type")) + "</option>" + activityOpts + "</select></div>" +
-      '<div class="form-row"><label for="users">' + esc(c.fields[4].label) + '</label><select id="users" name="users" required>' +
-      '<option value="">' + esc(uiText("selectUsers", "Select count")) + "</option>" + userOpts + "</select></div>" +
-      '<div class="form-row form-row--full"><label for="message">' + esc(c.fields[5].label) + '</label><textarea id="message" name="message" rows="4" required></textarea></div>' +
-      '<button type="submit" class="btn btn--gold btn--lg btn--block">' + esc(c.submitLabel) + "</button>" +
+      "<h2>" +
+      esc(c.title) +
+      "</h2>" +
+      '<p class="section-header__lead">' +
+      esc(c.subtitle) +
+      "</p></header>" +
+      '<form class="contact-form contact-form--demo glass-panel reveal" id="contact-form" novalidate>' +
+      fieldsHtml +
+      '<div class="form-row form-row--full">' +
+      '<button type="submit" class="btn btn--gold btn--lg btn--block">' +
+      esc(c.submitLabel) +
+      "</button></div>" +
+      privacyHtml +
       "</form></div></section>"
     );
   }

@@ -198,29 +198,84 @@
     }
   }
 
+  function getFieldValue(id) {
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : "";
+  }
+
+  function getSelectLabel(id) {
+    var el = document.getElementById(id);
+    if (!el || !el.value) return "";
+    var opt = el.options[el.selectedIndex];
+    return opt ? opt.text.trim() : el.value;
+  }
+
+  function validateDemoForm(form, contact) {
+    var v = (contact && contact.validation) || {};
+    var valid = true;
+
+    function checkField(id, message) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (!el.value.trim()) {
+        el.setCustomValidity(message || "");
+        valid = false;
+      } else {
+        el.setCustomValidity("");
+      }
+    }
+
+    checkField("name", v.nameRequired || "Required");
+    checkField("phone", v.phoneRequired || "Required");
+    checkField("business-type", v.businessTypeRequired || "Required");
+    checkField("problem", v.problemRequired || "Required");
+
+    if (!valid) {
+      form.reportValidity();
+    }
+    return valid;
+  }
+
+  function buildDemoWhatsAppMessage(contact) {
+    var wm = (contact && contact.whatsappMessage) || {};
+    var lines = [wm.intro || "ZA ERP demo request"];
+
+    function addLine(label, value) {
+      if (value) lines.push(label + ": " + value);
+    }
+
+    addLine(wm.name || "Name", getFieldValue("name"));
+    addLine(wm.company || "Company", getFieldValue("company"));
+    addLine(wm.businessType || "Business type", getSelectLabel("business-type"));
+    addLine(wm.users || "Expected users", getSelectLabel("users"));
+    addLine(wm.branches || "Branches", getSelectLabel("branches"));
+    addLine(wm.problem || "Main problem", getSelectLabel("problem"));
+    addLine(wm.notes || "Notes", getFieldValue("notes"));
+
+    return lines.join("\n");
+  }
+
   function initContactForm() {
     var form = document.getElementById("contact-form");
-    if (!form) return;
+    if (!form || form.dataset.demoBound === "1") return;
+    form.dataset.demoBound = "1";
 
     var settings = getSettings();
 
+    form.addEventListener("input", function (e) {
+      if (e.target && e.target.setCustomValidity) {
+        e.target.setCustomValidity("");
+      }
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
       var c = getContent();
-      var wf = c && c.ui && c.ui.whatsappForm ? c.ui.whatsappForm : {};
-      var text =
-        (wf.title || "Demo request — ZA ERP") + "\n\n" +
-        (wf.name || "Name") + ": " + document.getElementById("name").value.trim() + "\n" +
-        (wf.company || "Company") + ": " + document.getElementById("company").value.trim() + "\n" +
-        (wf.phone || "Phone") + ": " + document.getElementById("phone").value.trim() + "\n" +
-        (wf.activity || "Business type") + ": " + document.getElementById("activity").value + "\n" +
-        (wf.users || "Users") + ": " + document.getElementById("users").value + "\n\n" +
-        (wf.message || "Message") + ":\n" + document.getElementById("message").value.trim();
+      var contact = c && c.contact ? c.contact : {};
+
+      if (!validateDemoForm(form, contact)) return;
+
+      var text = buildDemoWhatsAppMessage(contact);
 
       window.open(
         "https://wa.me/" + settings.whatsappNumber + "?text=" + encodeURIComponent(text),
