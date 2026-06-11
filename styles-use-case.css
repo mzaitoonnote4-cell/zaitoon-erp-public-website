@@ -1,0 +1,208 @@
+/* Practical use case page + homepage teaser */
+
+.use-case-page__header {
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.use-case-page__header h1 {
+  margin: 0;
+  font-size: clamp(1.55rem, 4vw, 2.05rem);
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.use-case-disclaimer {
+  margin: 0 0 1.75rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  text-align: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-subtle);
+  background: rgba(212, 168, 83, 0.06);
+}
+
+.use-case-section {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.use-case-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.use-case-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent-light);
+}
+
+.use-case-section p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.85;
+}
+
+.use-case-compare {
+  margin-top: 0.25rem;
+}
+
+.use-case-compare .compare-panel {
+  padding: 1.15rem 1.1rem;
+}
+
+.use-case-workflow {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.use-case-workflow__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+.use-case-workflow__num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--bg);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--emerald));
+}
+
+.use-case-workflow__text {
+  margin: 0;
+  padding-top: 0.15rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+.use-case-gains {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.use-case-gains li {
+  position: relative;
+  padding-inline-start: 1.35rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.use-case-gains li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.55rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--emerald));
+  box-shadow: 0 0 8px rgba(212, 168, 83, 0.35);
+}
+
+.use-case-cta {
+  margin-top: 2rem;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent-border);
+  background: linear-gradient(160deg, rgba(212, 168, 83, 0.08), rgba(16, 185, 129, 0.05));
+}
+
+.use-case-cta p {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.use-case-cta .btn {
+  min-width: min(100%, 18rem);
+}
+
+/* Homepage teaser */
+.public-use-case-teaser {
+  padding-block: 2.5rem;
+}
+
+.use-case-teaser-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.75rem 1.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent-border);
+  background: linear-gradient(135deg, rgba(212, 168, 83, 0.07), rgba(16, 185, 129, 0.04));
+}
+
+.use-case-teaser-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.use-case-teaser-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  color: var(--text);
+}
+
+.use-case-teaser-card p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.use-case-teaser-card .btn {
+  flex-shrink: 0;
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+  .use-case-disclaimer {
+    font-size: 0.84rem;
+    text-align: start;
+  }
+
+  .use-case-compare.before-after-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .use-case-teaser-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.35rem 1.15rem;
+  }
+
+  .use-case-teaser-card .btn {
+    align-self: stretch;
+    width: 100%;
+  }
+}

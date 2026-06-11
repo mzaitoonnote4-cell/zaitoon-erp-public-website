@@ -390,6 +390,17 @@
       }
     },
 
+    useCaseTeaser: {
+      title: "See a practical example of ZA ERP in use",
+      text:
+        "Explore an illustrative scenario showing how sales, inventory, customers, and permissions can be organized inside the platform.",
+      button: {
+        label: "View Practical Use Case",
+        href: "use-case.html",
+        variant: "gold"
+      }
+    },
+
     howItWorks: {
       title: "From the first sale to the final report — everything connected",
       steps: [
@@ -903,6 +914,7 @@
             { label: "Blog", href: "#resources" },
             { label: "Guides", href: "#resources" },
             { label: "Platform Updates", href: "updates.html" },
+            { label: "Use Case", href: "use-case.html" },
             { label: "FAQ", href: "#faq" },
             { label: "Support center", href: "#contact" }
           ]

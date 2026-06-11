@@ -16,6 +16,7 @@ const rootFiles = [
   "terms.html",
   "updates.html",
   "about.html",
+  "use-case.html",
   "favicon.ico",
   "styles.css",
   "styles-polish.css",
@@ -30,10 +31,17 @@ const rootFiles = [
   "styles-legal.css",
   "styles-updates.css",
   "styles-about.css",
+  "styles-use-case.css",
   "script.js"
 ];
 
-const contentFiles = ["homepage-content.js", "homepage-locale-en.js", "updates-content.js", "about-content.js"];
+const contentFiles = [
+  "homepage-content.js",
+  "homepage-locale-en.js",
+  "updates-content.js",
+  "about-content.js",
+  "use-case-content.js"
+];
 
 async function exists(filePath) {
   try {

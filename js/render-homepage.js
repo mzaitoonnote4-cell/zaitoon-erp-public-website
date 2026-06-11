@@ -722,6 +722,24 @@
     );
   }
 
+  function renderUseCaseTeaser() {
+    var uc = content.useCaseTeaser;
+    if (!uc || !uc.title) return "";
+
+    return (
+      '<section class="public-use-case-teaser section section--alt" id="use-case-teaser" data-section-id="use-case-teaser">' +
+      '<div class="container"><div class="use-case-teaser-card glass-panel reveal">' +
+      '<div class="use-case-teaser-card__content">' +
+      "<h2>" +
+      esc(uc.title) +
+      "</h2>" +
+      (uc.text ? "<p>" + esc(uc.text) + "</p>" : "") +
+      "</div>" +
+      renderCta(uc.button, "btn--gold") +
+      "</div></div></section>"
+    );
+  }
+
   function renderHowItWorks() {
     var h = content.howItWorks;
     var steps = h.steps
@@ -1425,6 +1443,7 @@
     sectors: { flag: "showSectors", render: renderSectors },
     industries: { flag: "showIndustries", render: renderIndustries },
     gettingStarted: { flag: "showGettingStarted", render: renderGettingStarted },
+    useCaseTeaser: { flag: "showUseCaseTeaser", render: renderUseCaseTeaser },
     howItWorks: { flag: "showHowItWorks", render: renderHowItWorks },
     productDepth: { flag: "showProductDepth", render: renderProductDepth },
     security: { flag: "showSecurity", render: renderSecurity },

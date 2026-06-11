@@ -391,6 +391,17 @@
       }
     },
 
+    useCaseTeaser: {
+      title: "شاهد مثالاً عملياً لطريقة استخدام ZA ERP",
+      text:
+        "تعرف على سيناريو توضيحي يشرح كيف يمكن تنظيم المبيعات، المخزون، العملاء، والصلاحيات داخل المنصة.",
+      button: {
+        label: "عرض المثال التطبيقي",
+        href: "use-case.html",
+        variant: "gold"
+      }
+    },
+
     howItWorks: {
       title: "من أول عملية بيع إلى التقرير النهائي — كل شيء مترابط",
       steps: [
@@ -904,6 +915,7 @@
             { label: "المدونة", href: "#resources" },
             { label: "الأدلة", href: "#resources" },
             { label: "تحديثات المنصة", href: "updates.html" },
+            { label: "مثال تطبيقي", href: "use-case.html" },
             { label: "الأسئلة الشائعة", href: "#faq" },
             { label: "مركز الدعم", href: "#contact" }
           ]
@@ -1003,6 +1015,7 @@
       "why",
       "industries",
       "gettingStarted",
+      "useCaseTeaser",
       "pilot",
       "productDepth",
       "security",
@@ -1030,6 +1043,7 @@
       showSectors: false,
       showIndustries: true,
       showGettingStarted: true,
+      showUseCaseTeaser: true,
       showHowItWorks: false,
       showProductDepth: true,
       showSecurity: true,

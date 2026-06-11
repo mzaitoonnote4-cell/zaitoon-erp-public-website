@@ -1,5 +1,5 @@
 /**
- * About page (about.html)
+ * Practical use case page (use-case.html)
  */
 (function () {
   "use strict";
@@ -71,7 +71,7 @@
   }
 
   function applySeo(lang) {
-    var data = window.ABOUT_CONTENT;
+    var data = window.USE_CASE_CONTENT;
     if (!data || !data.seo) return;
     var seo = data.seo[lang] || data.seo.ar;
     if (seo.title) document.title = seo.title;
@@ -88,58 +88,140 @@
     }
   }
 
-  function renderSection(section, lang) {
-    var copy = section[lang] || section.ar;
-    if (!copy) return "";
-
-    if (section.type === "bullets" && copy.items && copy.items.length) {
-      var items = copy.items
-        .map(function (item) {
-          return "<li>" + esc(item) + "</li>";
-        })
-        .join("");
-      return (
-        '<section class="about-section reveal">' +
-        "<h2>" + esc(copy.title) + "</h2>" +
-        '<ul class="about-section__list">' + items + "</ul>" +
-        "</section>"
-      );
-    }
+  function renderBeforeAfter(data, lang) {
+    var before = data.beforeAfter.before[lang] || data.beforeAfter.before.ar;
+    var after = data.beforeAfter.after[lang] || data.beforeAfter.after.ar;
+    var beforeItems = before.items
+      .map(function (item) {
+        return (
+          '<li class="compare-panel__item">' +
+          '<span class="compare-panel__mark compare-panel__mark--warn" aria-hidden="true"></span>' +
+          esc(item) +
+          "</li>"
+        );
+      })
+      .join("");
+    var afterItems = after.items
+      .map(function (item) {
+        return (
+          '<li class="compare-panel__item">' +
+          '<span class="compare-panel__mark compare-panel__mark--ok" aria-hidden="true">✓</span>' +
+          esc(item) +
+          "</li>"
+        );
+      })
+      .join("");
 
     return (
-      '<section class="about-section reveal">' +
-      "<h2>" + esc(copy.title) + "</h2>" +
-      "<p>" + esc(copy.text) + "</p>" +
-      "</section>"
+      '<section class="use-case-section">' +
+      '<div class="before-after-grid use-case-compare">' +
+      '<article class="compare-panel compare-panel--before">' +
+      '<span class="compare-panel__badge">' +
+      esc(before.label) +
+      "</span>" +
+      '<ul class="compare-panel__list">' +
+      beforeItems +
+      "</ul></article>" +
+      '<div class="before-after-divider" aria-hidden="true"><span></span></div>' +
+      '<article class="compare-panel compare-panel--after">' +
+      '<span class="compare-panel__badge compare-panel__badge--gold">' +
+      esc(after.label) +
+      "</span>" +
+      '<ul class="compare-panel__list">' +
+      afterItems +
+      "</ul></article>" +
+      "</div></section>"
+    );
+  }
+
+  function renderWorkflow(data, lang) {
+    var wf = data.workflow[lang] || data.workflow.ar;
+    var steps = wf.steps
+      .map(function (step, i) {
+        return (
+          '<li class="use-case-workflow__step">' +
+          '<span class="use-case-workflow__num" aria-hidden="true">' +
+          (i + 1) +
+          "</span>" +
+          '<p class="use-case-workflow__text">' +
+          esc(step) +
+          "</p></li>"
+        );
+      })
+      .join("");
+
+    return (
+      '<section class="use-case-section">' +
+      "<h2>" +
+      esc(wf.title) +
+      "</h2>" +
+      '<ol class="use-case-workflow">' +
+      steps +
+      "</ol></section>"
+    );
+  }
+
+  function renderOwnerGains(data, lang) {
+    var og = data.ownerGains[lang] || data.ownerGains.ar;
+    var items = og.items
+      .map(function (item) {
+        return "<li>" + esc(item) + "</li>";
+      })
+      .join("");
+
+    return (
+      '<section class="use-case-section">' +
+      "<h2>" +
+      esc(og.title) +
+      "</h2>" +
+      '<ul class="use-case-gains">' +
+      items +
+      "</ul></section>"
     );
   }
 
   function renderPage(lang) {
-    var data = window.ABOUT_CONTENT;
+    var data = window.USE_CASE_CONTENT;
     if (!data) return;
 
     applySeo(lang);
 
     var page = data.page[lang] || data.page.ar;
-    var titleEl = document.getElementById("about-page-title");
+    var titleEl = document.getElementById("use-case-page-title");
     if (titleEl) titleEl.textContent = page.title;
 
-    var mount = document.getElementById("about-sections");
-    if (mount && data.sections) {
-      mount.innerHTML = data.sections
-        .map(function (section) {
-          return renderSection(section, lang);
-        })
-        .join("");
+    var disclaimerEl = document.getElementById("use-case-disclaimer");
+    if (disclaimerEl) {
+      disclaimerEl.textContent = data.disclaimer[lang] || data.disclaimer.ar;
     }
 
-    var ctaMount = document.getElementById("about-cta");
+    var mount = document.getElementById("use-case-body");
+    if (!mount) return;
+
+    var scenario = data.scenario[lang] || data.scenario.ar;
+    mount.innerHTML =
+      '<section class="use-case-section">' +
+      "<h2>" +
+      esc(scenario.title) +
+      "</h2>" +
+      "<p>" +
+      esc(scenario.text) +
+      "</p></section>" +
+      renderBeforeAfter(data, lang) +
+      renderWorkflow(data, lang) +
+      renderOwnerGains(data, lang);
+
+    var ctaMount = document.getElementById("use-case-cta");
     if (ctaMount && data.cta) {
       var cta = data.cta[lang] || data.cta.ar;
       ctaMount.innerHTML =
-        '<div class="about-cta glass-panel reveal">' +
-        "<p>" + esc(cta.text) + "</p>" +
-        '<a class="btn btn--gold btn--lg" href="' + esc(cta.button.href) + '">' +
+        '<div class="use-case-cta glass-panel">' +
+        "<p>" +
+        esc(cta.text) +
+        "</p>" +
+        '<a class="btn btn--gold btn--lg" href="' +
+        esc(cta.button.href) +
+        '">' +
         esc(cta.button.label) +
         "</a></div>";
     }
