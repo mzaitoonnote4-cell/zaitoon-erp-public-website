@@ -401,6 +401,16 @@
       }
     },
 
+    roadmapTeaser: {
+      title: "Continuous Development Roadmap",
+      text: "See the upcoming direction for ZA ERP and the public website.",
+      button: {
+        label: "View Roadmap",
+        href: "roadmap.html",
+        variant: "gold"
+      }
+    },
+
     traditionalVsZaerp: {
       title: "Why move from Excel and notebooks to ZA ERP?",
       subtitle:
@@ -976,6 +986,7 @@
             { label: "Guides", href: "#resources" },
             { label: "Platform Updates", href: "updates.html" },
             { label: "Use Case", href: "use-case.html" },
+            { label: "Roadmap", href: "roadmap.html" },
             { label: "FAQ", href: "#faq" },
             { label: "Support center", href: "#contact" }
           ]

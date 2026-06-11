@@ -1,11 +1,20 @@
 /**
- * Platform updates page (updates.html)
+ * Roadmap page (roadmap.html)
  */
 (function () {
   "use strict";
 
   var LANG_KEY = "za-erp-language";
   var MODE_KEY = "za-erp-mode";
+
+  function esc(str) {
+    if (str == null) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
 
   function getLang() {
     try {
@@ -24,24 +33,8 @@
     renderPage(lang);
   }
 
-  function applyLang(lang) {
+  function applyFooterLang(lang) {
     var isAr = lang !== "en";
-    document.documentElement.lang = isAr ? "ar" : "en";
-    document.documentElement.dir = isAr ? "rtl" : "ltr";
-    document.body.classList.toggle("is-rtl", isAr);
-    document.body.classList.toggle("is-ltr", !isAr);
-
-    document.querySelectorAll("[data-lang-btn]").forEach(function (btn) {
-      var active = btn.getAttribute("data-lang-btn") === lang;
-      btn.setAttribute("aria-pressed", active ? "true" : "false");
-      btn.classList.toggle("is-active", active);
-    });
-
-    document.querySelectorAll("[data-legal-home-ar],[data-legal-home-en]").forEach(function (el) {
-      var showAr = el.hasAttribute("data-legal-home-ar") ? isAr : !isAr;
-      el.hidden = !showAr;
-    });
-
     document.querySelectorAll(
       "[data-legal-footer-privacy-ar],[data-legal-footer-privacy-en]," +
         "[data-legal-footer-terms-ar],[data-legal-footer-terms-en]," +
@@ -63,8 +56,29 @@
     });
   }
 
+  function applyLang(lang) {
+    var isAr = lang !== "en";
+    document.documentElement.lang = isAr ? "ar" : "en";
+    document.documentElement.dir = isAr ? "rtl" : "ltr";
+    document.body.classList.toggle("is-rtl", isAr);
+    document.body.classList.toggle("is-ltr", !isAr);
+
+    document.querySelectorAll("[data-lang-btn]").forEach(function (btn) {
+      var active = btn.getAttribute("data-lang-btn") === lang;
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+      btn.classList.toggle("is-active", active);
+    });
+
+    document.querySelectorAll("[data-legal-home-ar],[data-legal-home-en]").forEach(function (el) {
+      var showAr = el.hasAttribute("data-legal-home-ar") ? isAr : !isAr;
+      el.hidden = !showAr;
+    });
+
+    applyFooterLang(lang);
+  }
+
   function applySeo(lang) {
-    var data = window.UPDATES_CONTENT;
+    var data = window.ROADMAP_CONTENT;
     if (!data || !data.seo) return;
     var seo = data.seo[lang] || data.seo.ar;
     if (seo.title) document.title = seo.title;
@@ -81,28 +95,70 @@
     }
   }
 
+  function renderSection(section, lang) {
+    var copy = section[lang] || section.ar;
+    if (!copy || !copy.items) return "";
+
+    var items = copy.items
+      .map(function (item) {
+        return "<li>" + esc(item) + "</li>";
+      })
+      .join("");
+
+    return (
+      '<article class="roadmap-card roadmap-card--' +
+      esc(section.tone || "future") +
+      '">' +
+      '<h2 class="roadmap-card__title">' +
+      esc(copy.title) +
+      "</h2>" +
+      '<ul class="roadmap-card__list">' +
+      items +
+      "</ul></article>"
+    );
+  }
+
   function renderPage(lang) {
-    var U = window.ZA_UPDATES;
-    var data = window.UPDATES_CONTENT;
-    if (!U || !data) return;
+    var data = window.ROADMAP_CONTENT;
+    if (!data) return;
 
     applySeo(lang);
 
     var page = data.page[lang] || data.page.ar;
-    var titleEl = document.getElementById("updates-page-title");
-    var subtitleEl = document.getElementById("updates-page-subtitle");
+    var titleEl = document.getElementById("roadmap-page-title");
     if (titleEl) titleEl.textContent = page.title;
-    if (subtitleEl) subtitleEl.textContent = page.subtitle;
 
-    var mount = document.getElementById("updates-timeline");
-    if (!mount) return;
+    var introEl = document.getElementById("roadmap-intro");
+    if (introEl) introEl.textContent = data.intro[lang] || data.intro.ar;
 
-    var items = U.getVisibleUpdates();
-    mount.innerHTML = items
-      .map(function (item) {
-        return U.renderUpdateCard(item, lang, { timeline: true });
-      })
-      .join("");
+    var disclaimerEl = document.getElementById("roadmap-disclaimer");
+    if (disclaimerEl) {
+      disclaimerEl.textContent = data.disclaimer[lang] || data.disclaimer.ar;
+    }
+
+    var mount = document.getElementById("roadmap-sections");
+    if (mount && data.sections) {
+      mount.innerHTML = data.sections
+        .map(function (section) {
+          return renderSection(section, lang);
+        })
+        .join("");
+    }
+
+    var ctaMount = document.getElementById("roadmap-cta");
+    if (ctaMount && data.cta) {
+      var cta = data.cta[lang] || data.cta.ar;
+      ctaMount.innerHTML =
+        '<div class="roadmap-cta glass-panel">' +
+        "<p>" +
+        esc(cta.text) +
+        "</p>" +
+        '<a class="btn btn--gold btn--lg" href="' +
+        esc(cta.button.href) +
+        '">' +
+        esc(cta.button.label) +
+        "</a></div>";
+    }
   }
 
   function applyMode(mode) {

@@ -402,6 +402,16 @@
       }
     },
 
+    roadmapTeaser: {
+      title: "خطة تطوير مستمرة",
+      text: "تعرف على الاتجاهات القادمة لتطوير ZA ERP والموقع الرئيسي.",
+      button: {
+        label: "عرض خطة التطوير",
+        href: "roadmap.html",
+        variant: "gold"
+      }
+    },
+
     traditionalVsZaerp: {
       title: "لماذا تنتقل من Excel والدفاتر إلى ZA ERP؟",
       subtitle:
@@ -977,6 +987,7 @@
             { label: "الأدلة", href: "#resources" },
             { label: "تحديثات المنصة", href: "updates.html" },
             { label: "مثال تطبيقي", href: "use-case.html" },
+            { label: "خطة التطوير", href: "roadmap.html" },
             { label: "الأسئلة الشائعة", href: "#faq" },
             { label: "مركز الدعم", href: "#contact" }
           ]
@@ -1084,6 +1095,7 @@
       "pricing",
       "pilotUrgencyCta",
       "platformUpdates",
+      "roadmapTeaser",
       "faq",
       "cta",
       "whatsappCta",
@@ -1114,6 +1126,7 @@
       showPilotUrgencyCTA: true,
       showPilot: true,
       showPlatformUpdates: true,
+      showRoadmapTeaser: true,
       showFaq: true,
       showCta: true,
       showWhatsappCta: true,

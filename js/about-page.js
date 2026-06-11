@@ -57,6 +57,7 @@
         "[data-legal-footer-updates-ar],[data-legal-footer-updates-en]," +
         "[data-legal-footer-about-ar],[data-legal-footer-about-en]," +
         "[data-legal-footer-usecase-ar],[data-legal-footer-usecase-en]," +
+        "[data-legal-footer-roadmap-ar],[data-legal-footer-roadmap-en]," +
         "[data-legal-footer-home-ar],[data-legal-footer-home-en]"
     ).forEach(function (el) {
       var wantsAr =
@@ -65,6 +66,7 @@
         el.hasAttribute("data-legal-footer-updates-ar") ||
         el.hasAttribute("data-legal-footer-about-ar") ||
         el.hasAttribute("data-legal-footer-usecase-ar") ||
+        el.hasAttribute("data-legal-footer-roadmap-ar") ||
         el.hasAttribute("data-legal-footer-home-ar");
       el.hidden = wantsAr ? !isAr : isAr;
     });

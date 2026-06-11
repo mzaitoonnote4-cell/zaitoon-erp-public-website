@@ -740,6 +740,24 @@
     );
   }
 
+  function renderRoadmapTeaser() {
+    var rt = content.roadmapTeaser;
+    if (!rt || !rt.title) return "";
+
+    return (
+      '<section class="public-roadmap-teaser section" id="roadmap-teaser" data-section-id="roadmap-teaser">' +
+      '<div class="container"><div class="roadmap-teaser-card glass-panel reveal">' +
+      '<div class="roadmap-teaser-card__content">' +
+      "<h2>" +
+      esc(rt.title) +
+      "</h2>" +
+      (rt.text ? "<p>" + esc(rt.text) + "</p>" : "") +
+      "</div>" +
+      renderCta(rt.button, "btn--gold") +
+      "</div></div></section>"
+    );
+  }
+
   function renderTraditionalVsZaerp() {
     var c = content.traditionalVsZaerp;
     if (!c || !c.title) return "";
@@ -1549,6 +1567,7 @@
     cta: { flag: "showCta", render: renderCtaSection },
     whatsappCta: { flag: "showWhatsappCta", render: renderWhatsappCta },
     platformUpdates: { flag: "showPlatformUpdates", render: renderPlatformUpdates },
+    roadmapTeaser: { flag: "showRoadmapTeaser", render: renderRoadmapTeaser },
     news: { flag: "showNews", render: renderNews },
     video: { flag: "showVideo", render: renderVideo },
     contact: { flag: "showContact", render: renderContact }

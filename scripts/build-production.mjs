@@ -17,6 +17,7 @@ const rootFiles = [
   "updates.html",
   "about.html",
   "use-case.html",
+  "roadmap.html",
   "favicon.ico",
   "styles.css",
   "styles-polish.css",
@@ -33,6 +34,7 @@ const rootFiles = [
   "styles-about.css",
   "styles-use-case.css",
   "styles-traditional-compare.css",
+  "styles-roadmap.css",
   "script.js"
 ];
 
@@ -41,7 +43,8 @@ const contentFiles = [
   "homepage-locale-en.js",
   "updates-content.js",
   "about-content.js",
-  "use-case-content.js"
+  "use-case-content.js",
+  "roadmap-content.js"
 ];
 
 async function exists(filePath) {
