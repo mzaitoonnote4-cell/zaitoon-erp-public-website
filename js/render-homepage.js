@@ -1476,7 +1476,10 @@
       "</p></header>" +
       '<form class="contact-form contact-form--demo glass-panel reveal" id="contact-form" novalidate>' +
       fieldsHtml +
-      '<div class="form-row form-row--full">' +
+      '<div class="form-row form-row--full contact-form__submit">' +
+      (c.submitHelper
+        ? '<p class="contact-form__helper">' + esc(c.submitHelper) + "</p>"
+        : "") +
       '<button type="submit" class="btn btn--gold btn--lg btn--block">' +
       esc(c.submitLabel) +
       "</button></div>" +

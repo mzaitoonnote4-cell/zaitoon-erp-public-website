@@ -880,7 +880,8 @@
       title: "اطلب تجربة ZA ERP",
       subtitle:
         "أرسل لنا معلومات نشاطك وسنساعدك على معرفة كيف يمكن أن تناسب ZA ERP طريقة عمل شركتك.",
-      submitLabel: "إرسال عبر واتساب",
+      submitLabel: "إرسال الطلب عبر واتساب",
+      submitHelper: "سنراجع المعلومات ونوضح لك الخطوة المناسبة.",
       privacyNote:
         "لن يتم إرسال بياناتك إلى قاعدة بيانات من هذا النموذج. سيتم فتح رسالة واتساب جاهزة بالمعلومات التي أدخلتها.",
       businessTypeOptions: [
@@ -903,44 +904,55 @@
         "أخرى"
       ],
       branchOptions: [
-        { value: "yes", label: "نعم" },
-        { value: "no", label: "لا" }
+        { value: "one", label: "لا، فرع واحد" },
+        { value: "two", label: "نعم، فرعين" },
+        { value: "three-plus", label: "نعم، 3 فروع أو أكثر" },
+        { value: "unsure", label: "غير متأكد" }
       ],
       userCountOptions: [
-        { label: "1–3", value: "1-3" },
-        { label: "4–10", value: "4-10" },
-        { label: "11–25", value: "11-25" },
-        { label: "26+", value: "26+" }
+        { value: "1-3", label: "1 إلى 3 مستخدمين" },
+        { value: "4-7", label: "4 إلى 7 مستخدمين" },
+        { value: "8-15", label: "8 إلى 15 مستخدم" },
+        { value: "15-plus", label: "أكثر من 15 مستخدم" },
+        { value: "unsure", label: "غير متأكد" }
       ],
       placeholders: {
         businessType: "اختر نوع النشاط",
-        users: "اختر العدد",
+        users: "اختر عدد المستخدمين",
         problem: "اختر المشكلة الأساسية",
-        branches: "اختر"
+        branches: "اختر حالة الفروع"
       },
       validation: {
-        nameRequired: "يرجى إدخال الاسم.",
-        phoneRequired: "يرجى إدخال رقم الهاتف أو واتساب.",
-        businessTypeRequired: "يرجى اختيار نوع النشاط.",
-        problemRequired: "يرجى اختيار المشكلة الأساسية."
+        nameRequired: "يرجى إدخال الاسم",
+        phoneRequired: "يرجى إدخال رقم الهاتف أو الواتساب",
+        businessTypeRequired: "يرجى اختيار نوع النشاط",
+        usersRequired: "يرجى اختيار عدد المستخدمين المتوقع",
+        branchesRequired: "يرجى اختيار حالة الفروع",
+        problemRequired: "يرجى اختيار المشكلة الأساسية"
       },
       whatsappMessage: {
         intro: "مرحباً، أرغب بطلب تجربة لمنصة ZA ERP.",
+        sectionTitle: "معلومات الطلب:",
+        bulletPrefix: "* ",
         name: "الاسم",
+        phone: "رقم الهاتف / واتساب",
         company: "اسم الشركة",
         businessType: "نوع النشاط",
         users: "عدد المستخدمين المتوقع",
-        branches: "هل يوجد أكثر من فرع",
+        branches: "الفروع",
         problem: "المشكلة الأساسية",
-        notes: "ملاحظات"
+        notes: "ملاحظات إضافية",
+        outro:
+          "أرغب بمعرفة كيف يمكن أن تناسب ZA ERP طريقة عمل شركتي، وما هي الباقة المناسبة لمرحلة Pilot.",
+        emptyValue: "—"
       },
       fields: [
         { id: "name", label: "الاسم", type: "text", required: true },
         { id: "phone", label: "رقم الهاتف / واتساب", type: "tel", required: true },
         { id: "company", label: "اسم الشركة", type: "text", required: false },
         { id: "business-type", label: "نوع النشاط", type: "select-business", required: true },
-        { id: "users", label: "عدد المستخدمين المتوقع", type: "select-users", required: false },
-        { id: "branches", label: "هل لديك أكثر من فرع؟", type: "select-branches", required: false },
+        { id: "users", label: "عدد المستخدمين المتوقع", type: "select-users", required: true },
+        { id: "branches", label: "هل لديك أكثر من فرع؟", type: "select-branches", required: true },
         { id: "problem", label: "أكثر مشكلة تريد حلها", type: "select-problem", required: true },
         { id: "notes", label: "ملاحظات إضافية", type: "textarea", required: false }
       ]

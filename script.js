@@ -228,6 +228,8 @@
     checkField("name", v.nameRequired || "Required");
     checkField("phone", v.phoneRequired || "Required");
     checkField("business-type", v.businessTypeRequired || "Required");
+    checkField("users", v.usersRequired || "Required");
+    checkField("branches", v.branchesRequired || "Required");
     checkField("problem", v.problemRequired || "Required");
 
     if (!valid) {
@@ -238,19 +240,27 @@
 
   function buildDemoWhatsAppMessage(contact) {
     var wm = (contact && contact.whatsappMessage) || {};
-    var lines = [wm.intro || "ZA ERP demo request"];
+    var empty = wm.emptyValue || "—";
 
-    function addLine(label, value) {
-      if (value) lines.push(label + ": " + value);
+    function bullet(label, value) {
+      var v = value && value.trim() ? value.trim() : empty;
+      return (wm.bulletPrefix || "* ") + label + ": " + v;
     }
 
-    addLine(wm.name || "Name", getFieldValue("name"));
-    addLine(wm.company || "Company", getFieldValue("company"));
-    addLine(wm.businessType || "Business type", getSelectLabel("business-type"));
-    addLine(wm.users || "Expected users", getSelectLabel("users"));
-    addLine(wm.branches || "Branches", getSelectLabel("branches"));
-    addLine(wm.problem || "Main problem", getSelectLabel("problem"));
-    addLine(wm.notes || "Notes", getFieldValue("notes"));
+    var lines = [wm.intro || "ZA ERP demo request", "", wm.sectionTitle || "", ""];
+
+    lines.push(bullet(wm.name || "Name", getFieldValue("name")));
+    lines.push(bullet(wm.phone || "Phone", getFieldValue("phone")));
+    lines.push(bullet(wm.company || "Company", getFieldValue("company")));
+    lines.push(bullet(wm.businessType || "Business type", getSelectLabel("business-type")));
+    lines.push(bullet(wm.users || "Expected users", getSelectLabel("users")));
+    lines.push(bullet(wm.branches || "Branches", getSelectLabel("branches")));
+    lines.push(bullet(wm.problem || "Main problem", getSelectLabel("problem")));
+    lines.push(bullet(wm.notes || "Notes", getFieldValue("notes")));
+
+    if (wm.outro) {
+      lines.push("", wm.outro);
+    }
 
     return lines.join("\n");
   }

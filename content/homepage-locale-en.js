@@ -879,7 +879,8 @@
       title: "Request a ZA ERP Demo",
       subtitle:
         "Share your business details and we’ll help you understand how ZA ERP can fit your workflow.",
-      submitLabel: "Send via WhatsApp",
+      submitLabel: "Send Request via WhatsApp",
+      submitHelper: "We’ll review the details and suggest the suitable next step.",
       privacyNote:
         "This form does not send your data to a database. It opens a prepared WhatsApp message using the information you entered.",
       businessTypeOptions: [
@@ -902,44 +903,55 @@
         "Other"
       ],
       branchOptions: [
-        { value: "yes", label: "Yes" },
-        { value: "no", label: "No" }
+        { value: "one", label: "No, one branch" },
+        { value: "two", label: "Yes, two branches" },
+        { value: "three-plus", label: "Yes, 3 or more branches" },
+        { value: "unsure", label: "Not sure" }
       ],
       userCountOptions: [
-        { label: "1–3", value: "1-3" },
-        { label: "4–10", value: "4-10" },
-        { label: "11–25", value: "11-25" },
-        { label: "26+", value: "26+" }
+        { value: "1-3", label: "1 to 3 users" },
+        { value: "4-7", label: "4 to 7 users" },
+        { value: "8-15", label: "8 to 15 users" },
+        { value: "15-plus", label: "More than 15 users" },
+        { value: "unsure", label: "Not sure" }
       ],
       placeholders: {
         businessType: "Select business type",
-        users: "Select count",
+        users: "Select expected users",
         problem: "Select main problem",
-        branches: "Select"
+        branches: "Select branch status"
       },
       validation: {
-        nameRequired: "Please enter your name.",
-        phoneRequired: "Please enter your phone or WhatsApp number.",
-        businessTypeRequired: "Please select a business type.",
-        problemRequired: "Please select the main problem you want to solve."
+        nameRequired: "Please enter your name",
+        phoneRequired: "Please enter your phone or WhatsApp number",
+        businessTypeRequired: "Please select your business type",
+        usersRequired: "Please select expected users",
+        branchesRequired: "Please select branch status",
+        problemRequired: "Please select the main problem"
       },
       whatsappMessage: {
         intro: "Hello, I would like to request a ZA ERP demo.",
+        sectionTitle: "Request details:",
+        bulletPrefix: "* ",
         name: "Name",
-        company: "Company",
-        businessType: "Business type",
-        users: "Expected users",
-        branches: "More than one branch",
-        problem: "Main problem",
-        notes: "Notes"
+        phone: "Phone / WhatsApp",
+        company: "Company Name",
+        businessType: "Business Type",
+        users: "Expected Users",
+        branches: "Branches",
+        problem: "Main Problem",
+        notes: "Additional Notes",
+        outro:
+          "I would like to understand how ZA ERP can fit my business workflow and which Pilot plan may be suitable.",
+        emptyValue: "—"
       },
       fields: [
         { id: "name", label: "Name", type: "text", required: true },
         { id: "phone", label: "Phone / WhatsApp", type: "tel", required: true },
         { id: "company", label: "Company Name", type: "text", required: false },
         { id: "business-type", label: "Business Type", type: "select-business", required: true },
-        { id: "users", label: "Expected Users", type: "select-users", required: false },
-        { id: "branches", label: "Do you have more than one branch?", type: "select-branches", required: false },
+        { id: "users", label: "Expected Users", type: "select-users", required: true },
+        { id: "branches", label: "Do you have more than one branch?", type: "select-branches", required: true },
         { id: "problem", label: "Main problem you want to solve", type: "select-problem", required: true },
         { id: "notes", label: "Additional Notes", type: "textarea", required: false }
       ]

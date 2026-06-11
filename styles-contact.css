@@ -9,6 +9,9 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.1rem 1.25rem;
+  border: 1px solid var(--accent-border);
+  background: linear-gradient(160deg, rgba(212, 168, 83, 0.05), rgba(16, 185, 129, 0.03));
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
 }
 
 .contact-form--demo .form-row--full {
@@ -44,9 +47,38 @@ html[dir="rtl"] .contact-form--demo .form-row select {
   padding-inline-end: 1rem;
 }
 
+.contact-form__submit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-form__helper {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 .contact-form--demo .btn--block {
-  margin-top: 0.25rem;
+  margin-top: 0;
   box-shadow: 0 8px 28px var(--accent-inset);
+}
+
+.contact-form--demo .form-row input,
+.contact-form--demo .form-row select,
+.contact-form--demo .form-row textarea {
+  background: var(--bg-card);
+  border-color: var(--border-subtle);
+  color: var(--text);
+}
+
+.contact-form--demo .form-row input:focus,
+.contact-form--demo .form-row select:focus,
+.contact-form--demo .form-row textarea:focus {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.12);
 }
 
 @media (max-width: 640px) {
