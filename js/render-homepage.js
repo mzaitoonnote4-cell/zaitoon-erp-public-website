@@ -969,6 +969,25 @@
     );
   }
 
+  function renderBusinessAnswersTeaser() {
+    var ba = content.businessAnswers;
+    if (!ba || !ba.title) return "";
+
+    return (
+      '<section class="public-answers-teaser section" id="business-answers-teaser" data-section-id="business-answers-teaser">' +
+      '<div class="container"><div class="answers-teaser-card glass-panel reveal">' +
+      '<span class="answers-teaser-card__icon" aria-hidden="true">?</span>' +
+      '<div class="answers-teaser-card__body">' +
+      "<h2>" +
+      esc(ba.title) +
+      "</h2>" +
+      (ba.text ? "<p>" + esc(ba.text) + "</p>" : "") +
+      "</div>" +
+      renderCta(ba.button, "btn--gold") +
+      "</div></div></section>"
+    );
+  }
+
   function renderTraditionalVsZaerp() {
     var c = content.traditionalVsZaerp;
     if (!c || !c.title) return "";
@@ -1838,6 +1857,10 @@
     whatsappCta: { flag: "showWhatsappCta", render: renderWhatsappCta },
     platformUpdates: { flag: "showPlatformUpdates", render: renderPlatformUpdates },
     roadmapTeaser: { flag: "showRoadmapTeaser", render: renderRoadmapTeaser },
+    businessAnswersTeaser: {
+      flag: "showBusinessAnswersTeaser",
+      render: renderBusinessAnswersTeaser
+    },
     news: { flag: "showNews", render: renderNews },
     video: { flag: "showVideo", render: renderVideo },
     contact: { flag: "showContact", render: renderContact }

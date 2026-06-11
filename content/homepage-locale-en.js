@@ -519,6 +519,16 @@
       }
     },
 
+    businessAnswers: {
+      title: "Answers before choosing an ERP",
+      text: "Learn the difference between ERP, Excel, and invoicing software, and when your business may need a clearer system.",
+      button: {
+        label: "View Answers",
+        href: "answers.html",
+        variant: "gold"
+      }
+    },
+
     traditionalVsZaerp: {
       title: "Why move from Excel and notebooks to ZA ERP?",
       subtitle:
@@ -1135,6 +1145,7 @@
           links: [
             { label: "About ZA ERP", href: "about.html" },
             { label: "Trust & Security", href: "trust-security.html" },
+            { label: "Business Answers", href: "answers.html" },
             { label: "Contact", href: "#contact" },
             { label: "Privacy Policy", href: "privacy.html" },
             { label: "Terms of Use", href: "terms.html" }

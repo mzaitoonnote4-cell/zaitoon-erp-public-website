@@ -1,11 +1,12 @@
 /**
- * Trust & Security Center page (trust-security.html)
+ * Business Answers / AEO page (answers.html)
  */
 (function () {
   "use strict";
 
   var LANG_KEY = "za-erp-language";
   var MODE_KEY = "za-erp-mode";
+  var FAQ_JSON_LD_ID = "answers-faq-jsonld";
 
   function esc(str) {
     if (str == null) return "";
@@ -77,7 +78,7 @@
   }
 
   function applySeo(lang) {
-    var data = window.TRUST_SECURITY_CONTENT;
+    var data = window.BUSINESS_ANSWERS_CONTENT;
     if (!data || !data.seo) return;
     var seo = data.seo[lang] || data.seo.ar;
     if (seo.title) document.title = seo.title;
@@ -88,69 +89,72 @@
         title: seo.title,
         description: seo.description,
         ogImage: window.ZA_SEO_META.DEFAULT_OG_IMAGE,
-        ogUrl: window.ZA_SEO_META.PUBLIC_SITE_URL + "trust-security.html"
+        ogUrl: window.ZA_SEO_META.PUBLIC_SITE_URL + "answers.html"
       });
     }
   }
 
-  function renderSection(section, lang) {
-    var copy = section[lang] || section.ar;
+  function applyFaqJsonLd(lang) {
+    var data = window.BUSINESS_ANSWERS_CONTENT;
+    if (!data || !data.items || !data.items.length) return;
+
+    var mainEntity = data.items
+      .map(function (item) {
+        var copy = item[lang] || item.ar;
+        if (!copy) return null;
+        return {
+          "@type": "Question",
+          name: copy.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: copy.answer
+          }
+        };
+      })
+      .filter(Boolean);
+
+    var existing = document.getElementById(FAQ_JSON_LD_ID);
+    if (existing) existing.remove();
+
+    var script = document.createElement("script");
+    script.id = FAQ_JSON_LD_ID;
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: mainEntity
+    });
+    document.head.appendChild(script);
+  }
+
+  function renderAnswerCard(item, lang) {
+    var copy = item[lang] || item.ar;
     if (!copy) return "";
 
-    var mod = section.variant === "muted" ? " trust-card--muted" : "";
-    var inner = "";
-
-    if (section.type === "bullets" && copy.items && copy.items.length) {
-      inner =
-        "<h2>" +
-        esc(copy.title) +
-        "</h2>" +
-        '<ul class="trust-card__list">' +
-        copy.items
-          .map(function (item) {
-            return "<li>" + esc(item) + "</li>";
-          })
-          .join("") +
-        "</ul>";
-    } else if (section.type === "platform") {
-      var url = section.platformUrl || "https://erpv1.zaitoonerp.com/";
-      inner =
-        "<h2>" +
-        esc(copy.title) +
-        "</h2>" +
-        "<p>" +
-        esc(copy.textBefore) +
-        ' <a href="' +
-        esc(url) +
-        '" target="_blank" rel="noopener noreferrer" class="trust-card__link">' +
-        esc(url) +
-        "</a> " +
-        esc(copy.textAfter) +
-        "</p>";
-    } else {
-      inner = "<h2>" + esc(copy.title) + "</h2><p>" + esc(copy.text) + "</p>";
-    }
-
     return (
-      '<article class="trust-card glass-panel reveal' +
-      mod +
-      '" data-trust-section="' +
-      esc(section.id) +
+      '<article class="answer-card glass-panel reveal" id="' +
+      esc(item.id) +
+      '" data-answer-id="' +
+      esc(item.id) +
       '">' +
-      inner +
-      "</article>"
+      "<h2>" +
+      esc(copy.question) +
+      "</h2>" +
+      "<p>" +
+      esc(copy.answer) +
+      "</p></article>"
     );
   }
 
   function renderFallbackContent() {
-    var mount = document.getElementById("trust-sections");
-    var fallback = document.getElementById("trust-sections-fallback");
+    var mount = document.getElementById("answers-list");
+    var fallback = document.getElementById("answers-list-fallback");
     if (!mount || !fallback) return;
     mount.innerHTML = fallback.innerHTML;
   }
 
   function renderPage(lang) {
-    var data = window.TRUST_SECURITY_CONTENT;
+    var data = window.BUSINESS_ANSWERS_CONTENT;
     if (!data) {
       renderFallbackContent();
       return;
@@ -163,25 +167,25 @@
     }
 
     var page = data.page[lang] || data.page.ar;
-    var titleEl = document.getElementById("trust-page-title");
-    var subtitleEl = document.getElementById("trust-page-subtitle");
+    var titleEl = document.getElementById("answers-page-title");
+    var subtitleEl = document.getElementById("answers-page-subtitle");
     if (titleEl) titleEl.textContent = page.title;
     if (subtitleEl) subtitleEl.textContent = page.subtitle;
 
-    var mount = document.getElementById("trust-sections");
-    if (mount && data.sections) {
-      mount.innerHTML = data.sections
-        .map(function (section) {
-          return renderSection(section, lang);
+    var mount = document.getElementById("answers-list");
+    if (mount && data.items) {
+      mount.innerHTML = data.items
+        .map(function (item) {
+          return renderAnswerCard(item, lang);
         })
         .join("");
     }
 
-    var ctaMount = document.getElementById("trust-cta");
+    var ctaMount = document.getElementById("answers-cta");
     if (ctaMount && data.cta) {
       var cta = data.cta[lang] || data.cta.ar;
       ctaMount.innerHTML =
-        '<div class="trust-cta glass-panel reveal">' +
+        '<div class="answers-cta glass-panel reveal">' +
         "<p>" +
         esc(cta.text) +
         "</p>" +
@@ -190,6 +194,12 @@
         '">' +
         esc(cta.button.label) +
         "</a></div>";
+    }
+
+    try {
+      applyFaqJsonLd(lang);
+    } catch (e) {
+      /* structured data must not block content */
     }
 
     if (window.ZA_PAGE_REVEAL && typeof window.ZA_PAGE_REVEAL.init === "function") {

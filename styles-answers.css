@@ -1,0 +1,174 @@
+/* Business Answers / AEO page + homepage teaser */
+
+.answers-page .answer-card.reveal,
+.answers-page .answers-cta.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.answers-page__header {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.answers-page__header h1 {
+  margin: 0;
+  font-size: clamp(1.65rem, 4vw, 2.15rem);
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.answers-page__subtitle {
+  margin: 0.85rem auto 0;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.answers-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.answer-card {
+  padding: 1.2rem 1.15rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+.answer-card h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--accent-light);
+}
+
+.answer-card p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.answers-cta {
+  margin-top: 1.75rem;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent-border);
+  background: linear-gradient(160deg, rgba(212, 168, 83, 0.08), rgba(16, 185, 129, 0.05));
+}
+
+.answers-cta p {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.answers-cta .btn {
+  min-width: min(100%, 18rem);
+}
+
+.answers-page .legal-article {
+  max-width: 52rem;
+}
+
+/* Homepage teaser */
+.public-answers-teaser {
+  padding-block: 2.5rem;
+  scroll-margin-top: 5rem;
+}
+
+.answers-teaser-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.75rem 1.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent-border);
+  background: linear-gradient(135deg, rgba(212, 168, 83, 0.06), rgba(16, 185, 129, 0.05));
+}
+
+.answers-teaser-card__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--emerald);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.answers-teaser-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.answers-teaser-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  color: var(--text);
+}
+
+.answers-teaser-card p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.answers-teaser-card .btn {
+  flex-shrink: 0;
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+  .answers-page__header {
+    margin-bottom: 1.35rem;
+    text-align: start;
+  }
+
+  .answers-page__subtitle {
+    text-align: start;
+  }
+
+  .answers-cta {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .answers-teaser-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.35rem 1.15rem;
+  }
+
+  .answers-teaser-card__icon {
+    align-self: flex-start;
+  }
+
+  .answers-teaser-card .btn {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .answer-card {
+    padding: 1.05rem 1rem;
+  }
+
+  .answer-card h2 {
+    font-size: 0.96rem;
+  }
+}

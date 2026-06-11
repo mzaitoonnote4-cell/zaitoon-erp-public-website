@@ -518,6 +518,16 @@
       }
     },
 
+    businessAnswers: {
+      title: "إجابات تساعدك قبل اختيار ERP",
+      text: "تعرف على الفرق بين ERP و Excel وبرامج الفواتير، ومتى تحتاج شركتك إلى نظام أوضح.",
+      button: {
+        label: "عرض الإجابات",
+        href: "answers.html",
+        variant: "gold"
+      }
+    },
+
     traditionalVsZaerp: {
       title: "لماذا تنتقل من Excel والدفاتر إلى ZA ERP؟",
       subtitle:
@@ -1134,6 +1144,7 @@
           links: [
             { label: "من نحن", href: "about.html" },
             { label: "الثقة والأمان", href: "trust-security.html" },
+            { label: "إجابات الأعمال", href: "answers.html" },
             { label: "تواصل معنا", href: "#contact" },
             { label: "سياسة الخصوصية", href: "privacy.html" },
             { label: "شروط الاستخدام", href: "terms.html" }
@@ -1240,6 +1251,7 @@
       "pilotUrgencyCta",
       "platformUpdates",
       "roadmapTeaser",
+      "businessAnswersTeaser",
       "faq",
       "cta",
       "whatsappCta",
@@ -1275,6 +1287,7 @@
       showPilot: true,
       showPlatformUpdates: true,
       showRoadmapTeaser: true,
+      showBusinessAnswersTeaser: true,
       showFaq: true,
       showCta: true,
       showWhatsappCta: true,

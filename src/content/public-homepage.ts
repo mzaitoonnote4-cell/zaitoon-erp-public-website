@@ -28,6 +28,8 @@ export type SectionId =
   | "pilotUrgencyCta"
   | "pilot"
   | "platformUpdates"
+  | "roadmapTeaser"
+  | "businessAnswersTeaser"
   | "faq"
   | "cta"
   | "whatsappCta"
@@ -59,6 +61,8 @@ export interface HomepageSectionVisibility {
   showPilotUrgencyCTA: boolean;
   showPilot: boolean;
   showPlatformUpdates: boolean;
+  showRoadmapTeaser: boolean;
+  showBusinessAnswersTeaser: boolean;
   showFaq: boolean;
   showCta: boolean;
   showWhatsappCta: boolean;
@@ -427,6 +431,11 @@ export interface PublicHomepageContent {
     };
   };
   trustSecurity?: {
+    title: string;
+    text: string;
+    button: HomepageCta;
+  };
+  businessAnswers?: {
     title: string;
     text: string;
     button: HomepageCta;
