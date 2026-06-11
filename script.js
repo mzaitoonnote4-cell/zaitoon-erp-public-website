@@ -31,6 +31,9 @@
     document.body.classList.remove("mode-day", "mode-night");
     document.body.classList.add(mode === "day" ? "mode-day" : "mode-night");
     document.documentElement.setAttribute("data-mode", mode);
+    if (window.ZA_LOGO_MODE && typeof window.ZA_LOGO_MODE.sync === "function") {
+      window.ZA_LOGO_MODE.sync(mode);
+    }
     try {
       localStorage.setItem(MODE_KEY, mode);
     } catch (err) { /* ignore */ }
@@ -47,30 +50,39 @@
   }
 
   function bindModeToggle() {
-    var modeToggle = document.querySelector("[data-mode-toggle]");
-    if (!modeToggle) return;
-    modeToggle.addEventListener("click", function () {
+    if (document.documentElement.dataset.modeToggleBound === "1") return;
+    document.documentElement.dataset.modeToggleBound = "1";
+
+    document.addEventListener("click", function (e) {
+      var modeToggle = e.target.closest("[data-mode-toggle]");
+      if (!modeToggle) return;
       var current = document.body.classList.contains("mode-day") ? "day" : "night";
       applyMode(current === "day" ? "night" : "day");
     });
   }
 
   function bindMobileNav() {
-    var navToggle = document.querySelector(".nav-toggle");
-    var nav = document.querySelector(".public-header__nav");
-    if (!navToggle || !nav) return;
+    if (document.documentElement.dataset.mobileNavBound === "1") return;
+    document.documentElement.dataset.mobileNavBound = "1";
 
-    navToggle.addEventListener("click", function () {
-      var expanded = navToggle.getAttribute("aria-expanded") === "true";
-      navToggle.setAttribute("aria-expanded", String(!expanded));
-      nav.classList.toggle("is-open");
-    });
+    document.addEventListener("click", function (e) {
+      var navToggle = e.target.closest(".nav-toggle");
+      if (navToggle) {
+        var nav = document.getElementById("main-nav");
+        if (!nav) return;
+        var expanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!expanded));
+        nav.classList.toggle("is-open");
+        return;
+      }
 
-    nav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navToggle.setAttribute("aria-expanded", "false");
-        nav.classList.remove("is-open");
-      });
+      var navLink = e.target.closest(".public-header__nav a");
+      if (navLink) {
+        var toggle = document.querySelector(".nav-toggle");
+        var headerNav = document.getElementById("main-nav");
+        if (toggle) toggle.setAttribute("aria-expanded", "false");
+        if (headerNav) headerNav.classList.remove("is-open");
+      }
     });
   }
 
@@ -134,10 +146,12 @@
   }
 
   function initStickyHeader() {
-    var header = document.querySelector(".public-header");
-    if (!header) return;
+    if (document.documentElement.dataset.stickyHeaderBound === "1") return;
+    document.documentElement.dataset.stickyHeaderBound = "1";
 
     function onScroll() {
+      var header = document.querySelector(".public-header");
+      if (!header) return;
       header.classList.toggle("public-header--scrolled", window.scrollY > 24);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -468,13 +482,13 @@
     initInteractiveProductTour();
   }
 
-  initMode();
-
   document.addEventListener("homepage:rendered", initPublicSite);
-
-  if (document.querySelector(".public-header")) {
-    initPublicSite();
-  }
+  document.addEventListener("DOMContentLoaded", function () {
+    initMode();
+    if (document.querySelector(".public-header") || document.getElementById("public-header-mount")) {
+      initPublicSite();
+    }
+  });
 
   window.ZA_ERP_PUBLIC = {
     getContent: getContent,

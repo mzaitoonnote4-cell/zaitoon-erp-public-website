@@ -13,19 +13,38 @@
     };
   }
 
+  function currentMode() {
+    try {
+      var mode = document.documentElement.getAttribute("data-mode");
+      if (!mode) {
+        mode = localStorage.getItem("za-erp-mode");
+      }
+      return mode === "day" ? "day" : "night";
+    } catch (e) {
+      return document.documentElement.getAttribute("data-mode") === "day" ? "day" : "night";
+    }
+  }
+
   function renderLockup(variant) {
     var p = paths();
     var cls = "brand-lockup brand-lockup--" + variant + " brand-lockup--img";
+    var mode = currentMode();
+    var src = mode === "day" ? p.light : p.dark;
+    var priority =
+      variant === "nav" ? ' fetchpriority="high" loading="eager"' : ' loading="lazy"';
     return (
       '<span class="' +
       cls +
       '" dir="ltr">' +
-      '<img class="brand-lockup__img brand-lockup__img--dark" src="' +
+      '<img class="brand-lockup__img" data-brand-logo data-logo-dark="' +
       p.dark +
-      '" alt="ZA ERP" decoding="async">' +
-      '<img class="brand-lockup__img brand-lockup__img--light" src="' +
+      '" data-logo-light="' +
       p.light +
-      '" alt="ZA ERP" decoding="async">' +
+      '" src="' +
+      src +
+      '" alt="ZA ERP" width="304" height="70" decoding="async"' +
+      priority +
+      ">" +
       "</span>"
     );
   }

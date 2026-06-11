@@ -32,6 +32,8 @@
   <link rel="canonical" href="https://zaitoonerp.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="assets/za-erp-logo-dark.png" as="image" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-polish.css">
@@ -51,10 +53,7 @@
   <link rel="stylesheet" href="styles-product-tour.css">
   <link rel="stylesheet" href="styles-trust-security.css">
   <link rel="stylesheet" href="styles-answers.css">
-  <script src="content/homepage-locale-en.js"></script>
-  <script src="content/homepage-content.js"></script>
-  <script src="js/homepage-i18n.js"></script>
-  <script src="js/seo-meta.js"></script>
+  <link rel="stylesheet" href="styles-perf.css">
   <script>
     (function () {
       try {
@@ -62,9 +61,6 @@
         document.documentElement.setAttribute("data-mode", mode === "day" ? "day" : "night");
       } catch (e) {
         document.documentElement.setAttribute("data-mode", "night");
-      }
-      if (window.ZA_SEO_META && window.HOMEPAGE_CONTENT) {
-        window.ZA_SEO_META.applyHomepageSeo(window.HOMEPAGE_CONTENT);
       }
     })();
   </script>
@@ -95,15 +91,34 @@
 
   <div id="public-header-mount"></div>
 
-  <main id="public-main-mount"></main>
+  <main id="public-main-mount" class="public-main-mount"></main>
 
   <div id="public-footer-mount"></div>
 
-  <script src="js/icons.js"></script>
-  <script src="js/brand-logo.js"></script>
-  <script src="content/updates-content.js"></script>
-  <script src="js/updates-shared.js"></script>
-  <script src="js/render-homepage.js"></script>
-  <script src="script.js"></script>
+  <script defer src="content/homepage-locale-en.js"></script>
+  <script defer src="content/homepage-content.js"></script>
+  <script defer src="js/homepage-i18n.js"></script>
+  <script defer src="js/seo-meta.js"></script>
+  <script defer src="js/icons.js"></script>
+  <script defer src="js/logo-mode.js"></script>
+  <script defer src="js/brand-logo.js"></script>
+  <script defer src="content/updates-content.js"></script>
+  <script defer src="js/updates-shared.js"></script>
+  <script defer src="js/render-homepage.js"></script>
+  <script defer src="script.js"></script>
+  <script>
+    (function () {
+      function applyHomepageSeoWhenReady() {
+        if (window.ZA_SEO_META && window.HOMEPAGE_CONTENT) {
+          window.ZA_SEO_META.applyHomepageSeo(window.HOMEPAGE_CONTENT);
+        }
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", applyHomepageSeoWhenReady);
+      } else {
+        applyHomepageSeoWhenReady();
+      }
+    })();
+  </script>
 </body>
 </html>

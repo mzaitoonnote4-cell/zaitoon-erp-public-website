@@ -178,6 +178,9 @@
     document.body.classList.remove("mode-day", "mode-night");
     document.body.classList.add(mode === "day" ? "mode-day" : "mode-night");
     document.documentElement.setAttribute("data-mode", mode);
+    if (window.ZA_LOGO_MODE && typeof window.ZA_LOGO_MODE.sync === "function") {
+      window.ZA_LOGO_MODE.sync(mode);
+    }
     try {
       localStorage.setItem(MODE_KEY, mode);
     } catch (e) { /* ignore */ }

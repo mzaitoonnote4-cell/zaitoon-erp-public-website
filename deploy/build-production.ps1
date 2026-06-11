@@ -41,6 +41,7 @@ $files = @(
   "styles-roadmap.css",
   "styles-conversion.css",
   "styles-product-tour.css",
+  "styles-perf.css",
   "script.js"
 )
 

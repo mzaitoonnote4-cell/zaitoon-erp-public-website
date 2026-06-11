@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="styles-legal.css">
   <link rel="stylesheet" href="styles-experience.css">
   <link rel="stylesheet" href="styles-use-case.css">
+  <link rel="stylesheet" href="styles-perf.css">
   <script>
     (function () {
       try {
@@ -65,8 +66,7 @@
   <header class="legal-header">
     <div class="legal-header__inner container">
       <a href="index.html" class="brand-lockup brand-lockup--nav brand-lockup--img" dir="ltr">
-        <img class="brand-lockup__img brand-lockup__img--dark" src="assets/za-erp-logo-dark.png" alt="ZA ERP" decoding="async">
-        <img class="brand-lockup__img brand-lockup__img--light" src="assets/za-erp-logo-light.png" alt="ZA ERP" decoding="async">
+        <img class="brand-lockup__img" data-brand-logo data-logo-dark="assets/za-erp-logo-dark.png" data-logo-light="assets/za-erp-logo-light.png" src="assets/za-erp-logo-dark.png" alt="ZA ERP" width="304" height="70" decoding="async" fetchpriority="high" loading="eager">
       </a>
       <div class="legal-header__actions">
         <a class="legal-header__home" href="index.html" data-legal-home-ar>العودة للرئيسية</a>
@@ -122,9 +122,10 @@
     </article>
   </main>
 
-  <script src="js/icons.js"></script>
-  <script src="content/use-case-content.js"></script>
-  <script src="js/seo-meta.js"></script>
-  <script src="js/use-case-page.js"></script>
+  <script defer src="js/icons.js"></script>
+  <script defer src="js/logo-mode.js"></script>
+  <script defer src="content/use-case-content.js"></script>
+  <script defer src="js/seo-meta.js"></script>
+  <script defer src="js/use-case-page.js"></script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+/* Performance — Core Web Vitals helpers (no visual redesign) */
+
+html {
+  overflow-x: clip;
+}
+
+/* Reserve space for async section paint below the hero */
+.public-main-mount > section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
+}
+
+/* Faster tap response on primary controls */
+.btn,
+.lang-switch__btn,
+.mode-toggle,
+.nav-toggle,
+.tour-tab,
+.teaser-tab,
+.faq-item summary {
+  touch-action: manipulation;
+}
+
+/* Reduce GPU work on small screens */
+@media (max-width: 768px) {
+  .hero-mockup-stage {
+    animation: none !important;
+  }
+
+  .bg-effects__orb {
+    opacity: 0.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .public-main-mount > section:not(#hero) {
+    content-visibility: visible;
+  }
+}
