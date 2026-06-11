@@ -380,8 +380,15 @@ export interface PublicHomepageContent {
   };
   pilot: {
     title: string;
-    text: string;
-    cta: HomepageCta;
+    subtitle?: string;
+    text?: string;
+    valueCards?: { id: string; title: string; description: string }[];
+    whatYouGet?: { title: string; items: string[] };
+    whoItFits?: { title: string; items: string[] };
+    cta?: {
+      text: string;
+      button: HomepageCta;
+    };
   };
   faq: {
     title: string;

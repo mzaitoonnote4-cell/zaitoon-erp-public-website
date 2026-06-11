@@ -23,6 +23,7 @@ $files = @(
   "styles-getting-started.css",
   "styles-faq.css",
   "styles-contact.css",
+  "styles-pilot.css",
   "styles-i18n.css",
   "styles-legal.css",
   "styles-updates.css",

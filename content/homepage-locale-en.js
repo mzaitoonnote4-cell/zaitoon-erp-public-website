@@ -449,9 +449,69 @@
     },
 
     pilot: {
-      title: "Pilot launch for selected companies",
-      text: "We onboard a limited number of companies during Pilot to ensure training, follow-up, and product refinement based on real market needs.",
-      cta: { label: "Reserve your Pilot spot", href: "#contact", variant: "gold" }
+      title: "Pilot Program for Selected Companies",
+      subtitle:
+        "Start your ZA ERP experience through a structured pilot phase that helps us understand your workflow and prepare the platform around your real needs.",
+      valueCards: [
+        {
+          id: "understand",
+          title: "Understand your business first",
+          description:
+            "We start by reviewing your business type, users, branches, and daily team workflow."
+        },
+        {
+          id: "setup",
+          title: "Prepare a suitable pilot",
+          description:
+            "We help you test the platform based on your key needs in sales, inventory, customers, permissions, or reports."
+        },
+        {
+          id: "train",
+          title: "Train your team",
+          description:
+            "We guide your team based on their roles so the pilot is not just system access, but a clear working experience."
+        },
+        {
+          id: "followup",
+          title: "Initial follow-up",
+          description:
+            "We review early feedback and help you understand how ZA ERP can improve daily operations."
+        },
+        {
+          id: "decide",
+          title: "Clearer expansion decision",
+          description:
+            "After the pilot, you can evaluate whether ZA ERP fits your company before expanding users or branches."
+        }
+      ],
+      whatYouGet: {
+        title: "What do you get during the Pilot?",
+        items: [
+          "Initial review of your business workflow",
+          "Suggested plan based on your needs",
+          "Pilot setup suitable for your business size",
+          "Guidance on how to use the platform",
+          "Feedback review before expansion"
+        ]
+      },
+      whoItFits: {
+        title: "Who is the Pilot suitable for?",
+        items: [
+          "Businesses moving from notebooks or Excel to a clearer system",
+          "Owners who want better visibility over sales and inventory",
+          "Teams that need organized role-based permissions",
+          "Companies that want to test before expanding",
+          "Businesses with branches or staff needing clearer control"
+        ]
+      },
+      cta: {
+        text: "Want to know whether ZA ERP fits your business?",
+        button: {
+          label: "Request an Initial Review",
+          href: "#contact",
+          variant: "gold"
+        }
+      }
     },
 
     faq: {

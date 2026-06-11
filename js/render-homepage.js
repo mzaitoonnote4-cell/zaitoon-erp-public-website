@@ -802,15 +802,88 @@
     );
   }
 
+  function renderPilotValueCard(card, index) {
+    return (
+      '<article class="pilot-value-card glass-panel reveal" data-pilot-card="' +
+      esc(card.id) +
+      '">' +
+      '<span class="pilot-value-card__num" aria-hidden="true">' +
+      (index + 1) +
+      "</span>" +
+      "<h3>" +
+      esc(card.title) +
+      "</h3>" +
+      "<p>" +
+      esc(card.description) +
+      "</p></article>"
+    );
+  }
+
+  function renderPilotMiniBlock(block, mod) {
+    if (!block || !block.items || !block.items.length) return "";
+    var items = block.items
+      .map(function (item) {
+        return "<li>" + esc(item) + "</li>";
+      })
+      .join("");
+    return (
+      '<div class="pilot-mini glass-panel reveal' +
+      (mod ? " " + mod : "") +
+      '">' +
+      "<h3>" +
+      esc(block.title) +
+      "</h3>" +
+      '<ul class="pilot-mini__list">' +
+      items +
+      "</ul></div>"
+    );
+  }
+
   function renderPilot() {
     var p = content.pilot;
+    if (!p) return "";
+
+    var cards = (p.valueCards || [])
+      .map(function (card, i) {
+        return renderPilotValueCard(card, i);
+      })
+      .join("");
+
+    var detailsHtml =
+      '<div class="pilot-program__details">' +
+      renderPilotMiniBlock(p.whatYouGet, "pilot-mini--get") +
+      renderPilotMiniBlock(p.whoItFits, "pilot-mini--fit") +
+      "</div>";
+
+    var ctaHtml = "";
+    if (p.cta && p.cta.text && p.cta.button) {
+      ctaHtml =
+        '<div class="pilot-program__cta reveal">' +
+        "<p>" +
+        esc(p.cta.text) +
+        "</p>" +
+        renderCta(p.cta.button, "btn--lg") +
+        "</div>";
+    }
+
     return (
-      '<section class="public-pilot section" id="pilot" data-section-id="pilot">' +
-      '<div class="container"><div class="public-pilot__banner glass-panel reveal">' +
-      "<h2>" + esc(p.title) + "</h2>" +
-      "<p>" + esc(p.text) + "</p>" +
-      renderCta(p.cta, "btn--lg") +
-      "</div></div></section>"
+      '<section class="public-pilot-program section section--alt" id="pilot" data-section-id="pilot">' +
+      '<div class="container"><header class="section-header reveal">' +
+      "<h2>" +
+      esc(p.title) +
+      "</h2>" +
+      (p.subtitle
+        ? '<p class="section-header__lead">' + esc(p.subtitle) + "</p>"
+        : p.text
+          ? '<p class="section-header__lead">' + esc(p.text) + "</p>"
+          : "") +
+      "</header>" +
+      '<div class="pilot-program__values">' +
+      cards +
+      "</div>" +
+      detailsHtml +
+      ctaHtml +
+      "</div></section>"
     );
   }
 
