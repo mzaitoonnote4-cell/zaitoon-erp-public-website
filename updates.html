@@ -91,6 +91,11 @@
 
       <div class="updates-timeline" id="updates-timeline" aria-live="polite"></div>
 
+      <div id="updates-timeline-fallback" hidden>
+        <p class="updates-empty" data-updates-empty-ar>لا توجد تحديثات معروضة حالياً، يرجى العودة لاحقاً.</p>
+        <p class="updates-empty" data-updates-empty-en hidden>No updates are currently displayed. Please check again later.</p>
+      </div>
+
       <footer class="legal-footer">
         <nav class="legal-footer__links" aria-label="Legal">
           <a href="privacy.html" data-legal-footer-privacy-ar>سياسة الخصوصية</a>
@@ -114,6 +119,7 @@
   </main>
 
   <script src="js/icons.js"></script>
+  <script src="js/page-reveal.js"></script>
   <script src="content/updates-content.js"></script>
   <script src="js/updates-shared.js"></script>
   <script src="js/seo-meta.js"></script>

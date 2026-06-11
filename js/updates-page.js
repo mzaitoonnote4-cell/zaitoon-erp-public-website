@@ -63,6 +63,11 @@
     });
   }
 
+  var EMPTY_AR =
+    "لا توجد تحديثات معروضة حالياً، يرجى العودة لاحقاً.";
+  var EMPTY_EN =
+    "No updates are currently displayed. Please check again later.";
+
   function applySeo(lang) {
     var data = window.UPDATES_CONTENT;
     if (!data || !data.seo) return;
@@ -80,12 +85,46 @@
     }
   }
 
+  function renderEmptyState(lang) {
+    var isAr = lang !== "en";
+    return (
+      '<p class="updates-empty">' +
+      (isAr ? EMPTY_AR : EMPTY_EN) +
+      "</p>"
+    );
+  }
+
+  function renderFallbackContent(lang) {
+    var mount = document.getElementById("updates-timeline");
+    var fallback = document.getElementById("updates-timeline-fallback");
+    if (!mount) return;
+    if (fallback) {
+      mount.innerHTML = fallback.innerHTML;
+      applyLang(lang);
+    } else {
+      mount.innerHTML = renderEmptyState(lang);
+    }
+  }
+
+  function initReveal() {
+    if (window.ZA_PAGE_REVEAL && typeof window.ZA_PAGE_REVEAL.init === "function") {
+      window.ZA_PAGE_REVEAL.init();
+    }
+  }
+
   function renderPage(lang) {
     var U = window.ZA_UPDATES;
     var data = window.UPDATES_CONTENT;
-    if (!U || !data) return;
+    if (!U || !data) {
+      renderFallbackContent(lang);
+      return;
+    }
 
-    applySeo(lang);
+    try {
+      applySeo(lang);
+    } catch (e) {
+      /* SEO must not block content */
+    }
 
     var page = data.page[lang] || data.page.ar;
     var titleEl = document.getElementById("updates-page-title");
@@ -97,11 +136,18 @@
     if (!mount) return;
 
     var items = U.getVisibleUpdates();
+    if (!items.length) {
+      mount.innerHTML = renderEmptyState(lang);
+      return;
+    }
+
     mount.innerHTML = items
       .map(function (item) {
         return U.renderUpdateCard(item, lang, { timeline: true });
       })
       .join("");
+
+    initReveal();
   }
 
   function applyMode(mode) {

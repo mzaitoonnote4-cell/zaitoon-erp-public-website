@@ -11,7 +11,7 @@ Scope: `zaitoon-erp-public-website` only (Pre-Ads Ready v1.7+)
 | `about.html` | Fixed (blank content + nav) |
 | `use-case.html` | OK |
 | `roadmap.html` | OK |
-| `updates.html` | OK |
+| `updates.html` | Fixed (blank content — same `.reveal` issue as About) |
 | `privacy.html` | OK |
 | `terms.html` | OK |
 
@@ -80,10 +80,11 @@ Social icons with `href="#"` remain hidden (not rendered).
 ## Fixes applied
 
 1. **Blank About page** — `.reveal` sections had `opacity: 0` without scroll-reveal on standalone pages; added `js/page-reveal.js`, CSS fallback, and static HTML fallback.
-2. **About header link** — Navbar `من نحن` / `About` changed from `#about` to `about.html`.
-3. **Logo** — Homepage logo link changed from `#top` to `index.html`.
-4. **Footer** — Removed dead placeholder links; added WhatsApp footer link.
-5. **Homepage why section** — ID changed from `about` to `why-za-erp` to avoid confusion with About page.
+2. **Blank Updates page** — Update cards use `.reveal` but `updates.html` did not load `page-reveal.js` or call `ZA_PAGE_REVEAL.init()` after render; fixed with script load, init call, CSS fallback, and empty-state message.
+3. **About header link** — Navbar `من نحن` / `About` changed from `#about` to `about.html`.
+4. **Logo** — Homepage logo link changed from `#top` to `index.html`.
+5. **Footer** — Removed dead placeholder links; added WhatsApp footer link.
+6. **Homepage why section** — ID changed from `about` to `why-za-erp` to avoid confusion with About page.
 
 ## Confirmations
 
