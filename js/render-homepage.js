@@ -69,7 +69,7 @@
         esc(brand.accent) +
         "</span></span>";
     }
-    return '<a href="#top" class="' + cls + '" aria-label="' + esc(brand.ariaLabel) + '">' + lockup + "</a>";
+    return '<a href="index.html" class="' + cls + '" aria-label="' + esc(brand.ariaLabel) + '">' + lockup + "</a>";
   }
 
   function renderLanguageSwitch() {
@@ -619,7 +619,7 @@
     var emblem = renderBrandEmblem();
 
     return (
-      '<section class="public-why section" id="about" data-section-id="about">' +
+      '<section class="public-why section" id="why-za-erp" data-section-id="why-za-erp">' +
       '<div class="container public-why__grid">' +
       '<div class="public-why__visual reveal" aria-hidden="true">' + emblem + "</div>" +
       '<div class="public-why__content"><header class="section-header section-header--start reveal">' +
@@ -1631,6 +1631,17 @@
       ? '<span class="footer-contact__label">' + esc(f.contact.emailLabel) + ": </span>"
       : "";
 
+    var waNumber = content.settings && content.settings.whatsappNumber;
+    var waHtml = waNumber
+      ? "<li>" +
+        icons.get("chat") +
+        '<a href="https://wa.me/' +
+        esc(waNumber) +
+        '" target="_blank" rel="noopener noreferrer" dir="ltr">' +
+        esc(f.contact.whatsappLabel || "WhatsApp") +
+        "</a></li>"
+      : "";
+
     var contactCol =
       '<div class="footer-col"><h4>' + esc(uiText("footerContact", "Contact us")) + '</h4><ul class="footer-contact">' +
       "<li>" +
@@ -1642,6 +1653,7 @@
       '">' +
       esc(f.contact.email) +
       "</a></span></li>" +
+      waHtml +
       "<li>" + icons.get("phone") + '<a href="' + esc(f.contact.phoneHref) + '" dir="ltr">' + esc(f.contact.phone) + "</a></li>" +
       "<li>" + icons.get("location") + "<span>" + esc(f.contact.location) + "</span></li></ul></div>";
 

@@ -32,7 +32,7 @@
       { id: "sectors", label: "القطاعات", href: "#industries", section: "industries" },
       { id: "pricing", label: "الأسعار", href: "#pricing", section: "pricing" },
       { id: "resources", label: "الموارد", href: "#resources", section: "resources" },
-      { id: "about", label: "من نحن", href: "#about", section: "about" }
+      { id: "about", label: "من نحن", href: "about.html", section: "about" }
     ],
 
     headerCtas: [
@@ -1040,8 +1040,6 @@
         {
           title: "الموارد",
           links: [
-            { label: "المدونة", href: "#resources" },
-            { label: "الأدلة", href: "#resources" },
             { label: "تحديثات المنصة", href: "updates.html" },
             { label: "مثال تطبيقي", href: "use-case.html" },
             { label: "خطة التطوير", href: "roadmap.html" },
@@ -1053,8 +1051,6 @@
           title: "الشركة",
           links: [
             { label: "من نحن", href: "about.html" },
-            { label: "الوظائف", href: "#about" },
-            { label: "الأخبار", href: "#resources" },
             { label: "تواصل معنا", href: "#contact" },
             { label: "سياسة الخصوصية", href: "privacy.html" },
             { label: "شروط الاستخدام", href: "terms.html" }
@@ -1064,6 +1060,7 @@
       contact: {
         email: "info@zaitoonerp.com",
         emailLabel: "البريد الرسمي",
+        whatsappLabel: "واتساب",
         phone: "+964 780 850 0591",
         phoneHref: "tel:+9647808500591",
         location: "بغداد، العراق"

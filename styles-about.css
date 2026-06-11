@@ -1,5 +1,11 @@
 /* About page — trust-focused company overview */
 
+.about-page .about-section.reveal,
+.about-page .about-cta.reveal {
+  opacity: 1;
+  transform: none;
+}
+
 .about-page__header {
   margin-bottom: 2rem;
   text-align: center;

@@ -31,7 +31,7 @@
       { id: "sectors", label: "Industries", href: "#industries", section: "industries" },
       { id: "pricing", label: "Pricing", href: "#pricing", section: "pricing" },
       { id: "resources", label: "Resources", href: "#resources", section: "resources" },
-      { id: "about", label: "About", href: "#about", section: "about" }
+      { id: "about", label: "About", href: "about.html", section: "about" }
     ],
 
     headerCtas: [
@@ -1039,8 +1039,6 @@
         {
           title: "Resources",
           links: [
-            { label: "Blog", href: "#resources" },
-            { label: "Guides", href: "#resources" },
             { label: "Platform Updates", href: "updates.html" },
             { label: "Use Case", href: "use-case.html" },
             { label: "Roadmap", href: "roadmap.html" },
@@ -1052,8 +1050,6 @@
           title: "Company",
           links: [
             { label: "About ZA ERP", href: "about.html" },
-            { label: "Careers", href: "#about" },
-            { label: "News", href: "#resources" },
             { label: "Contact", href: "#contact" },
             { label: "Privacy Policy", href: "privacy.html" },
             { label: "Terms of Use", href: "terms.html" }
@@ -1063,6 +1059,7 @@
       contact: {
         email: "info@zaitoonerp.com",
         emailLabel: "Official email",
+        whatsappLabel: "WhatsApp",
         phone: "+964 780 850 0591",
         phoneHref: "tel:+9647808500591",
         location: "Baghdad, Iraq"

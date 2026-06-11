@@ -186,6 +186,7 @@ export interface HomepageFooterColumn {
 export interface HomepageContactDetails {
   email: string;
   emailLabel?: string;
+  whatsappLabel?: string;
   phone: string;
   phoneHref: string;
   location: string;
